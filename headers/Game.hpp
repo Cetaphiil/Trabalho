@@ -23,7 +23,9 @@ class Engine
         RenderWindow *window;
         Event event;
         Vector2f resolucao;
-        Sprite *backGround;
+
+        Texture backgroundTexture;
+        Sprite backgroundSprite;
 
         Enemy enemy;
 
@@ -35,11 +37,11 @@ class Engine
 
         const bool windowOpen() const;
 
-
         void pollEvents();
         
         void update();
         void render();
+        void renderEnemies();
 };
 
 #endif

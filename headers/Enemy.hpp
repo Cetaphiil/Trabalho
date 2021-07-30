@@ -4,21 +4,20 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 
-
 using namespace sf;
 
 class Enemy{
     protected:
         //int life = 10, damage = 5, speed = 5;
-        RectangleShape enemySprite;
+        Sprite enemySprite;
+        Texture enemyTexture;
     public:
         Vector2f enemyPosit;
         Enemy();
 
-        void initEnemies();
-        void updatePosit(Vector2f newPosit);
-        RectangleShape getEnemies();
-
+        void initEnemies(Vector2f resolucao);
+        void updateEnemy();
+        Sprite getEnemies();
 };
 
 #endif
