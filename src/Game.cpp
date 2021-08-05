@@ -1,10 +1,12 @@
 #include <Game.hpp>
 void Engine::initVariab(){
     this->window = nullptr;
-    this->resolucao.x = 1024;
-    this->resolucao.y = 640;
+    resolucao = {1080.0f, 760.0f};
     this->backgroundTexture.loadFromFile("assets/background/Fundo.png");
     this->backgroundSprite.setTexture(backgroundTexture);
+    this->player.loader();
+    this->enemy.enemy_sprite_loader();
+    this->enemy.initEnemies(resolucao);
 };
 
 void Engine::initWindow(){
@@ -14,7 +16,7 @@ void Engine::initWindow(){
 Engine::Engine(){
     this->initVariab();
     this->initWindow();
-    this->enemy.initEnemies(resolucao);
+    this->mainMenu.initMenu(resolucao);
 };
 
 Engine::~Engine(){
@@ -26,7 +28,6 @@ const bool Engine::windowOpen() const{
 };
 
 void Engine::pollEvents(){
-
     while(this->window->pollEvent(this->event)){
         switch (this->event.type)
         {
@@ -35,9 +36,11 @@ void Engine::pollEvents(){
             break;
         case Event::KeyPressed:
             if(this->event.key.code == Keyboard::D){
-                this->enemy.enemyPosit.x = this->enemy.enemyPosit.x+1;
-                this->enemy.updateEnemy();
-                this->enemy.getEnemies();
+                Engine::update();
+                Engine::render();
+            }
+            if(this->event.key.code == Keyboard::A){
+                Engine::update();
                 Engine::render();
             }
             break;
@@ -50,22 +53,25 @@ void Engine::pollEvents(){
 void Engine::update(){
 
     this->pollEvents();
-
-    this->enemy.updateEnemy();
-
+    //Player
+    this->player.updatePlayer(this->window);
+    //Enemy
+    this->enemy.updateEnemy(this->window, player);
+    //this->mainMenu.updateMenu(this->window);
 };
 
-void Engine::renderEnemies(){
-
-    this->window->draw(this->enemy.getEnemies());
+void Engine::renderCharacters(){
+   //Player
+    player.showPlayer(window);
+    //Enemy
+    enemy.showEnemies(window);
 
 };
 
 void Engine::render(){
-
     this->window->clear();
+    //mainMenu.renderMenu(this->window);
     this->window->draw(this->backgroundSprite);
-    this->renderEnemies();
+    this->renderCharacters();
     this->window->display();
-
 };

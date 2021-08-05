@@ -12,10 +12,11 @@
 #include <string>
 
 
-class Object{
+class Entity{
 public:
     sf::Texture texture;
     sf::Sprite sprite;
+    int life;
 };
 
 #endif //GAME_OBJETO_H

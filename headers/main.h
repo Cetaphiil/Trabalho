@@ -16,20 +16,6 @@
 
 using namespace sf;
 
-/*class Button
-{
-public:
-    IntRect Box;
-
-    const bool IsClicked(const Mouse Mouse, const float X, const float Y)
-    {
-
-        if(!Mouse.isButtonPressed(Mouse::Left)){return false;}
-        return Box.contains(X,Y);
-    }
-};*/
-
-
 
 
 #endif //GAME_MAIN_H

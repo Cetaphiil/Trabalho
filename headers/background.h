@@ -5,9 +5,9 @@
 #ifndef GAME_BACKGROUND_H
 #define GAME_BACKGROUND_H
 
-#include "Objeto.h"
+#include <Objeto.h>
 
-class Background:public Object{
+class Background : public Entity{
 public:
     void loader();
     void show(sf::RenderWindow *window);

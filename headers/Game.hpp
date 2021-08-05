@@ -12,7 +12,9 @@
 #include <time.h>
 #include <random>
 
+#include <Menu.hpp>
 #include <Enemy.hpp>
+#include <Objeto.h>
 
 using namespace sf;
 using namespace std;
@@ -26,6 +28,10 @@ class Engine
 
         Texture backgroundTexture;
         Sprite backgroundSprite;
+
+        Menu mainMenu;
+
+        Player player;
 
         Enemy enemy;
 
@@ -41,7 +47,7 @@ class Engine
         
         void update();
         void render();
-        void renderEnemies();
+        void renderCharacters();
 };
 
 #endif
