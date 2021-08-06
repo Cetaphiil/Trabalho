@@ -176,6 +176,30 @@ src/Enemy.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Enemy.cpp.s
 .PHONY : src/Enemy.cpp.s
 
+src/Entidade.obj: src/Entidade.cpp.obj
+.PHONY : src/Entidade.obj
+
+# target to build an object file
+src/Entidade.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Entidade.cpp.obj
+.PHONY : src/Entidade.cpp.obj
+
+src/Entidade.i: src/Entidade.cpp.i
+.PHONY : src/Entidade.i
+
+# target to preprocess a source file
+src/Entidade.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Entidade.cpp.i
+.PHONY : src/Entidade.cpp.i
+
+src/Entidade.s: src/Entidade.cpp.s
+.PHONY : src/Entidade.s
+
+# target to generate assembly for a file
+src/Entidade.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Entidade.cpp.s
+.PHONY : src/Entidade.cpp.s
+
 src/Game.obj: src/Game.cpp.obj
 .PHONY : src/Game.obj
 
@@ -199,6 +223,54 @@ src/Game.s: src/Game.cpp.s
 src/Game.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Game.cpp.s
 .PHONY : src/Game.cpp.s
+
+src/Gerenciador_grafico.obj: src/Gerenciador_grafico.cpp.obj
+.PHONY : src/Gerenciador_grafico.obj
+
+# target to build an object file
+src/Gerenciador_grafico.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.obj
+.PHONY : src/Gerenciador_grafico.cpp.obj
+
+src/Gerenciador_grafico.i: src/Gerenciador_grafico.cpp.i
+.PHONY : src/Gerenciador_grafico.i
+
+# target to preprocess a source file
+src/Gerenciador_grafico.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.i
+.PHONY : src/Gerenciador_grafico.cpp.i
+
+src/Gerenciador_grafico.s: src/Gerenciador_grafico.cpp.s
+.PHONY : src/Gerenciador_grafico.s
+
+# target to generate assembly for a file
+src/Gerenciador_grafico.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.s
+.PHONY : src/Gerenciador_grafico.cpp.s
+
+src/Main.obj: src/Main.cpp.obj
+.PHONY : src/Main.obj
+
+# target to build an object file
+src/Main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Main.cpp.obj
+.PHONY : src/Main.cpp.obj
+
+src/Main.i: src/Main.cpp.i
+.PHONY : src/Main.i
+
+# target to preprocess a source file
+src/Main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Main.cpp.i
+.PHONY : src/Main.cpp.i
+
+src/Main.s: src/Main.cpp.s
+.PHONY : src/Main.s
+
+# target to generate assembly for a file
+src/Main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Main.cpp.s
+.PHONY : src/Main.cpp.s
 
 src/Menu.obj: src/Menu.cpp.obj
 .PHONY : src/Menu.obj
@@ -248,6 +320,30 @@ src/Objeto.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Objeto.cpp.s
 .PHONY : src/Objeto.cpp.s
 
+src/Personagem.obj: src/Personagem.cpp.obj
+.PHONY : src/Personagem.obj
+
+# target to build an object file
+src/Personagem.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Personagem.cpp.obj
+.PHONY : src/Personagem.cpp.obj
+
+src/Personagem.i: src/Personagem.cpp.i
+.PHONY : src/Personagem.i
+
+# target to preprocess a source file
+src/Personagem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Personagem.cpp.i
+.PHONY : src/Personagem.cpp.i
+
+src/Personagem.s: src/Personagem.cpp.s
+.PHONY : src/Personagem.s
+
+# target to generate assembly for a file
+src/Personagem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Personagem.cpp.s
+.PHONY : src/Personagem.cpp.s
+
 src/Player.obj: src/Player.cpp.obj
 .PHONY : src/Player.obj
 
@@ -272,30 +368,6 @@ src/Player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/Player.cpp.s
 .PHONY : src/Player.cpp.s
 
-src/main.obj: src/main.cpp.obj
-.PHONY : src/main.obj
-
-# target to build an object file
-src/main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/main.cpp.obj
-.PHONY : src/main.cpp.obj
-
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
-
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\jogo.dir\build.make CMakeFiles/jogo.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -311,21 +383,30 @@ help:
 	@echo ... src/Enemy.obj
 	@echo ... src/Enemy.i
 	@echo ... src/Enemy.s
+	@echo ... src/Entidade.obj
+	@echo ... src/Entidade.i
+	@echo ... src/Entidade.s
 	@echo ... src/Game.obj
 	@echo ... src/Game.i
 	@echo ... src/Game.s
+	@echo ... src/Gerenciador_grafico.obj
+	@echo ... src/Gerenciador_grafico.i
+	@echo ... src/Gerenciador_grafico.s
+	@echo ... src/Main.obj
+	@echo ... src/Main.i
+	@echo ... src/Main.s
 	@echo ... src/Menu.obj
 	@echo ... src/Menu.i
 	@echo ... src/Menu.s
 	@echo ... src/Objeto.obj
 	@echo ... src/Objeto.i
 	@echo ... src/Objeto.s
+	@echo ... src/Personagem.obj
+	@echo ... src/Personagem.i
+	@echo ... src/Personagem.s
 	@echo ... src/Player.obj
 	@echo ... src/Player.i
 	@echo ... src/Player.s
-	@echo ... src/main.obj
-	@echo ... src/main.i
-	@echo ... src/main.s
 .PHONY : help
 
 

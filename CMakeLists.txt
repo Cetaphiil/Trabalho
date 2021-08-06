@@ -3,7 +3,7 @@ project(jogo)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(jogo src/Objeto.cpp headers/Objeto.h src/Background.cpp headers/background.h src/Main.cpp headers/lib.hpp src/Game.cpp headers/Game.hpp headers/Enemy.hpp src/Enemy.cpp src/Player.cpp headers/Player.h headers/Menu.hpp src/Menu.cpp)
+add_executable(jogo src/Gerenciador_grafico.cpp headers/Gerenciador_grafico.hpp src/Personagem.cpp headers/Personagem.hpp src/Entidade.cpp headers/Entidade.hpp src/Gerenciador_grafico.cpp headers/Gerenciador_grafico.hpp headers/lib.hpp src/Objeto.cpp headers/Objeto.h src/Background.cpp headers/background.h src/Main.cpp headers/lib.hpp src/Game.cpp headers/Game.hpp headers/Enemy.hpp src/Enemy.cpp src/Player.cpp headers/Player.h headers/Menu.hpp src/Menu.cpp)
 
 include_directories(headers /usr/include c:/SFML/include assets/sprites)
 

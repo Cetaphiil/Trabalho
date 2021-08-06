@@ -68,11 +68,56 @@ include CMakeFiles/jogo.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/jogo.dir/flags.make
 
+CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.obj: CMakeFiles/jogo.dir/flags.make
+CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.obj: CMakeFiles/jogo.dir/includes_CXX.rsp
+CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.obj: ../src/Gerenciador_grafico.cpp
+CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.obj: CMakeFiles/jogo.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.obj"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.obj -MF CMakeFiles\jogo.dir\src\Gerenciador_grafico.cpp.obj.d -o CMakeFiles\jogo.dir\src\Gerenciador_grafico.cpp.obj -c C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Gerenciador_grafico.cpp
+
+CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.i"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Gerenciador_grafico.cpp > CMakeFiles\jogo.dir\src\Gerenciador_grafico.cpp.i
+
+CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.s"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Gerenciador_grafico.cpp -o CMakeFiles\jogo.dir\src\Gerenciador_grafico.cpp.s
+
+CMakeFiles/jogo.dir/src/Personagem.cpp.obj: CMakeFiles/jogo.dir/flags.make
+CMakeFiles/jogo.dir/src/Personagem.cpp.obj: CMakeFiles/jogo.dir/includes_CXX.rsp
+CMakeFiles/jogo.dir/src/Personagem.cpp.obj: ../src/Personagem.cpp
+CMakeFiles/jogo.dir/src/Personagem.cpp.obj: CMakeFiles/jogo.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/jogo.dir/src/Personagem.cpp.obj"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/jogo.dir/src/Personagem.cpp.obj -MF CMakeFiles\jogo.dir\src\Personagem.cpp.obj.d -o CMakeFiles\jogo.dir\src\Personagem.cpp.obj -c C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Personagem.cpp
+
+CMakeFiles/jogo.dir/src/Personagem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/jogo.dir/src/Personagem.cpp.i"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Personagem.cpp > CMakeFiles\jogo.dir\src\Personagem.cpp.i
+
+CMakeFiles/jogo.dir/src/Personagem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/jogo.dir/src/Personagem.cpp.s"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Personagem.cpp -o CMakeFiles\jogo.dir\src\Personagem.cpp.s
+
+CMakeFiles/jogo.dir/src/Entidade.cpp.obj: CMakeFiles/jogo.dir/flags.make
+CMakeFiles/jogo.dir/src/Entidade.cpp.obj: CMakeFiles/jogo.dir/includes_CXX.rsp
+CMakeFiles/jogo.dir/src/Entidade.cpp.obj: ../src/Entidade.cpp
+CMakeFiles/jogo.dir/src/Entidade.cpp.obj: CMakeFiles/jogo.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/jogo.dir/src/Entidade.cpp.obj"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/jogo.dir/src/Entidade.cpp.obj -MF CMakeFiles\jogo.dir\src\Entidade.cpp.obj.d -o CMakeFiles\jogo.dir\src\Entidade.cpp.obj -c C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Entidade.cpp
+
+CMakeFiles/jogo.dir/src/Entidade.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/jogo.dir/src/Entidade.cpp.i"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Entidade.cpp > CMakeFiles\jogo.dir\src\Entidade.cpp.i
+
+CMakeFiles/jogo.dir/src/Entidade.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/jogo.dir/src/Entidade.cpp.s"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Entidade.cpp -o CMakeFiles\jogo.dir\src\Entidade.cpp.s
+
 CMakeFiles/jogo.dir/src/Objeto.cpp.obj: CMakeFiles/jogo.dir/flags.make
 CMakeFiles/jogo.dir/src/Objeto.cpp.obj: CMakeFiles/jogo.dir/includes_CXX.rsp
 CMakeFiles/jogo.dir/src/Objeto.cpp.obj: ../src/Objeto.cpp
 CMakeFiles/jogo.dir/src/Objeto.cpp.obj: CMakeFiles/jogo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/jogo.dir/src/Objeto.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/jogo.dir/src/Objeto.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/jogo.dir/src/Objeto.cpp.obj -MF CMakeFiles\jogo.dir\src\Objeto.cpp.obj.d -o CMakeFiles\jogo.dir\src\Objeto.cpp.obj -c C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Objeto.cpp
 
 CMakeFiles/jogo.dir/src/Objeto.cpp.i: cmake_force
@@ -87,7 +132,7 @@ CMakeFiles/jogo.dir/src/Background.cpp.obj: CMakeFiles/jogo.dir/flags.make
 CMakeFiles/jogo.dir/src/Background.cpp.obj: CMakeFiles/jogo.dir/includes_CXX.rsp
 CMakeFiles/jogo.dir/src/Background.cpp.obj: ../src/Background.cpp
 CMakeFiles/jogo.dir/src/Background.cpp.obj: CMakeFiles/jogo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/jogo.dir/src/Background.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/jogo.dir/src/Background.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/jogo.dir/src/Background.cpp.obj -MF CMakeFiles\jogo.dir\src\Background.cpp.obj.d -o CMakeFiles\jogo.dir\src\Background.cpp.obj -c C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Background.cpp
 
 CMakeFiles/jogo.dir/src/Background.cpp.i: cmake_force
@@ -98,26 +143,26 @@ CMakeFiles/jogo.dir/src/Background.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/jogo.dir/src/Background.cpp.s"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Background.cpp -o CMakeFiles\jogo.dir\src\Background.cpp.s
 
-CMakeFiles/jogo.dir/src/main.cpp.obj: CMakeFiles/jogo.dir/flags.make
-CMakeFiles/jogo.dir/src/main.cpp.obj: CMakeFiles/jogo.dir/includes_CXX.rsp
-CMakeFiles/jogo.dir/src/main.cpp.obj: ../src/main.cpp
-CMakeFiles/jogo.dir/src/main.cpp.obj: CMakeFiles/jogo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/jogo.dir/src/main.cpp.obj"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/jogo.dir/src/main.cpp.obj -MF CMakeFiles\jogo.dir\src\main.cpp.obj.d -o CMakeFiles\jogo.dir\src\main.cpp.obj -c C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\main.cpp
+CMakeFiles/jogo.dir/src/Main.cpp.obj: CMakeFiles/jogo.dir/flags.make
+CMakeFiles/jogo.dir/src/Main.cpp.obj: CMakeFiles/jogo.dir/includes_CXX.rsp
+CMakeFiles/jogo.dir/src/Main.cpp.obj: ../src/Main.cpp
+CMakeFiles/jogo.dir/src/Main.cpp.obj: CMakeFiles/jogo.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/jogo.dir/src/Main.cpp.obj"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/jogo.dir/src/Main.cpp.obj -MF CMakeFiles\jogo.dir\src\Main.cpp.obj.d -o CMakeFiles\jogo.dir\src\Main.cpp.obj -c C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Main.cpp
 
-CMakeFiles/jogo.dir/src/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/jogo.dir/src/main.cpp.i"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\main.cpp > CMakeFiles\jogo.dir\src\main.cpp.i
+CMakeFiles/jogo.dir/src/Main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/jogo.dir/src/Main.cpp.i"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Main.cpp > CMakeFiles\jogo.dir\src\Main.cpp.i
 
-CMakeFiles/jogo.dir/src/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/jogo.dir/src/main.cpp.s"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\main.cpp -o CMakeFiles\jogo.dir\src\main.cpp.s
+CMakeFiles/jogo.dir/src/Main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/jogo.dir/src/Main.cpp.s"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Main.cpp -o CMakeFiles\jogo.dir\src\Main.cpp.s
 
 CMakeFiles/jogo.dir/src/Game.cpp.obj: CMakeFiles/jogo.dir/flags.make
 CMakeFiles/jogo.dir/src/Game.cpp.obj: CMakeFiles/jogo.dir/includes_CXX.rsp
 CMakeFiles/jogo.dir/src/Game.cpp.obj: ../src/Game.cpp
 CMakeFiles/jogo.dir/src/Game.cpp.obj: CMakeFiles/jogo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/jogo.dir/src/Game.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/jogo.dir/src/Game.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/jogo.dir/src/Game.cpp.obj -MF CMakeFiles\jogo.dir\src\Game.cpp.obj.d -o CMakeFiles\jogo.dir\src\Game.cpp.obj -c C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Game.cpp
 
 CMakeFiles/jogo.dir/src/Game.cpp.i: cmake_force
@@ -132,7 +177,7 @@ CMakeFiles/jogo.dir/src/Enemy.cpp.obj: CMakeFiles/jogo.dir/flags.make
 CMakeFiles/jogo.dir/src/Enemy.cpp.obj: CMakeFiles/jogo.dir/includes_CXX.rsp
 CMakeFiles/jogo.dir/src/Enemy.cpp.obj: ../src/Enemy.cpp
 CMakeFiles/jogo.dir/src/Enemy.cpp.obj: CMakeFiles/jogo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/jogo.dir/src/Enemy.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/jogo.dir/src/Enemy.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/jogo.dir/src/Enemy.cpp.obj -MF CMakeFiles\jogo.dir\src\Enemy.cpp.obj.d -o CMakeFiles\jogo.dir\src\Enemy.cpp.obj -c C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Enemy.cpp
 
 CMakeFiles/jogo.dir/src/Enemy.cpp.i: cmake_force
@@ -147,7 +192,7 @@ CMakeFiles/jogo.dir/src/Player.cpp.obj: CMakeFiles/jogo.dir/flags.make
 CMakeFiles/jogo.dir/src/Player.cpp.obj: CMakeFiles/jogo.dir/includes_CXX.rsp
 CMakeFiles/jogo.dir/src/Player.cpp.obj: ../src/Player.cpp
 CMakeFiles/jogo.dir/src/Player.cpp.obj: CMakeFiles/jogo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/jogo.dir/src/Player.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/jogo.dir/src/Player.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/jogo.dir/src/Player.cpp.obj -MF CMakeFiles\jogo.dir\src\Player.cpp.obj.d -o CMakeFiles\jogo.dir\src\Player.cpp.obj -c C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Player.cpp
 
 CMakeFiles/jogo.dir/src/Player.cpp.i: cmake_force
@@ -162,7 +207,7 @@ CMakeFiles/jogo.dir/src/Menu.cpp.obj: CMakeFiles/jogo.dir/flags.make
 CMakeFiles/jogo.dir/src/Menu.cpp.obj: CMakeFiles/jogo.dir/includes_CXX.rsp
 CMakeFiles/jogo.dir/src/Menu.cpp.obj: ../src/Menu.cpp
 CMakeFiles/jogo.dir/src/Menu.cpp.obj: CMakeFiles/jogo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/jogo.dir/src/Menu.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/jogo.dir/src/Menu.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/jogo.dir/src/Menu.cpp.obj -MF CMakeFiles\jogo.dir\src\Menu.cpp.obj.d -o CMakeFiles\jogo.dir\src\Menu.cpp.obj -c C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\src\Menu.cpp
 
 CMakeFiles/jogo.dir/src/Menu.cpp.i: cmake_force
@@ -175,9 +220,12 @@ CMakeFiles/jogo.dir/src/Menu.cpp.s: cmake_force
 
 # Object files for target jogo
 jogo_OBJECTS = \
+"CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.obj" \
+"CMakeFiles/jogo.dir/src/Personagem.cpp.obj" \
+"CMakeFiles/jogo.dir/src/Entidade.cpp.obj" \
 "CMakeFiles/jogo.dir/src/Objeto.cpp.obj" \
 "CMakeFiles/jogo.dir/src/Background.cpp.obj" \
-"CMakeFiles/jogo.dir/src/main.cpp.obj" \
+"CMakeFiles/jogo.dir/src/Main.cpp.obj" \
 "CMakeFiles/jogo.dir/src/Game.cpp.obj" \
 "CMakeFiles/jogo.dir/src/Enemy.cpp.obj" \
 "CMakeFiles/jogo.dir/src/Player.cpp.obj" \
@@ -186,9 +234,12 @@ jogo_OBJECTS = \
 # External object files for target jogo
 jogo_EXTERNAL_OBJECTS =
 
+jogo.exe: CMakeFiles/jogo.dir/src/Gerenciador_grafico.cpp.obj
+jogo.exe: CMakeFiles/jogo.dir/src/Personagem.cpp.obj
+jogo.exe: CMakeFiles/jogo.dir/src/Entidade.cpp.obj
 jogo.exe: CMakeFiles/jogo.dir/src/Objeto.cpp.obj
 jogo.exe: CMakeFiles/jogo.dir/src/Background.cpp.obj
-jogo.exe: CMakeFiles/jogo.dir/src/main.cpp.obj
+jogo.exe: CMakeFiles/jogo.dir/src/Main.cpp.obj
 jogo.exe: CMakeFiles/jogo.dir/src/Game.cpp.obj
 jogo.exe: CMakeFiles/jogo.dir/src/Enemy.cpp.obj
 jogo.exe: CMakeFiles/jogo.dir/src/Player.cpp.obj
@@ -200,7 +251,7 @@ jogo.exe: C:/SFML/lib/libsfml-graphics-d.a
 jogo.exe: CMakeFiles/jogo.dir/linklibs.rsp
 jogo.exe: CMakeFiles/jogo.dir/objects1.rsp
 jogo.exe: CMakeFiles/jogo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable jogo.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\saulo\Desktop\Faculdade\nibbles-main\nibbles-Homework\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable jogo.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\jogo.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

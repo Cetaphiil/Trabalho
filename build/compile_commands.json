@@ -1,6 +1,21 @@
 [
 {
   "directory": "C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/jogo.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\jogo.dir\\src\\Gerenciador_grafico.cpp.obj -c C:\\Users\\saulo\\Desktop\\Faculdade\\nibbles-main\\nibbles-Homework\\src\\Gerenciador_grafico.cpp",
+  "file": "C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/src/Gerenciador_grafico.cpp"
+},
+{
+  "directory": "C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/jogo.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\jogo.dir\\src\\Personagem.cpp.obj -c C:\\Users\\saulo\\Desktop\\Faculdade\\nibbles-main\\nibbles-Homework\\src\\Personagem.cpp",
+  "file": "C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/src/Personagem.cpp"
+},
+{
+  "directory": "C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/jogo.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\jogo.dir\\src\\Entidade.cpp.obj -c C:\\Users\\saulo\\Desktop\\Faculdade\\nibbles-main\\nibbles-Homework\\src\\Entidade.cpp",
+  "file": "C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/src/Entidade.cpp"
+},
+{
+  "directory": "C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/build",
   "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/jogo.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\jogo.dir\\src\\Objeto.cpp.obj -c C:\\Users\\saulo\\Desktop\\Faculdade\\nibbles-main\\nibbles-Homework\\src\\Objeto.cpp",
   "file": "C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/src/Objeto.cpp"
 },
@@ -11,8 +26,8 @@
 },
 {
   "directory": "C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/build",
-  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/jogo.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\jogo.dir\\src\\main.cpp.obj -c C:\\Users\\saulo\\Desktop\\Faculdade\\nibbles-main\\nibbles-Homework\\src\\main.cpp",
-  "file": "C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/src/main.cpp"
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/jogo.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\jogo.dir\\src\\Main.cpp.obj -c C:\\Users\\saulo\\Desktop\\Faculdade\\nibbles-main\\nibbles-Homework\\src\\Main.cpp",
+  "file": "C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/src/Main.cpp"
 },
 {
   "directory": "C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/build",

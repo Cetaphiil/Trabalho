@@ -1671,6 +1671,9 @@ CMakeFiles/jogo.dir/src/Objeto.cpp.obj
  C:/SFML/include/SFML/Graphics/Text.hpp
  C:/SFML/include/SFML/Graphics/VertexBuffer.hpp
 
+CMakeFiles/jogo.dir/src/Personagem.cpp.obj
+ C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/src/Personagem.cpp
+
 CMakeFiles/jogo.dir/src/Player.cpp.obj
  C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/src/Player.cpp
  C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/headers/Player.h
@@ -2120,7 +2123,7 @@ CMakeFiles/jogo.dir/src/Player.cpp.obj
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iostream
 
 CMakeFiles/jogo.dir/src/main.cpp.obj
- C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/src/main.cpp
+ C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/src/Main.cpp
  C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/headers/Game.hpp
  C:/SFML/include/SFML/Graphics/RectangleShape.hpp
  C:/SFML/include/SFML/Graphics/Export.hpp

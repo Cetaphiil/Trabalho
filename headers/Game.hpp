@@ -1,20 +1,7 @@
 #ifndef GAME_H_P_P_
 #define GAME_H_P_P_
 
-#include <SFML/Graphics/RectangleShape.hpp>
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-
-#include <stdio.h>
-#include <iostream>
-#include <ostream>
-#include <stdlib.h>
-#include <time.h>
-#include <random>
-
-#include <Menu.hpp>
-#include <Enemy.hpp>
-#include <Objeto.h>
+#include <lib.hpp>
 
 using namespace sf;
 using namespace std;

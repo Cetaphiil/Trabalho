@@ -1,10 +1,9 @@
 #include <Enemy.hpp>
-#include <player.h>
 
 Enemy::Enemy(){
 };
 
-char *enemy_spriteName_idle[]={
+char *enemy_spriteName[]={
     "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_00.png",
     "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_01.png",
     "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_02.png",
@@ -19,7 +18,7 @@ char *enemy_spriteName_idle[]={
     "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_11.png"
 };
 
-char *enemy_spriteName_walking[]={
+char *enemy_spriteName[]={
     "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_00.png",
     "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_01.png",
     "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_02.png",
@@ -34,7 +33,7 @@ char *enemy_spriteName_walking[]={
     "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_11.png"
 };
 
-char *enemy_spriteName_Dying[]={
+char *enemy_spriteName[]={
     "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_00.png",
     "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_01.png",
     "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_02.png",
@@ -52,7 +51,7 @@ char *enemy_spriteName_Dying[]={
     "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_14.png"
 };
 
-char *enemy_spriteName_Spell[]={
+char *enemy_spriteName[]={
     "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_00.png",
     "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_01.png",
     "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_02.png",
@@ -73,93 +72,13 @@ char *enemy_spriteName_Spell[]={
     "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_17.png"
 };
 
-List *Enemy::enemy_sprite_list_add(List *list_enemy){
-    List *n = (List *) malloc(sizeof(List));
-    n->next = NULL;
-    if (list_enemy == NULL)
-        return n;
-    List *aux = list_enemy;
-    while (aux->next != NULL)
-        aux = aux->next;
-    aux->next = n;
-    return list_enemy;
-};
-
-void Enemy::load_enemy_idle() {
-    List *aux = NULL;
-    aux = enemy_sprite_list_add(aux);
-    enemy_sprite_list[0] = aux;
-    aux->texture = new sf::Texture;
-    aux->texture->loadFromFile(enemy_spriteName_idle[0]);
-    for (int i = 1; i < 10; i++) {
-        enemy_sprite_list_add(enemy_sprite_list[0]);
-        aux = aux->next;
-        aux->texture = new sf::Texture;
-        aux->texture->loadFromFile(enemy_spriteName_idle[i]);
+void Enemy::initEnemie(){
+    for(int i; i<4; i++){
+        grafo.loader();
     }
-    aux->next = enemy_sprite_list[0];
-};
-void Enemy::load_enemy_walk() {
-    List *aux = NULL;
-    aux = enemy_sprite_list_add(aux);
-    enemy_sprite_list[1] = aux;
-    aux->texture = new sf::Texture;
-    aux->texture->loadFromFile(enemy_spriteName_walking[0]);
-    for (int i = 1; i < 10; i++) {
-        enemy_sprite_list_add(enemy_sprite_list[1]);
-        aux = aux->next;
-        aux->texture = new sf::Texture;
-        aux->texture->loadFromFile(enemy_spriteName_walking[i]);
-    }
-    aux->next = enemy_sprite_list[1];
+    //enemySprite.setPosition(rand() % static_cast<int>(resolucao.x - (enemyTexture.getSize().x/3)), rand() % static_cast<int>(resolucao.y - (enemyTexture.getSize().y/3)));
 };
 
-void Enemy::load_enemy_dead() {
-    List *aux = NULL;
-    aux = enemy_sprite_list_add(aux);
-    enemy_sprite_list[2] = aux;
-    aux->texture = new sf::Texture;
-    aux->texture->loadFromFile(enemy_spriteName_Dying[0]);
-    for (int i = 1; i < 10; i++) {
-        enemy_sprite_list_add(enemy_sprite_list[2]);
-        aux = aux->next;
-        aux->texture = new sf::Texture;
-        aux->texture->loadFromFile(enemy_spriteName_Dying[i]);
-    }
-    aux->next = enemy_sprite_list[2];
-};
-
-void Enemy::load_enemy_Spell() {
-    List *aux = NULL;
-    aux = enemy_sprite_list_add(aux);
-    enemy_sprite_list[3] = aux;
-    aux->texture = new sf::Texture;
-    aux->texture->loadFromFile(enemy_spriteName_Spell[0]);
-    for (int i = 1; i < 10; i++) {
-        enemy_sprite_list_add(enemy_sprite_list[3]);
-        aux = aux->next;
-        aux->texture = new sf::Texture;
-        aux->texture->loadFromFile(enemy_spriteName_Spell[i]);
-    }
-    aux->next = enemy_sprite_list[3];
-};
-void Enemy::enemy_sprite_loader(){
-    enemy_sprite_list = (List **) malloc(4 * sizeof(List *));
-
-    for (int i = 0; i < 4; i++){
-        enemy_sprite_list[i] = NULL;
-    }
-
-    load_enemy_idle();
-    load_enemy_walk();
-    load_enemy_dead();
-    load_enemy_Spell();
-};
-
-void Enemy::initEnemies(Vector2f resolucao){
-    srand(time(NULL));
-    this->enemySprite.setPosition(rand() % static_cast<int>(resolucao.x - (enemyTexture.getSize().x/3)), rand() % static_cast<int>(resolucao.y - (enemyTexture.getSize().y/3)));
-};
 void Enemy::updateEnemy(RenderWindow *window, Player player){
     float gravity = 0.3f;
     aceleration = -1.f * speed;

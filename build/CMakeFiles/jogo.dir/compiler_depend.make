@@ -1666,6 +1666,8 @@ CMakeFiles/jogo.dir/src/Objeto.cpp.obj: ../src/Objeto.cpp \
   C:/SFML/include/SFML/Graphics/Text.hpp \
   C:/SFML/include/SFML/Graphics/VertexBuffer.hpp
 
+CMakeFiles/jogo.dir/src/Personagem.cpp.obj: ../src/Personagem.cpp
+
 CMakeFiles/jogo.dir/src/Player.cpp.obj: ../src/Player.cpp \
   ../headers/Player.h \
   ../headers/Objeto.h \
@@ -2113,7 +2115,7 @@ CMakeFiles/jogo.dir/src/Player.cpp.obj: ../src/Player.cpp \
   C:/mingw64/x86_64-w64-mingw32/include/imm.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iostream
 
-CMakeFiles/jogo.dir/src/main.cpp.obj: ../src/main.cpp \
+CMakeFiles/jogo.dir/src/main.cpp.obj: ../src/Main.cpp \
   ../headers/Game.hpp \
   C:/SFML/include/SFML/Graphics/RectangleShape.hpp \
   C:/SFML/include/SFML/Graphics/Export.hpp \
@@ -3240,6 +3242,8 @@ C:/SFML/include/SFML/Graphics/Image.hpp:
 
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/node_handle.h:
 
+../src/Personagem.cpp:
+
 C:/SFML/include/SFML/Graphics/RenderTarget.hpp:
 
 C:/SFML/include/SFML/Graphics/View.hpp:
@@ -3283,8 +3287,6 @@ C:/mingw64/x86_64-w64-mingw32/include/windef.h:
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.h:
 
 C:/mingw64/x86_64-w64-mingw32/include/minwindef.h:
-
-../src/main.cpp:
 
 C:/mingw64/x86_64-w64-mingw32/include/sal.h:
 
@@ -3523,3 +3525,5 @@ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/numeric:
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_numeric.h:
 
 ../src/Player.cpp:
+
+../src/Main.cpp:
