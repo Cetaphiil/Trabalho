@@ -1,71 +1,75 @@
 //
 // Created by Lucas Orlikoski on 14/07/2021.
 //
-#include "Player.h"
+#include <Player.hpp>
 #include <iostream>
-#include <time.h>
+
+char *idle_file_names[]= {
+        "../assets/sprites/Player/Idle/Idle__000.png",
+        "../assets/sprites/Player/Idle/Idle__001.png",
+        "../assets/sprites/Player/Idle/Idle__002.png",
+        "../assets/sprites/Player/Idle/Idle__003.png",
+        "../assets/sprites/Player/Idle/Idle__004.png",
+        "../assets/sprites/Player/Idle/Idle__005.png",
+        "../assets/sprites/Player/Idle/Idle__006.png",
+        "../assets/sprites/Player/Idle/Idle__007.png",
+        "../assets/sprites/Player/Idle/Idle__008.png",
+        "../assets/sprites/Player/Idle/Idle__009.png"
+};
+char *jump_file_names[]= {
+        "../assets/sprites/Player/Jump/Jump__000.png",
+        "../assets/sprites/Player/Jump/Jump__001.png",
+        "../assets/sprites/Player/Jump/Jump__002.png",
+        "../assets/sprites/Player/Jump/Jump__003.png",
+        "../assets/sprites/Player/Jump/Jump__004.png",
+        "../assets/sprites/Player/Jump/Jump__005.png",
+        "../assets/sprites/Player/Jump/Jump__006.png",
+        "../assets/sprites/Player/Jump/Jump__007.png",
+        "../assets/sprites/Player/Jump/Jump__008.png",
+        "../assets/sprites/Player/Jump/Jump__009.png"
+};
+char *walk_file_names[]= {
+        "../assets/sprites/Player/Run/Run__000.png",
+        "../assets/sprites/Player/Run/Run__001.png",
+        "../assets/sprites/Player/Run/Run__002.png",
+        "../assets/sprites/Player/Run/Run__003.png",
+        "../assets/sprites/Player/Run/Run__004.png",
+        "../assets/sprites/Player/Run/Run__005.png",
+        "../assets/sprites/Player/Run/Run__006.png",
+        "../assets/sprites/Player/Run/Run__007.png",
+        "../assets/sprites/Player/Run/Run__008.png",
+        "../assets/sprites/Player/Run/Run__009.png"
+};
+char *dead_file_names[]= {
+        "../assets/sprites/Player/dead/Dead__000.png",
+        "../assets/sprites/Player/dead/Dead__001.png",
+        "../assets/sprites/Player/dead/Dead__002.png",
+        "../assets/sprites/Player/dead/Dead__003.png",
+        "../assets/sprites/Player/dead/Dead__004.png",
+        "../assets/sprites/Player/dead/Dead__005.png",
+        "../assets/sprites/Player/dead/Dead__006.png",
+        "../assets/sprites/Player/dead/Dead__007.png",
+        "../assets/sprites/Player/dead/Dead__008.png",
+        "../assets/sprites/Player/dead/Dead__009.png"
+};
+char *attack_file_names[]= {
+        "../assets/sprites/Player/attack/Attack__000.png",
+        "../assets/sprites/Player/attack/Attack__001.png",
+        "../assets/sprites/Player/attack/Attack__002.png",
+        "../assets/sprites/Player/attack/Attack__003.png",
+        "../assets/sprites/Player/attack/Attack__004.png",
+        "../assets/sprites/Player/attack/Attack__005.png",
+        "../assets/sprites/Player/attack/Attack__006.png",
+        "../assets/sprites/Player/attack/Attack__007.png",
+        "../assets/sprites/Player/attack/Attack__008.png",
+        "../assets/sprites/Player/attack/Attack__009.png"
+};
 
 
-char *idle_file_names[] = {
-        "images/Idle__000.png",
-        "images/Idle__001.png",
-        "images/Idle__002.png",
-        "images/Idle__003.png",
-        "images/Idle__004.png",
-        "images/Idle__005.png",
-        "images/Idle__006.png",
-        "images/Idle__007.png",
-        "images/Idle__008.png",
-        "images/Idle__009.png"
-};
-char *jump_file_names[] = {
-        "images/Jump__000.png",
-        "images/Jump__001.png",
-        "images/Jump__002.png",
-        "images/Jump__003.png",
-        "images/Jump__004.png",
-        "images/Jump__005.png",
-        "images/Jump__006.png",
-        "images/Jump__007.png",
-        "images/Jump__008.png",
-        "images/Jump__009.png"
-};
-char *walk_file_names[] = {
-        "images/Run__000.png",
-        "images/Run__001.png",
-        "images/Run__002.png",
-        "images/Run__003.png",
-        "images/Run__004.png",
-        "images/Run__005.png",
-        "images/Run__006.png",
-        "images/Run__007.png",
-        "images/Run__008.png",
-        "images/Run__009.png"
-};
-char *dead_file_names[] = {
-        "images/Dead__000.png",
-        "images/Dead__001.png",
-        "images/Dead__002.png",
-        "images/Dead__003.png",
-        "images/Dead__004.png",
-        "images/Dead__005.png",
-        "images/Dead__006.png",
-        "images/Dead__007.png",
-        "images/Dead__008.png",
-        "images/Dead__009.png"
-};
-char *attack_file_names[] = {
-        "images/Attack__000.png",
-        "images/Attack__001.png",
-        "images/Attack__002.png",
-        "images/Attack__003.png",
-        "images/Attack__004.png",
-        "images/Attack__005.png",
-        "images/Attack__006.png",
-        "images/Attack__007.png",
-        "images/Attack__008.png",
-        "images/Attack__009.png"
-};
+sf::Vector2f Player::getPosition(){
+    return (s);
+}
+
 
 List *Player::add_sprite(List *list) {
     List *n = (List *) malloc(sizeof(List));
@@ -84,7 +88,7 @@ void Player::load_idle() {
     aux = add_sprite(aux);
     sprite_list[0] = aux;
     aux->texture = new sf::Texture;
-    aux->texture->loadFromFile("images/Idle__000.png");
+    aux->texture->loadFromFile(idle_file_names[0]);
     for (int i = 1; i < 10; i++) {
         add_sprite(sprite_list[0]);
         aux = aux->next;
@@ -99,7 +103,7 @@ void Player::load_jump() {
     aux = add_sprite(aux);
     sprite_list[1] = aux;
     aux->texture = new sf::Texture;
-    aux->texture->loadFromFile("images/Jump__000.png");
+    aux->texture->loadFromFile(jump_file_names[0]);
     for (int i = 1; i < 10; i++) {
         add_sprite(sprite_list[1]);
         aux = aux->next;
@@ -168,7 +172,6 @@ void Player::loader() {
     load_dead();
     load_attack();
 
-
 }
 
 using namespace sf;
@@ -183,70 +186,77 @@ void Player::show(RenderWindow *window) {
     static List *texture_dead = sprite_list[3];
     static List *texture_attack = sprite_list[4];
 
-    if (abs(v.x) == 0.0f && abs(v.y) == 0.0f) {
-        sprite.setTexture(*(texture_idle->texture));
-        if (c.getElapsedTime().asSeconds() > 0.17f) {
-            texture_idle = texture_idle->next;
+
+    if(attack){
+        sprite.setTexture(*(texture_attack->texture));
+        if (c.getElapsedTime().asSeconds() > 0.007f) {
+            texture_idle = texture_attack->next;
             c.restart();
+            attack = false;
+            printf("%d\n", attack);
         }
+
     }
-    else if(abs(v.y)>0.0f){
+    else if(abs(v.y)>0.9f){
         sprite.setTexture(*(texture_jump->texture));
         if(c.getElapsedTime().asSeconds() > 0.17f){
             texture_jump = texture_jump->next;
             c.restart();
         }
     }
-    else if(abs(v.x)>0.0f){
+    else if(abs(v.x)>0.9f){
         sprite.setTexture(*(texture_walk->texture));
         if(c.getElapsedTime().asSeconds() > 0.17f){
             texture_walk = texture_walk->next;
             c.restart();
         }
     }
-    if(v.x<0.0f){
+    else if (abs(v.x) <= 0.9f && abs(v.y) <= 0.9f) {
+        sprite.setTexture(*(texture_idle->texture));
+        if (c.getElapsedTime().asSeconds() > 0.17f) {
+            texture_idle = texture_idle->next;
+            c.restart();
+        }
+    }
+    if(v.x < 0){
         sprite.setOrigin(sprite.getPosition() + sf::Vector2f {sprite.getLocalBounds().width, 0.f});
         sprite.scale(-1,1);
 
     }
     sprite.setPosition(s);
 
-
-
     window->draw(sprite);
 }
 
-void Player::update(RenderWindow *window) {
-    bool jump = false;
-    bool idle = true;
-
-
-    Vector2f g = {0.0f, 3000};
-    a = -250.5f * v;
-
-
-    //Vector2f MousePosition = {(float)Mouse::getPosition(*window).x,(float)Mouse::getPosition(*window).y};
-    //Vector2f PlayerPosition = sprite.getPosition();
-
-    if (s.y >= 566) {
-        jump = true;
-    }
+void Player::update(RenderWindow *window, float dt) {
+    a = -desaceleracao * v;
 
     if (Keyboard::isKeyPressed(Keyboard::D)) {
-        a += {50000, 0};
+        if(Keyboard::isKeyPressed(Keyboard::LShift))
+            a += {1.5f * player_speed, 0};
+        else
+            a += {player_speed, 0};
         idle = false;
     }
     if (Keyboard::isKeyPressed(Keyboard::A)) {
-        a -= {50000, 0};
+        if(Keyboard::isKeyPressed(Keyboard::LShift))
+            a -= {1.5f * player_speed, 0};
+        else
+            a -= {player_speed, 0};
         idle = false;
     }
     if (Keyboard::isKeyPressed(Keyboard::Space)) {
         if (jump) {
-            a -= {0, 50000};
-            idle = false;
+            a -= {0, player_jump};
+            jump = false;
         }
     }
-    float dt = t.restart().asSeconds();
+    if(Mouse::isButtonPressed(Mouse::Left)){
+        if(atk_timmer.getElapsedTime().asSeconds() > 2){
+            attack = true;
+            atk_timmer.restart();
+        }
+    }
     Vector2f dv = dt * (a + g);
     Vector2f posDesejada = (v + dv) * dt + s;
 
@@ -269,13 +279,49 @@ void Player::update(RenderWindow *window) {
         posDesejada.y = window->getSize().y - hitbox.height;
         v.y = 0;
         dv.y = 0;
+        jump = true;
     }
     s = posDesejada;
     v = v + dv;
+//    if(s.y >= (window->getSize().y - 170.f))
+//        jump = true;
 
     if (Mouse::isButtonPressed(Mouse::Middle)) {
-        s = {0.f, 500.f};
+        s = {0.f, 700.f};
         v = {0.f, 0.f};
     }
-    printf("%f %f\n", s.x, s.y);
+
+    if(Keyboard::isKeyPressed(Keyboard::Numpad9)){
+        g.y += 2.f;
+        printf("Gravidade alterada para: %f\n", g.y);
+    }
+    if(Keyboard::isKeyPressed(Keyboard::Numpad7)){
+        g.y -= 2.f;
+        printf("Gravidade alterada para: %f\n", g.y);
+    }
+    if(Keyboard::isKeyPressed(Keyboard::Numpad6)){
+        player_speed += 2.f;
+        printf("Velocidade de player alterada para: %f\n", player_speed);
+    }
+    if(Keyboard::isKeyPressed(Keyboard::Numpad4)){
+        player_speed -= 2.f;
+        printf("Velocidade de player alterada para: %f\n", player_speed);
+    }
+    if(Keyboard::isKeyPressed(Keyboard::Numpad3)){
+        player_jump += 20.f;
+        printf("Altura do pulo de player alterada para: %f\n", player_jump);
+    }
+    if(Keyboard::isKeyPressed(Keyboard::Numpad1)){
+        player_jump -= 20.f;
+        printf("Altura do pulo de player alterada para: %f\n", player_jump);
+    }
+    if(Keyboard::isKeyPressed(Keyboard::Numpad8)){
+        desaceleracao += 2.f;
+        printf("Desaceleração alterada para: %f\n", desaceleracao);
+    }
+    if(Keyboard::isKeyPressed(Keyboard::Numpad2)){
+        desaceleracao -= 2.f;
+        printf("Desaceleração alterada para: %f\n", desaceleracao);
+    }
+//    printf("%f %f\n", s.x, s.y);
 }

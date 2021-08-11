@@ -1,9 +1,7 @@
 #ifndef MENU_H_P_P_
 #define MENU_H_P_P_
 
-#include <SFML/Graphics/RectangleShape.hpp>
-#include <SFML/Graphics.hpp>
-
+#include "lib.hpp"
 using namespace std;
 using namespace sf;
 

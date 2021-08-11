@@ -1,10 +1,11 @@
 #ifndef GAME_H_P_P_
 #define GAME_H_P_P_
 
-#include <lib.hpp>
+#include "lib.hpp"
+#include "Menu.hpp"
+#include "Enemy.hpp"
 
 using namespace sf;
-using namespace std;
 
 class Engine
 {
@@ -21,6 +22,9 @@ class Engine
         Player player;
 
         Enemy enemy;
+
+        Clock relogio;
+        float dt = 0;
 
         void initVariab();
         void initWindow();

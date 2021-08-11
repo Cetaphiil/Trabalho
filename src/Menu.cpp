@@ -5,12 +5,12 @@ Menu::Menu(){
 };
 
 void Menu::initMenu(Vector2f resolucao){
-    back.loadFromFile("assets/background/Fundo.png");
+    back.loadFromFile("../assets/background/Fundo.png");
     botoes.setSize(tamanhoBotoes);
     botoes.setFillColor(Color::Cyan);
     botoes.setOutlineThickness(2);
     startButton.setString("Start");
-    mainFont.loadFromFile("assets/fonts/slant_regular.ttf");
+    mainFont.loadFromFile("../assets/fonts/slant_regular.ttf");
     startButton.setFont(mainFont);
     botoes.setPosition(Vector2f((resolucao.x/4.5), (resolucao.y/1.5)));
     Vector2f startTextSize = {startButton.getLocalBounds().width/2.f, startButton.getLocalBounds().height/2.f};

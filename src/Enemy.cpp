@@ -1,84 +1,169 @@
 #include <Enemy.hpp>
+#include <Player.hpp>
 
 Enemy::Enemy(){
 };
 
-char *enemy_spriteName[]={
-    "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_00.png",
-    "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_01.png",
-    "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_02.png",
-    "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_03.png",
-    "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_04.png",
-    "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_05.png",
-    "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_06.png",
-    "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_07.png",
-    "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_08.png",
-    "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_09.png",
-    "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_10.png",
-    "assets/sprites/Enemy/Wraith/Idle/Wraith_idle_11.png"
+char *enemy_spriteName_idle[]={
+    "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_00.png",
+    "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_01.png",
+    "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_02.png",
+    "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_03.png",
+    "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_04.png",
+    "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_05.png",
+    "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_06.png",
+    "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_07.png",
+    "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_08.png",
+    "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_09.png",
+    "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_10.png",
+    "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_11.png"
 };
 
-char *enemy_spriteName[]={
-    "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_00.png",
-    "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_01.png",
-    "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_02.png",
-    "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_03.png",
-    "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_04.png",
-    "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_05.png",
-    "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_06.png",
-    "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_07.png",
-    "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_08.png",
-    "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_09.png",
-    "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_10.png",
-    "assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_11.png"
+char *enemy_spriteName_walking[]={
+    "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_00.png",
+    "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_01.png",
+    "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_02.png",
+    "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_03.png",
+    "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_04.png",
+    "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_05.png",
+    "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_06.png",
+    "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_07.png",
+    "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_08.png",
+    "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_09.png",
+    "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_10.png",
+    "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_11.png"
 };
 
-char *enemy_spriteName[]={
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_00.png",
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_01.png",
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_02.png",
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_03.png",
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_04.png",
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_05.png",
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_06.png",
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_07.png",
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_08.png",
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_09.png",
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_10.png",
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_11.png",
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_12.png",
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_13.png",
-    "assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_14.png"
+char *enemy_spriteName_Dying[]={
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_00.png",
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_01.png",
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_02.png",
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_03.png",
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_04.png",
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_05.png",
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_06.png",
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_07.png",
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_08.png",
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_09.png",
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_10.png",
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_11.png",
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_12.png",
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_13.png",
+    "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_14.png"
 };
 
-char *enemy_spriteName[]={
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_00.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_01.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_02.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_03.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_04.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_05.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_06.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_07.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_08.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_09.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_10.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_11.png"
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_12.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_13.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_14.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_15.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_16.png",
-    "assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_17.png"
+char *enemy_spriteName_Spell[]={
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_00.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_01.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_02.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_03.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_04.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_05.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_06.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_07.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_08.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_09.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_10.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_11.png"
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_12.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_13.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_14.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_15.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_16.png",
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_17.png"
 };
 
-void Enemy::initEnemie(){
-    for(int i; i<4; i++){
-        grafo.loader();
+Vector2f Enemy::getPosition(){
+    return (sprite.getPosition());
+}
+
+List *Enemy::enemy_sprite_list_add(List *list_enemy){
+    List *n = (List *) malloc(sizeof(List));
+    n->next = NULL;
+    if (list_enemy == NULL)
+        return n;
+    List *aux = list_enemy;
+    while (aux->next != NULL)
+        aux = aux->next;
+    aux->next = n;
+    return list_enemy;
+};
+
+void Enemy::load_enemy_idle() {
+    List *aux = NULL;
+    aux = enemy_sprite_list_add(aux);
+    enemy_sprite_list[0] = aux;
+    aux->texture = new sf::Texture;
+    aux->texture->loadFromFile(enemy_spriteName_idle[0]);
+    for (int i = 1; i < 10; i++) {
+        enemy_sprite_list_add(enemy_sprite_list[0]);
+        aux = aux->next;
+        aux->texture = new sf::Texture;
+        aux->texture->loadFromFile(enemy_spriteName_idle[i]);
     }
-    //enemySprite.setPosition(rand() % static_cast<int>(resolucao.x - (enemyTexture.getSize().x/3)), rand() % static_cast<int>(resolucao.y - (enemyTexture.getSize().y/3)));
+    aux->next = enemy_sprite_list[0];
+};
+void Enemy::load_enemy_walk() {
+    List *aux = NULL;
+    aux = enemy_sprite_list_add(aux);
+    enemy_sprite_list[1] = aux;
+    aux->texture = new sf::Texture;
+    aux->texture->loadFromFile(enemy_spriteName_walking[0]);
+    for (int i = 1; i < 10; i++) {
+        enemy_sprite_list_add(enemy_sprite_list[1]);
+        aux = aux->next;
+        aux->texture = new sf::Texture;
+        aux->texture->loadFromFile(enemy_spriteName_walking[i]);
+    }
+    aux->next = enemy_sprite_list[1];
 };
 
+void Enemy::load_enemy_dead() {
+    List *aux = NULL;
+    aux = enemy_sprite_list_add(aux);
+    enemy_sprite_list[2] = aux;
+    aux->texture = new sf::Texture;
+    aux->texture->loadFromFile(enemy_spriteName_Dying[0]);
+    for (int i = 1; i < 10; i++) {
+        enemy_sprite_list_add(enemy_sprite_list[2]);
+        aux = aux->next;
+        aux->texture = new sf::Texture;
+        aux->texture->loadFromFile(enemy_spriteName_Dying[i]);
+    }
+    aux->next = enemy_sprite_list[2];
+};
+
+void Enemy::load_enemy_Spell() {
+    List *aux = NULL;
+    aux = enemy_sprite_list_add(aux);
+    enemy_sprite_list[3] = aux;
+    aux->texture = new sf::Texture;
+    aux->texture->loadFromFile(enemy_spriteName_Spell[0]);
+    for (int i = 1; i < 10; i++) {
+        enemy_sprite_list_add(enemy_sprite_list[3]);
+        aux = aux->next;
+        aux->texture = new sf::Texture;
+        aux->texture->loadFromFile(enemy_spriteName_Spell[i]);
+    }
+    aux->next = enemy_sprite_list[3];
+};
+void Enemy::enemy_sprite_loader(){
+    enemy_sprite_list = (List **) malloc(4 * sizeof(List *));
+
+    for (int i = 0; i < 4; i++){
+        enemy_sprite_list[i] = NULL;
+    }
+
+    load_enemy_idle();
+    load_enemy_walk();
+    load_enemy_dead();
+    load_enemy_Spell();
+};
+
+void Enemy::initEnemies(Vector2f resolucao){
+    srand(time(NULL));
+    enemySprite.setPosition(rand() % static_cast<int>(resolucao.x - (enemyTexture.getSize().x/3)), rand() % static_cast<int>(resolucao.y - (enemyTexture.getSize().y/3)));
+};
 void Enemy::updateEnemy(RenderWindow *window, Player player){
     float gravity = 0.3f;
     aceleration = -1.f * speed;
@@ -87,9 +172,8 @@ void Enemy::updateEnemy(RenderWindow *window, Player player){
     static Clock time;
 
     Vector2f distanciaMax = {100.0f , 100.0f};
-    Vector2f playerPosit = player.sprite.getPosition();
-    
-   
+    Vector2f playerPosit = player.getPosition();
+
 
     static List *texture_idle = enemy_sprite_list[0];
     static List *texture_walk = enemy_sprite_list[1];
@@ -137,7 +221,7 @@ void Enemy::updateEnemy(RenderWindow *window, Player player){
     enemyPosit = posDesejada;
     speed = speed + deltaSpeed;
     if(Mouse::isButtonPressed(Mouse::Middle)){
-        enemyPosit = {0.f, 500.f};
+        enemyPosit = {0.f, 0.f};
         speed = {0.f, 0.f};
     }
  
@@ -145,11 +229,6 @@ void Enemy::updateEnemy(RenderWindow *window, Player player){
 };
 
 void Enemy::showEnemies(RenderWindow *window){
-    enemySprite.setScale(0.25, 0.25);
+    enemySprite.setScale(0.40, 0.40);
     window->draw(enemySprite);
 }
-
-// Sprite Enemy::getEnemies(){
-//     return enemySprite;
-// };
-
