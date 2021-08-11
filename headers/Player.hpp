@@ -14,13 +14,13 @@ struct List{
 };
 
 class Player : protected Entity{
-public:
+private:
     sf::Vector2f s, v, a;
     sf::Clock t;
     sf::FloatRect hitbox{0.f, 0.f, 114.f, 144.f};
 
     float player_speed = 8000;
-    float player_jump = 35*g.y + 600;
+    float player_jump = 35*g.y - 30000;
     float desaceleracao = 20;
 
     bool jump = false;
@@ -31,9 +31,6 @@ public:
 
     List **sprite_list;
 
-
-    void loader();
-
     static List* add_sprite(List* list);
 
     void load_idle();
@@ -43,7 +40,8 @@ public:
     void load_attack();
 
     sf::Clock c;
-
+public:
+    void loader();
     sf::Vector2f getPosition();
     void show(sf::RenderWindow *window);
     void update(sf::RenderWindow *window, float dt);

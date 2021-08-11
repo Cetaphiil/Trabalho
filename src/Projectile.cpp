@@ -3,9 +3,6 @@
 //
 
 #include <Projectile.hpp>
-#include <Enemy.hpp>
-#include <Player.hpp>
-#include <lib.hpp>
 
 Projectile::Projectile() {
     damage = 5;
@@ -13,19 +10,28 @@ Projectile::Projectile() {
     loader();
 }
 Projectile::~Projectile() noexcept {
-    delete Projectile;
+    delete sprite;
 }
 void Projectile::loader() {
     texture.loadFromFile("../assets/sprites/Spell/Spells Effect.png");
     sprite.setTexture(texture);
     sprite.setPosition(enemy.getPosition());
 }
+void Projectile::show(window) {
+    window->draw(sprite);
+}
 void Projectile::update() {
-    if(timer.getElapsedTime().asSeconds() > 8)
+    sf::Vector2f playerPosit = player.getPosition();
+    sf::Vector2f enemyPosit = enemy.getPosition();
+    if(timer.getElapsedTime().asSeconds() > 3)
         ~Projectile();
-    Vector2f posDesejada = player.getPosition;
-
-
-
+    if(playerPosit.x < enemyPosit.x){
+        speed = 15000;
+        posDesejada = {enemyPosit.x - 500, enemyPosit.y+30};
+    }
+    if (playerPosit.x > enemyPosit.x){
+        speed = 15000;
+        posDesejada = {enemyPosit.x + 500, enemyPosit.y+30};
+    }
 
 }

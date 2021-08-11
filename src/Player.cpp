@@ -189,11 +189,14 @@ void Player::show(RenderWindow *window) {
 
     if(attack){
         sprite.setTexture(*(texture_attack->texture));
-        if (c.getElapsedTime().asSeconds() > 0.007f) {
-            texture_idle = texture_attack->next;
-            c.restart();
-            attack = false;
-            printf("%d\n", attack);
+        sprite.scale(1.2f, 1.2f);
+        if (c.getElapsedTime().asMilliseconds() > 60.f) {
+            texture_attack = texture_attack->next;
+            if(atk_timmer.getElapsedTime().asMilliseconds() > 600.f){
+                attack = false;
+            }
+            else
+                c.restart();
         }
 
     }
