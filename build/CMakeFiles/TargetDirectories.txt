@@ -1,3 +1,0 @@
-C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/build/CMakeFiles/jogo.dir
-C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/build/CMakeFiles/edit_cache.dir
-C:/Users/saulo/Desktop/Faculdade/nibbles-main/nibbles-Homework/build/CMakeFiles/rebuild_cache.dir
