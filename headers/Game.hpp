@@ -10,18 +10,19 @@ using namespace sf;
 class Engine
 {
     private:
-        RenderWindow *window;
-        Event event;
-        Vector2f resolucao;
+        RenderWindow *window{};
+        Event event{};
+        bool menu = false;
+        Vector2i resolucao {1280, 720};
 
         Texture backgroundTexture;
         Sprite backgroundSprite;
 
-        Menu mainMenu;
+        Player *player;
 
-        Player player;
+        Enemy *enemy;
 
-        Enemy enemy;
+        Menu *mainMenu;
 
         Clock relogio;
         float dt = 0;

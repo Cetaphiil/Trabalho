@@ -22,6 +22,8 @@ class Enemy : protected Entity{
         List **enemy_sprite_list;
         char **enemy_sprite_name;
     public:
+        bool spawn = false;
+
         List* enemy_sprite_list_add(List* list_enemy);
         void enemy_sprite_loader();
 
@@ -33,7 +35,7 @@ class Enemy : protected Entity{
         Vector2f enemyPosit;
         Enemy();
 
-        void initEnemies(Vector2f resolucao);
+        void initEnemies(Vector2i resolucao);
 
         void showEnemies(RenderWindow *window);
         void updateEnemy(RenderWindow *window, Player player);

@@ -4,7 +4,7 @@
 #include <Player.hpp>
 #include <iostream>
 
-char *idle_file_names[]= {
+static inline const char *idle_file_names[]= {
         "../assets/sprites/Player/Idle/Idle__000.png",
         "../assets/sprites/Player/Idle/Idle__001.png",
         "../assets/sprites/Player/Idle/Idle__002.png",
@@ -16,7 +16,7 @@ char *idle_file_names[]= {
         "../assets/sprites/Player/Idle/Idle__008.png",
         "../assets/sprites/Player/Idle/Idle__009.png"
 };
-char *jump_file_names[]= {
+static inline const char *jump_file_names[]= {
         "../assets/sprites/Player/Jump/Jump__000.png",
         "../assets/sprites/Player/Jump/Jump__001.png",
         "../assets/sprites/Player/Jump/Jump__002.png",
@@ -28,7 +28,7 @@ char *jump_file_names[]= {
         "../assets/sprites/Player/Jump/Jump__008.png",
         "../assets/sprites/Player/Jump/Jump__009.png"
 };
-char *walk_file_names[]= {
+static inline const char *walk_file_names[]= {
         "../assets/sprites/Player/Run/Run__000.png",
         "../assets/sprites/Player/Run/Run__001.png",
         "../assets/sprites/Player/Run/Run__002.png",
@@ -40,7 +40,7 @@ char *walk_file_names[]= {
         "../assets/sprites/Player/Run/Run__008.png",
         "../assets/sprites/Player/Run/Run__009.png"
 };
-char *dead_file_names[]= {
+static inline const char *dead_file_names[]={
         "../assets/sprites/Player/dead/Dead__000.png",
         "../assets/sprites/Player/dead/Dead__001.png",
         "../assets/sprites/Player/dead/Dead__002.png",
@@ -52,7 +52,7 @@ char *dead_file_names[]= {
         "../assets/sprites/Player/dead/Dead__008.png",
         "../assets/sprites/Player/dead/Dead__009.png"
 };
-char *attack_file_names[]= {
+static inline const char *attack_file_names[]= {
         "../assets/sprites/Player/attack/Attack__000.png",
         "../assets/sprites/Player/attack/Attack__001.png",
         "../assets/sprites/Player/attack/Attack__002.png",
@@ -73,7 +73,7 @@ sf::Vector2f Player::getPosition(){
 
 List *Player::add_sprite(List *list) {
     List *n = (List *) malloc(sizeof(List));
-    n->next = NULL;
+    n->next = nullptr;
     if (list == NULL)
         return n;
     List *aux = list;

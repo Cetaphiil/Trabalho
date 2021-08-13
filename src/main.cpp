@@ -1,5 +1,6 @@
 #include "main.hpp"
 #include "Game.hpp"
+#include "Menu.hpp"
 
 int main() {
 //    int a = 20;
@@ -25,11 +26,14 @@ int main() {
 //        player.show(&window);
 //        window.display();
 //    }
-
-
+    Vector2i resolucao {1280, 720};
     Engine engine;
+
     while (engine.windowOpen()){
+
         engine.update();
+
         engine.render();
+
     }
 }

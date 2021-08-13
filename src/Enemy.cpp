@@ -2,9 +2,10 @@
 #include <Player.hpp>
 
 Enemy::Enemy(){
+    srand(time(NULL));
 };
 
-char *enemy_spriteName_idle[]={
+static inline const char *enemy_spriteName_idle[] = {
     "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_00.png",
     "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_01.png",
     "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_02.png",
@@ -19,7 +20,7 @@ char *enemy_spriteName_idle[]={
     "../assets/sprites/Enemy/Wraith/Idle/Wraith_idle_11.png"
 };
 
-char *enemy_spriteName_walking[]={
+static inline const char *enemy_spriteName_walking[]={
     "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_00.png",
     "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_01.png",
     "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_02.png",
@@ -34,7 +35,7 @@ char *enemy_spriteName_walking[]={
     "../assets/sprites/Enemy/Wraith/Walking/Wraith_Walking_11.png"
 };
 
-char *enemy_spriteName_Dying[]={
+static inline const char *enemy_spriteName_Dying[]={
     "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_00.png",
     "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_01.png",
     "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_02.png",
@@ -52,7 +53,7 @@ char *enemy_spriteName_Dying[]={
     "../assets/sprites/Enemy/Wraith/Dying/Wraith_Dying_14.png"
 };
 
-char *enemy_spriteName_Spell[]={
+static inline const char *enemy_spriteName_Spell[]={
     "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_00.png",
     "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_01.png",
     "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_02.png",
@@ -64,7 +65,7 @@ char *enemy_spriteName_Spell[]={
     "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_08.png",
     "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_09.png",
     "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_10.png",
-    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_11.png"
+    "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_11.png",
     "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_12.png",
     "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_13.png",
     "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_14.png",
@@ -160,29 +161,62 @@ void Enemy::enemy_sprite_loader(){
     load_enemy_Spell();
 };
 
-void Enemy::initEnemies(Vector2f resolucao){
-    srand(time(NULL));
-    enemySprite.setPosition(rand() % static_cast<int>(resolucao.x - (enemyTexture.getSize().x/3)), rand() % static_cast<int>(resolucao.y - (enemyTexture.getSize().y/3)));
+void Enemy::initEnemies(Vector2i resolucao){
+    spawn = true;
+    Vector2i halfRes = resolucao/2;
+    enemyPosit = Vector2f(rand() % (static_cast<int>(resolucao.x)/2)+halfRes.x, (rand() % static_cast<int>(resolucao.y)));
 };
+
 void Enemy::updateEnemy(RenderWindow *window, Player player){
     float gravity = 0.3f;
     aceleration = -1.f * speed;
     float deltaTime = keyPressTime.restart().asSeconds();
-    bool idle = true;
-    static Clock time;
 
     Vector2f distanciaMax = {100.0f , 100.0f};
     Vector2f playerPosit = player.getPosition();
 
+    //Perseguir
+    Vector2f space = {enemyPosit-playerPosit};
+    if( (space.x * space.x) < (distanciaMax.x * distanciaMax.x) || (space.y * space.y) < (distanciaMax.y * distanciaMax.y)){
+        aceleration -= 1.f * (enemyPosit - playerPosit);
+    }
 
+    Vector2f deltaSpeed = deltaTime * aceleration;
+    Vector2f posDesejada = (speed + deltaSpeed) * deltaTime + enemyPosit;
+    //Não Passar da borda
+//     if (posDesejada.x < 0) {
+//         posDesejada.x = 0;
+//         speed.x = 0;
+//     }
+//     if (posDesejada.x + enemySprite.getTexture()->getSize().x > window->getSize().x) {
+//         posDesejada.x = window->getSize().x - (enemySprite.getTexture()->getSize().x/2);
+//         speed.x = 0;
+//     }
+//     if (posDesejada.y < 0) {
+//         posDesejada.y = 0;
+//         speed.y = 0;
+//     }
+//     if (posDesejada.y + enemySprite.getTexture()->getSize().y > window->getSize().y) {
+//         posDesejada.y = window->getSize().y - enemySprite.getTexture()->getSize().y*0.5;
+//         speed.y = 0;
+//     }
+    enemyPosit = posDesejada;
+    speed = speed + deltaSpeed;
+    if(Mouse::isButtonPressed(Mouse::Middle)){
+        enemyPosit = {0.f, 0.f};
+        speed = {0.f, 0.f};
+    }
+};
+
+void Enemy::showEnemies(RenderWindow *window){
+    bool idle = true;
+    static Clock time;
     static List *texture_idle = enemy_sprite_list[0];
     static List *texture_walk = enemy_sprite_list[1];
     static List *texture_dead = enemy_sprite_list[2];
     static List *texture_spell = enemy_sprite_list[3];
-    //Perseguir
-    if((enemyPosit.x + playerPosit.x) > distanciaMax.x || (enemyPosit.y + playerPosit.y) > distanciaMax.y){
-        aceleration -= 1.f * (enemyPosit - playerPosit);
-    }
+
+
     //Mudança de estado
     if (abs(speed.x) < 1.f && abs(speed.y) < 1.f) {
         enemySprite.setTexture(*(texture_idle->texture));
@@ -199,36 +233,8 @@ void Enemy::updateEnemy(RenderWindow *window, Player player){
         }
     }
 
-    Vector2f deltaSpeed = deltaTime * aceleration;
-    Vector2f posDesejada = (speed + deltaSpeed) * deltaTime + enemyPosit;
-    //Não Passar da borda
-    // if (posDesejada.x < 0) {
-    //     posDesejada.x = 0;
-    //     speed.x = 0;
-    // }
-    // if (posDesejada.x + enemySprite.getTexture()->getSize().x > window->getSize().x) {
-    //     posDesejada.x = window->getSize().x - (enemySprite.getTexture()->getSize().x/2);
-    //     speed.x = 0;
-    // }
-    // if (posDesejada.y < 0) {
-    //     posDesejada.y = 0;
-    //     speed.y = 0;
-    // }
-    // if (posDesejada.y + enemySprite.getTexture()->getSize().y > window->getSize().y) {
-    //     posDesejada.y = window->getSize().y - enemySprite.getTexture()->getSize().y*0.5;
-    //     speed.y = 0;
-    // }
-    enemyPosit = posDesejada;
-    speed = speed + deltaSpeed;
-    if(Mouse::isButtonPressed(Mouse::Middle)){
-        enemyPosit = {0.f, 0.f};
-        speed = {0.f, 0.f};
-    }
- 
-    enemySprite.setPosition(enemyPosit);
-};
-
-void Enemy::showEnemies(RenderWindow *window){
     enemySprite.setScale(0.40, 0.40);
+    printf("%f, %f\n", enemyPosit.x, enemyPosit.y);
+    enemySprite.setPosition(enemyPosit);
     window->draw(enemySprite);
 }

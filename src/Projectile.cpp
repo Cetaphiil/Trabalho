@@ -27,7 +27,7 @@ void Projectile::update() {
         ~Projectile();
     if(playerPosit.x < enemyPosit.x){
         speed = 15000;
-        posDesejada = {enemyPosit.x - 500, enemyPosit.y+30};
+        posDesejada = {enemyPosit.x - 500 enemyPosit.y+30};
     }
     if (playerPosit.x > enemyPosit.x){
         speed = 15000;

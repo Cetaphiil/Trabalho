@@ -5,19 +5,22 @@
 using namespace std;
 using namespace sf;
 
+#define MAX_NUMBER_BUTTONS 4
+
 class Menu {
     protected:
-        Vector2f tamanhoBotoes = {150.f, 50.f};
+        int selected;
         Texture back;
-        RectangleShape botoes;
-        Text startButton;
         Font mainFont;
+        Text buttons[MAX_NUMBER_BUTTONS];
     public:
-        Menu();
+        Menu(Vector2i resolucao);
+        ~Menu();
 
-        void initMenu(Vector2f resolucao);
-        void updateMenu(RenderWindow *window);
-        void renderMenu(RenderWindow *window);
+        void moveUp();
+        void moveDown();
+        void draw(RenderTarget *target);
+        int getSelected() const;
 };
 
 #endif 
