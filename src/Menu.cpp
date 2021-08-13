@@ -52,27 +52,6 @@ void Menu::moveDown() {
 int Menu::getSelected() const {
     return selected;
 };
-//void Menu::initMenu(Vector2f resolucao){
-//    botoes.setSize(tamanhoBotoes);
-//    botoes.setOutlineThickness(2);
-//    Vector2f startTextSize = {startButton.getLocalBounds().width/2.f, startButton.getLocalBounds().height/2.f};
-//    Vector2f botaoCentro = botoes.getPosition() + botoes.getSize()/2.f;
-//    startButton.setPosition(botaoCentro-startTextSize);
-//};
-
-//void Menu::updateMenu(RenderWindow *window){
-//    Vector2f buttonPosit = botoes.getPosition();
-//    Vector2f mousePosit = {(float) Mouse::getPosition(*window).x, (float) Mouse::getPosition(*window).y};
-//    FloatRect botao = {buttonPosit ,tamanhoBotoes};
-//    if(botao.contains(mousePosit)){
-//        botoes.setOutlineColor(Color::Red);
-//        startButton.setFillColor(Color::Red);
-//    }
-//    else{
-//        botoes.setOutlineColor(Color::White);
-//        startButton.setFillColor(Color::White);
-//    }
-//};
 
 void Menu::draw(RenderTarget *target) {
     for(int i=0; i<MAX_NUMBER_BUTTONS-1; i++){

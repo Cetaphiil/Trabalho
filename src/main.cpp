@@ -3,37 +3,50 @@
 #include "Menu.hpp"
 
 int main() {
-//    int a = 20;
-//    Event event;
-//    RenderWindow window (VideoMode (1280,720), "Teste", Style::Titlebar|Style::Close);
-//
-//    Background back;
-//    Player player;
-//
-//    back.loader();
-//    player.loader();
-//
-//    while(window.isOpen()){
-//        while(window.pollEvent(event)) {
-//            if (event.type == Event::Closed) {
-//                window.close();
-//            }
-//        }
-//        player.update(&window);
-//
-//        window.clear(sf::Color::Black);
-//        back.show(&window);
-//        player.show(&window);
-//        window.display();
-//    }
-    Vector2i resolucao {1280, 720};
+    Vector2i resolucao{1280, 720};
+    RenderWindow window(VideoMode(resolucao.x, resolucao.y), "Jogo", Style::Titlebar | Style::Close);
+    Menu mainMenu(resolucao);
+    Event ev{};
     Engine engine;
+    while(window.isOpen()){
+        while (window.pollEvent(ev)) {
+            window.clear();
+            mainMenu.draw(&window);
+                    switch (ev.type) {
+                        case Event::KeyPressed:
+                            switch (ev.key.code) {
+                                case Keyboard::W:
+                                    mainMenu.moveUp();
+                                    break;
+                                case Keyboard::S:
+                                    mainMenu.moveDown();
+                                    break;
+                                case Keyboard::Return:
+                                    switch (mainMenu.getSelected()) {
+                                        case 0:
+                                            while(window.isOpen()){
 
-    while (engine.windowOpen()){
+                                                engine.render(&window);
 
-        engine.update();
+                                                engine.update(&window);
 
-        engine.render();
-
+                                            }
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
+                            break;
+                        case Event::Closed:
+                            window.close();
+                            break;
+                        default:
+                            break;
+                    }
+            window.display();
+        }
     }
 }

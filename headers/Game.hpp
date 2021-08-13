@@ -10,8 +10,8 @@ using namespace sf;
 class Engine
 {
     private:
-        RenderWindow *window{};
-        Event event{};
+//        RenderWindow *window{};
+//        Event event{};
         bool menu = false;
         Vector2i resolucao {1280, 720};
 
@@ -28,18 +28,20 @@ class Engine
         float dt = 0;
 
         void initVariab();
-        void initWindow();
+//        void initWindow();
     public:
         Engine();
         virtual ~Engine();
 
-        const bool windowOpen() const;
+//        const bool windowOpen() const;
 
-        void pollEvents();
-        
-        void update();
-        void render();
-        void renderCharacters();
+//        void pollEvents();
+
+        void renderCharacters(RenderWindow *window);
+
+
+        void update(RenderWindow *window);
+        void render(RenderWindow *window);
 };
 
 #endif
