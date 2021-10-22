@@ -1,9 +1,5 @@
-//
-// Created by Lucas Orlikoski on 14/07/2021.
-//
-
-#ifndef GAME_BACKGROUND_H
-#define GAME_BACKGROUND_H
+#ifndef BACKGROUND_H_P_P_
+#define BACKGROUND_H_P_P_
 
 #include <Entity.hpp>
 #include "lib.hpp"
@@ -14,4 +10,4 @@ public:
     void show(sf::RenderWindow *window);
 };
 
-#endif //GAME_BACKGROUND_H
+#endif

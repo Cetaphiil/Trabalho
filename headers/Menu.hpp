@@ -1,7 +1,8 @@
 #ifndef MENU_H_P_P_
 #define MENU_H_P_P_
 
-#include "lib.hpp"
+#include "background.hpp"
+
 using namespace std;
 using namespace sf;
 
@@ -10,7 +11,7 @@ using namespace sf;
 class Menu {
     protected:
         int selected;
-        Texture back;
+        Background background;
         Font mainFont;
         Text buttons[MAX_NUMBER_BUTTONS];
     public:
@@ -19,7 +20,7 @@ class Menu {
 
         void moveUp();
         void moveDown();
-        void draw(RenderTarget *target);
+        void draw(RenderWindow *window);
         int getSelected() const;
 };
 

@@ -1,45 +1,31 @@
 #ifndef ENEMY_H_P_P_
 #define ENEMY_H_P_P_
 
-//#include <SFML/Graphics.hpp>
-//#include <SFML/Graphics/RectangleShape.hpp>
-
-//#include <time.h>
-
-#include <Player.hpp>
-#include "lib.hpp"
+#include "Player.hpp"
 
 using namespace sf;
 
-class Enemy : protected Entity{
+class Enemy : protected Character{
     protected:
-        int life =  10, damage = 5;
+        float deltaTime;
         Vector2f speed, aceleration;
-        Clock keyPressTime;
-        Sprite enemySprite;
-        Texture enemyTexture;
+        Clock timer;
         Transform target;
-        List **enemy_sprite_list;
-        char **enemy_sprite_name;
+
     public:
         bool spawn = false;
 
-        List* enemy_sprite_list_add(List* list_enemy);
-        void enemy_sprite_loader();
+        void sprite_loader();
 
-        void load_enemy_idle();
-        void load_enemy_walk();
-        void load_enemy_dead();
-        void load_enemy_Spell();
-
-        Vector2f enemyPosit;
         Enemy();
+
+        Vector2f getPosition();
 
         void initEnemies(Vector2i resolucao);
 
         void showEnemies(RenderWindow *window);
         void updateEnemy(RenderWindow *window, Player player);
-        Vector2f getPosition();
+
 };
 
 #endif

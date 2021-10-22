@@ -1,25 +1,24 @@
-//
-// Created by Lucas Orlikoski on 16/07/2021.
-//
-
-#ifndef GAME_OBJETO_H
-#define GAME_OBJETO_H
+#ifndef ENTITY_H_P_P_
+#define ENTITY_H_P_P_
 
 #include "lib.hpp"
+#include "GraphicHandler.hpp"
 
+using namespace sf;
 
 class Entity{
-protected:
-    sf::Texture texture;
-    sf::Sprite sprite;
-    int life;
-    int damage;
-    float speed;
-    sf::Vector2f g {0.0f, 7000};
+    protected:
+        Graphics graphics;
+        Texture texture;
+        Sprite sprite;
+        int speed;
+        int life = 10;
+        int damage = 5;
+        List **sprite_list;
 
-public:
-    Entity(){}
-    virtual ~Entity(){}
+    public:
+        Entity(){}
+        virtual ~Entity(){}
 };
 
 #endif

@@ -4,41 +4,38 @@
 #include "lib.hpp"
 #include "Menu.hpp"
 #include "Enemy.hpp"
+#include "TileMap.hpp"
 
 using namespace sf;
 
 class Engine
 {
-    private:
-//        RenderWindow *window{};
-//        Event event{};
+private:
+        Event event{};
         bool menu = false;
         Vector2i resolucao {1280, 720};
 
         Texture backgroundTexture;
         Sprite backgroundSprite;
 
-        Player *player;
-
-        Enemy *enemy;
-
-        Menu *mainMenu;
-
-        Clock relogio;
-        float dt = 0;
+        float deltatime = 0;
 
         void initVariab();
-//        void initWindow();
     public:
         Engine();
         virtual ~Engine();
 
-//        const bool windowOpen() const;
-
-//        void pollEvents();
+        void pollEvents(RenderWindow *window);
 
         void renderCharacters(RenderWindow *window);
 
+        Player *player;
+
+        Enemy *enemy;
+
+        Map *lvl1, *lvl2;
+
+        Clock timer;
 
         void update(RenderWindow *window);
         void render(RenderWindow *window);

@@ -4,6 +4,12 @@
 #include <SFML/Graphics.hpp>
 
 #include <string>
+#include <vector>
+
+struct List{
+    sf::Texture *texture;
+    List *next;
+};
 
 
 #endif

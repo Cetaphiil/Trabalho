@@ -5,33 +5,22 @@
 #ifndef GAME_PLAYER_H
 #define GAME_PLAYER_H
 
-#include <Entity.hpp>
+#include <Character.hpp>
 #include "lib.hpp"
 
-struct List{
-    sf::Texture *texture;
-    List *next;
-};
+using namespace sf;
 
-class Player : protected Entity{
+class Player : protected Character{
 private:
-    sf::Vector2f s, v, a;
-    sf::Clock t;
-    sf::FloatRect hitbox{0.f, 0.f, 114.f, 144.f};
-
     float player_speed = 8000;
-    float player_jump = 35*g.y - 30000;
+    float player_jump = 35*gravity.y - 30000;
     float desaceleracao = 20;
 
     bool jump = false;
-    bool idle = true;
     bool attack = false;
 
-    sf::Clock atk_timmer;
+    Clock atk_timmer;
 
-    List **sprite_list;
-
-    static List* add_sprite(List* list);
 
     void load_idle();
     void load_jump();
@@ -39,8 +28,8 @@ private:
     void load_dead();
     void load_attack();
 
-    sf::Clock c;
 public:
+    Player();
     void loader();
     sf::Vector2f getPosition();
     void show(sf::RenderWindow *window);
