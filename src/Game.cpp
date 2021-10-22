@@ -1,69 +1,49 @@
 #include <Game.hpp>
 void Engine::initVariab(){
-//    this->window = nullptr;
     this->backgroundTexture.loadFromFile("../assets/background/Fundo.png");
     this->backgroundSprite.setTexture(backgroundTexture);
-//    this->mainMenu = new Menu(resolucao);
     this->player = new Player();
     this->enemy = new Enemy();
+    this->lvl1 = new Map("../assets/Maps/Tiles.txt");
     this->player->loader();
-    this->enemy->enemy_sprite_loader();
-}
+    this->enemy->sprite_loader();
+    this->lvl1->initMap("../assets/Maps/Fase1/lvl.txt");
 
-//void Engine::initWindow(){
-//    this->window = new RenderWindow(VideoMode(resolucao.x, resolucao.y), "Teste", Style::Titlebar | Style::Close);
-//}
+}
 
 Engine::Engine(){
     this->initVariab();
-//    this->initWindow();
 }
 
 Engine::~Engine(){
-//    delete this->window;
     delete this->enemy;
     delete this->player;
+    delete this->lvl1;
 }
 
-//const bool Engine::windowOpen() const{
-//    return window->isOpen();
-//}
-
-//void Engine::pollEvents(){
-//    while(window->pollEvent(event)){
-//        switch (event.type)
-//        {
-//            case Event::KeyReleased:
-//                switch (event.key.code){
-//                    case Keyboard::W:
-//                        mainMenu->moveUp();
-//                        break;
-//                    case Keyboard::S:
-//                        mainMenu->moveDown();
-//                        break;
-//                    default:
-//                        break;
-//                }
-//                break;
-//            case Event::Closed:
-//                window->close();
-//                break;
-//            default:
-//                break;
-//        }
-//    }
-//}
+void Engine::pollEvents(RenderWindow *window){
+    while(window->pollEvent(event)){
+        switch (event.type)
+        {
+            case Event::Closed:
+                window->close();
+                break;
+            default:
+                break;
+        }
+    }
+}
 
 void Engine::update(RenderWindow *window){
 
-//    pollEvents();
+    pollEvents(window);
 
     //Player
-    dt += relogio.restart().asSeconds();
+    deltatime += timer.restart().asSeconds();
     float passo = 1.f/60.f;
-    while(dt > passo){
+    while(deltatime > passo){
        this->player->update(window, passo);
-       dt -= passo;
+       deltatime -= passo;
     }
     //Enemy
     if(!enemy->spawn){
@@ -80,16 +60,13 @@ void Engine::renderCharacters(RenderWindow *window){
     player->show(window);
     //Enemy
     enemy->showEnemies(window);
-};
+
+}
 
 void Engine::render(RenderWindow *window){
+    window->clear();
     window->draw(this->backgroundSprite);
-//    while(!menu){
-//        if(mainMenu->getSelected() == 1){
-//            renderCharacters();
-//            menu = true;
-//        }
-//        delete this->mainMenu;
-//    }
+    lvl1->loadTileMap(window);
     renderCharacters(window);
+    window->display();
 }

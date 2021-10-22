@@ -1,5 +1,4 @@
 #include <Enemy.hpp>
-#include <Player.hpp>
 
 Enemy::Enemy(){
     srand(time(NULL));
@@ -74,167 +73,111 @@ static inline const char *enemy_spriteName_Spell[]={
     "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_17.png"
 };
 
-Vector2f Enemy::getPosition(){
-    return (sprite.getPosition());
-}
-
-List *Enemy::enemy_sprite_list_add(List *list_enemy){
-    List *n = (List *) malloc(sizeof(List));
-    n->next = NULL;
-    if (list_enemy == NULL)
-        return n;
-    List *aux = list_enemy;
-    while (aux->next != NULL)
-        aux = aux->next;
-    aux->next = n;
-    return list_enemy;
-};
-
-void Enemy::load_enemy_idle() {
-    List *aux = NULL;
-    aux = enemy_sprite_list_add(aux);
-    enemy_sprite_list[0] = aux;
-    aux->texture = new sf::Texture;
-    aux->texture->loadFromFile(enemy_spriteName_idle[0]);
-    for (int i = 1; i < 10; i++) {
-        enemy_sprite_list_add(enemy_sprite_list[0]);
-        aux = aux->next;
-        aux->texture = new sf::Texture;
-        aux->texture->loadFromFile(enemy_spriteName_idle[i]);
-    }
-    aux->next = enemy_sprite_list[0];
-};
-void Enemy::load_enemy_walk() {
-    List *aux = NULL;
-    aux = enemy_sprite_list_add(aux);
-    enemy_sprite_list[1] = aux;
-    aux->texture = new sf::Texture;
-    aux->texture->loadFromFile(enemy_spriteName_walking[0]);
-    for (int i = 1; i < 10; i++) {
-        enemy_sprite_list_add(enemy_sprite_list[1]);
-        aux = aux->next;
-        aux->texture = new sf::Texture;
-        aux->texture->loadFromFile(enemy_spriteName_walking[i]);
-    }
-    aux->next = enemy_sprite_list[1];
-};
-
-void Enemy::load_enemy_dead() {
-    List *aux = NULL;
-    aux = enemy_sprite_list_add(aux);
-    enemy_sprite_list[2] = aux;
-    aux->texture = new sf::Texture;
-    aux->texture->loadFromFile(enemy_spriteName_Dying[0]);
-    for (int i = 1; i < 10; i++) {
-        enemy_sprite_list_add(enemy_sprite_list[2]);
-        aux = aux->next;
-        aux->texture = new sf::Texture;
-        aux->texture->loadFromFile(enemy_spriteName_Dying[i]);
-    }
-    aux->next = enemy_sprite_list[2];
-};
-
-void Enemy::load_enemy_Spell() {
-    List *aux = NULL;
-    aux = enemy_sprite_list_add(aux);
-    enemy_sprite_list[3] = aux;
-    aux->texture = new sf::Texture;
-    aux->texture->loadFromFile(enemy_spriteName_Spell[0]);
-    for (int i = 1; i < 10; i++) {
-        enemy_sprite_list_add(enemy_sprite_list[3]);
-        aux = aux->next;
-        aux->texture = new sf::Texture;
-        aux->texture->loadFromFile(enemy_spriteName_Spell[i]);
-    }
-    aux->next = enemy_sprite_list[3];
-};
-void Enemy::enemy_sprite_loader(){
-    enemy_sprite_list = (List **) malloc(4 * sizeof(List *));
+void Enemy::sprite_loader(){
+    sprite_list = (List **) malloc(4 * sizeof(List *));
 
     for (int i = 0; i < 4; i++){
-        enemy_sprite_list[i] = NULL;
+        sprite_list[i] = nullptr;
     }
 
-    load_enemy_idle();
-    load_enemy_walk();
-    load_enemy_dead();
-    load_enemy_Spell();
+    graphics.load_Textures(enemy_spriteName_idle, &sprite_list[0]);
+    graphics.load_Textures(enemy_spriteName_walking, &sprite_list[1]);
+    graphics.load_Textures(enemy_spriteName_Dying, &sprite_list[2]);
+    graphics.load_Textures(enemy_spriteName_Spell, &sprite_list[3]);
 };
 
 void Enemy::initEnemies(Vector2i resolucao){
     spawn = true;
     Vector2i halfRes = resolucao/2;
-    enemyPosit = Vector2f(rand() % (static_cast<int>(resolucao.x)/2)+halfRes.x, (rand() % static_cast<int>(resolucao.y)));
+    posit = Vector2f((float) (rand() % (static_cast<int>(resolucao.x)/4)+halfRes.x), (float) (rand() % static_cast<int>(resolucao.y)/2));
 };
 
 void Enemy::updateEnemy(RenderWindow *window, Player player){
-    float gravity = 0.3f;
     aceleration = -1.f * speed;
-    float deltaTime = keyPressTime.restart().asSeconds();
+    deltaTime = timer.restart().asSeconds();
 
-    Vector2f distanciaMax = {100.0f , 100.0f};
+    Vector2f distanciaMax = {350.0f , 350.0f};
     Vector2f playerPosit = player.getPosition();
 
     //Perseguir
-    Vector2f space = {enemyPosit-playerPosit};
-    if( (space.x * space.x) < (distanciaMax.x * distanciaMax.x) || (space.y * space.y) < (distanciaMax.y * distanciaMax.y)){
-        aceleration -= 1.f * (enemyPosit - playerPosit);
+    Vector2f space = {posit-playerPosit};
+    if( (space.x * space.x)+(space.y * space.y) < (distanciaMax.x * distanciaMax.x) + (distanciaMax.y * distanciaMax.y)){
+        aceleration -= 1.f * (posit - playerPosit);
     }
 
+    //Atirar: Solicitar à fase para ela criar um projétil e lançar.
+
+
     Vector2f deltaSpeed = deltaTime * aceleration;
-    Vector2f posDesejada = (speed + deltaSpeed) * deltaTime + enemyPosit;
+    Vector2f posDesejada = (speed + deltaSpeed) * deltaTime + posit;
     //Não Passar da borda
-//     if (posDesejada.x < 0) {
-//         posDesejada.x = 0;
-//         speed.x = 0;
-//     }
-//     if (posDesejada.x + enemySprite.getTexture()->getSize().x > window->getSize().x) {
-//         posDesejada.x = window->getSize().x - (enemySprite.getTexture()->getSize().x/2);
-//         speed.x = 0;
-//     }
-//     if (posDesejada.y < 0) {
-//         posDesejada.y = 0;
-//         speed.y = 0;
-//     }
-//     if (posDesejada.y + enemySprite.getTexture()->getSize().y > window->getSize().y) {
-//         posDesejada.y = window->getSize().y - enemySprite.getTexture()->getSize().y*0.5;
-//         speed.y = 0;
-//     }
-    enemyPosit = posDesejada;
+     if (posDesejada.x < 0) {
+         posDesejada.x = 0;
+         speed.x = 0;
+     }
+     if (posDesejada.x + sprite.getTexture()->getSize().x/4 > window->getSize().x+50) {
+         posDesejada.x = window->getSize().x - (sprite.getTexture()->getSize().x/2);
+         speed.x = 0;
+     }
+     if (posDesejada.y < 0) {
+         posDesejada.y = 0;
+         speed.y = 0;
+     }
+     if (posDesejada.y + sprite.getTexture()->getSize().y/4 > window->getSize().y) {
+         posDesejada.y = window->getSize().y - sprite.getTexture()->getSize().y*0.6;
+         speed.y = 0;
+     }
+    posit = posDesejada;
     speed = speed + deltaSpeed;
     if(Mouse::isButtonPressed(Mouse::Middle)){
-        enemyPosit = {0.f, 0.f};
+        posit = {0.f, 0.f};
         speed = {0.f, 0.f};
     }
 };
 
 void Enemy::showEnemies(RenderWindow *window){
-    bool idle = true;
-    static Clock time;
-    static List *texture_idle = enemy_sprite_list[0];
-    static List *texture_walk = enemy_sprite_list[1];
-    static List *texture_dead = enemy_sprite_list[2];
-    static List *texture_spell = enemy_sprite_list[3];
+//    texture_idle = spriteList[0];
+//    texture_walk = spriteList[1];
+//    texture_dead = spriteList[2];
+//    texture_spell = spriteList[3];
 
 
     //Mudança de estado
     if (abs(speed.x) < 1.f && abs(speed.y) < 1.f) {
-        enemySprite.setTexture(*(texture_idle->texture));
-        if (time.getElapsedTime().asSeconds() > 0.17f) {
-            texture_idle = texture_idle->next;
-            time.restart();
+        sprite.setTexture(*(sprite_list[0]->texture));
+        if (timer.getElapsedTime().asSeconds() > 0.17f) {
+            sprite_list[0] = sprite_list[0]->next;
+            timer.restart();
         }
     }
-    if(abs(speed.x) > 1.f){
-        enemySprite.setTexture(*(texture_walk->texture));
-        if(time.getElapsedTime().asSeconds() > 0.17f){
-            texture_walk = texture_walk->next;
-            time.restart();
+    if(abs(speed.x) > 0.9f){
+        sprite.setTexture(*(sprite_list[1]->texture));
+        if(timer.getElapsedTime().asSeconds() > 0.17f){
+            sprite_list[1] = sprite_list[1]->next;
+            timer.restart();
         }
     }
+    else if (abs(speed.x) <= 0.9f && abs(speed.y) <= 0.9f) {
+        sprite.setTexture(*(sprite_list[0]->texture));
+        if (timer.getElapsedTime().asSeconds() > 0.17f) {
+            sprite_list[0] = sprite_list[0]->next;
+            timer.restart();
+        }
+    }
+    if(speed.x < 0){
+        sprite.setOrigin((sprite.getPosition()/4.f + sf::Vector2f {sprite.getLocalBounds().width, 0.f})*0.4f);
+        sprite.setScale(-0.4,0.4);
 
-    enemySprite.setScale(0.40, 0.40);
-    printf("%f, %f\n", enemyPosit.x, enemyPosit.y);
-    enemySprite.setPosition(enemyPosit);
-    window->draw(enemySprite);
+    }
+    else{
+        sprite.setScale(0.4, 0.4);
+    }
+//    printf("%f, %f\n", posit.x, posit.y);
+    sprite.setPosition(posit);
+    window->draw(sprite);
 }
+
+Vector2f Enemy::getPosition() {
+    return posit;
+}
+;

@@ -3,35 +3,34 @@
 //
 
 #include <Projectile.hpp>
-
-Projectile::Projectile() {
+Projectile::Projectile(Player player, Enemy enemy) {
+    this->player = player;
+    this->enemy = enemy;
     damage = 5;
     speed = 100.f;
-    loader();
+    loader(enemy);
 }
-Projectile::~Projectile() noexcept {
-    delete sprite;
+Projectile::~Projectile() {
+    delete this;
 }
-void Projectile::loader() {
+void Projectile::loader(Enemy enemy) {
     texture.loadFromFile("../assets/sprites/Spell/Spells Effect.png");
     sprite.setTexture(texture);
     sprite.setPosition(enemy.getPosition());
 }
-void Projectile::show(window) {
+void Projectile::show(RenderWindow *window) {
     window->draw(sprite);
 }
-void Projectile::update() {
+void Projectile::update(Player player, Enemy enemy) {
     sf::Vector2f playerPosit = player.getPosition();
     sf::Vector2f enemyPosit = enemy.getPosition();
-    if(timer.getElapsedTime().asSeconds() > 3)
-        ~Projectile();
+
     if(playerPosit.x < enemyPosit.x){
         speed = 15000;
-        posDesejada = {enemyPosit.x - 500 enemyPosit.y+30};
+        posDesejada = {enemyPosit.x - 500, enemyPosit.y+30};
     }
     if (playerPosit.x > enemyPosit.x){
         speed = 15000;
         posDesejada = {enemyPosit.x + 500, enemyPosit.y+30};
     }
-
 }
