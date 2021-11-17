@@ -8,15 +8,19 @@
 
 class Projectile : public Entity{
 private:
+    sf::Vector2f posit;
     sf::Vector2f posDesejada;
-    Player player;
-    Enemy enemy;
+    Player *p_player;
+    Enemy *p_enemy;
+    sf::Vector2f playerPosit;
+    sf::Vector2f enemyPosit;
 public:
+    bool exists;
     sf::Clock timer;
-    Projectile(Player player, Enemy enemy);
+    Projectile(Player *player, Enemy *enemy);
     ~Projectile();
-    void loader(Enemy enemy);
-    void update(Player player, Enemy enemy);
+    void loader();
+    void update();
     void show(RenderWindow* window);
 };
 

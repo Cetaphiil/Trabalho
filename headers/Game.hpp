@@ -5,6 +5,8 @@
 #include "Menu.hpp"
 #include "Enemy.hpp"
 #include "TileMap.hpp"
+#include "Projectile.hpp"
+#include "Lista.hpp"
 
 using namespace sf;
 
@@ -35,7 +37,11 @@ private:
 
         Map *lvl1, *lvl2;
 
+        Projectile *projectile;
+
         Clock timer;
+
+        void enemy_shot (Clock cooldown);
 
         void update(RenderWindow *window);
         void render(RenderWindow *window);

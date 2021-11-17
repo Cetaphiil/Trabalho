@@ -12,7 +12,12 @@ class Enemy : protected Character{
         Clock timer;
         Transform target;
 
+
     public:
+        Clock cooldown;
+        bool allow_shot;
+        bool shoud_shot;
+
         bool spawn = false;
 
         void sprite_loader();
