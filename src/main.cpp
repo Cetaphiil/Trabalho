@@ -30,9 +30,9 @@ int main() {
                                         case 0:
                                             while(window.isOpen()){
 
-                                                engine.render(&window);
-
                                                 engine.update(&window);
+
+                                                engine.render(&window);
 
                                             }
                                             break;

@@ -65,8 +65,9 @@ static inline const char *attack_file_names[]= {
         "../assets/sprites/Player/attack/Attack__009.png"
 };
 
-Player::Player() {
-    hitbox = {0,0,144,144};
+Player::Player() : Character(){
+    hitbox.setSize({144.0f, 144.0f});
+    hitbox.setOrigin({(hitbox.getSize().x /2), (hitbox.getSize().y/2)});
 }
 
 sf::Vector2f Player::getPosition(){
@@ -175,8 +176,8 @@ void Player::update(RenderWindow *window, float dt) {
         speed.x = 0;
         dv.x = 0;
     }
-    if (posDesejada.x + hitbox.width > window->getSize().x) {
-        posDesejada.x = window->getSize().x - hitbox.width;
+    if (posDesejada.x + hitbox.getSize().x > window->getSize().x) {
+        posDesejada.x = window->getSize().x - hitbox.getSize().x;
         speed.x = 0;
         dv.x = 0;
     }
@@ -185,8 +186,8 @@ void Player::update(RenderWindow *window, float dt) {
         speed.y = 0;
         dv.y = 0;
     }
-    if (posDesejada.y + hitbox.height > window->getSize().y) {
-        posDesejada.y = window->getSize().y - hitbox.height;
+    if (posDesejada.y + hitbox.getSize().y > window->getSize().y) {
+        posDesejada.y = window->getSize().y - hitbox.getSize().y;
         speed.y = 0;
         dv.y = 0;
         jump = true;

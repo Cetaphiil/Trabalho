@@ -1,24 +1,25 @@
 #include <Game.hpp>
 void Engine::initVariab(){
-    this->backgroundTexture.loadFromFile("../assets/background/Fundo.png");
-    this->backgroundSprite.setTexture(backgroundTexture);
-    this->player = new Player();
-    this->enemy = new Enemy();
-    this->lvl1 = new Map("../assets/Maps/Tiles.txt");
-    this->player->loader();
-    this->enemy->sprite_loader();
-    this->lvl1->initMap("../assets/Maps/Fase1/lvl.txt");
+    backgroundTexture.loadFromFile("../assets/background/Fundo.png");
+    backgroundSprite.setTexture(backgroundTexture);
+    player = new Player();
+    enemy = new Enemy();
+    lvl1 = new Map("../assets/Maps/Tiles.txt");
+    player->loader();
+    enemy->sprite_loader();
+    lvl1->initMap("../assets/Maps/Fase1/lvl.txt");
 
 }
 
 Engine::Engine(){
-    this->initVariab();
+    initVariab();
 }
 
 Engine::~Engine(){
-    delete this->enemy;
-    delete this->player;
-    delete this->lvl1;
+    delete enemy;
+    delete player;
+    delete lvl1;
+    delete projectile;
 }
 
 void Engine::pollEvents(RenderWindow *window){
@@ -52,6 +53,10 @@ void Engine::update(RenderWindow *window){
     else{
         this->enemy->updateEnemy(window, *player);
     }
+    //Shot
+//    enemy_shot(enemy->cooldown);
+//    if(projectile != NULL)
+//        projectile->update();
 }
 
 void Engine::renderCharacters(RenderWindow *window){
@@ -60,6 +65,9 @@ void Engine::renderCharacters(RenderWindow *window){
     player->show(window);
     //Enemy
     enemy->showEnemies(window);
+    //Projectile
+//    if(projectile != NULL)
+//        projectile->show(window);
 
 }
 
@@ -69,4 +77,19 @@ void Engine::render(RenderWindow *window){
     lvl1->loadTileMap(window);
     renderCharacters(window);
     window->display();
+}
+
+void Engine::enemy_shot(Clock cooldown) {
+    printf("%d\n", abs(int(enemy->getPosition().x - player->getPosition().x)));
+    if(abs(int(enemy->getPosition().x - player->getPosition().x)) < 60){
+        enemy->allow_shot = true;
+    }
+    if(enemy->shoud_shot && projectile != NULL) {
+        projectile = new Projectile(player, enemy);
+        enemy->shoud_shot = false;
+    }
+    if(projectile->timer.getElapsedTime().asSeconds() > 2){
+        cooldown.restart();
+        delete projectile;
+    }
 }
