@@ -56,6 +56,8 @@ public:
     void remove(L* info);
     int length() {return size;};
     void clear();
+
+    L* operator[](int x);
 };
 
 template <class L>
@@ -95,4 +97,23 @@ void Lista<L>::clear() {
         size--;
     }
 }
+template <class L>
+L* Lista<L>::operator[](int x) {
+    if (x >= size || x < 0) {
+//        std::cout << "ERROR: Segmentation fault on template list. Exceeded boundaries." << std::endl;
+        exit(1);
+    }
+
+    Node<L>* pAux = first;
+    for (int i = 0; i < x; i++) {
+        pAux = pAux->getNext();
+    }
+
+    if (pAux == NULL) {
+//        cout << "ERROR: on template operator[] pAux == NULL." << endl;
+        exit(1);
+    }
+    return pAux->getInfo();
+}
+
 #endif
