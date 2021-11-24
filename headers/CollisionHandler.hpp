@@ -9,19 +9,16 @@
 
 using namespace sf;
 
-class Collider{
+class Collider {
 
-    EntityList* list;
+    EntityList *list;
 
 public:
-    Collider(){this->list = nullptr;}
-    ~Collider(){}
+    Collider() { this->list = nullptr; }
+
+    ~Collider() {}
 
     void CheckCollision(EntityList *other);
 
-//     Vector2f getPosition() {return body->getPosition();}
-//     Vector2f getHalfSize() {return body->getSize()/2.0f;}
-
 };
-
 #endif //GAME_NEW_COLLISIONHANDLER_HPP

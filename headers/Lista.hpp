@@ -74,6 +74,8 @@ void Lista<L>::add(L* info){
         last = novo;
     }
     size++;
+    first->setPrevious(last);
+    last->setNext(first);
 }
 template <class L>
 void Lista<L>::remove(L* info) {
@@ -86,6 +88,7 @@ void Lista<L>::remove(L* info) {
     aux2 = aux->getNext();
     aux2->setPrevious(aux->getPrevious());
     delete aux;
+    size--;
 }
 template <class L>
 void Lista<L>::clear() {

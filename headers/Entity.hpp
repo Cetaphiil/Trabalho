@@ -15,7 +15,6 @@ protected:
     RectangleShape hitbox;
 
     int life;
-    int damage;
 
     Vector2f posit, speed,acceleration;
 
@@ -31,13 +30,16 @@ public:
 
     void setKind(int aux){kind = aux;}
     int getKind(){return kind;}
-
     virtual Vector2f getPosition() = 0;
-
-    Vector2f getSize(){return hitbox.getSize();}
-
-    //Vector2f getPosition() {return posit;}
     void setPosition(Vector2f pos){posit = pos; sprite.setPosition(pos);}
+    Vector2f getSize(){return hitbox.getSize();}
+    int getLife() const{return life;}
+
+    Clock invincibility;
+
+    bool attacking;
+
+    int damage;
 };
 
 
