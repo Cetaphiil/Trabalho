@@ -7,6 +7,9 @@ Enemy::Enemy() {
     shoud_shot = false;
     allow_shot = false;
     setKind(2);
+    life = 20;
+    damage = 25;
+    attacking = true;
 };
 
 static inline const char *enemy_spriteName_idle[] = {
@@ -193,6 +196,12 @@ Vector2f Enemy::getPosition() {
 void Enemy::collide(Entity *other) {
     switch (other->getKind()){
         case 1:
-            std::cout <<"test" << std::endl;
+            if(invincibility.getElapsedTime().asSeconds() > 2) {
+                if(other->attacking) {
+                    this->life -= other->damage;
+                    std::cout << "Enemy life is now: " << this->life << std::endl;
+                    invincibility.restart();
+                }
+            }
     }
 }

@@ -36,6 +36,12 @@ void Engine::pollEvents(RenderWindow *window){
 
 void Engine::update(RenderWindow *window){
 
+    if((enemy->getLife() <= 0) && (enemy != NULL)) {
+        list.remove(static_cast<Entity*>(enemy));
+        delete enemy;
+        newEnemy();
+    }
+
     enemy->setPlayer(player);
 
     pollEvents(window);

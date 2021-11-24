@@ -65,7 +65,10 @@ static inline const char *attack_file_names[]= {
         "../assets/sprites/Player/attack/Attack__009.png"
 };
 
-Player::Player() : Character(){}
+Player::Player() : Character(){
+    life = 100;
+    damage = 10;
+}
 
 void Player::setSize() {
     hitbox.setSize({144.0f, 144.0f});
@@ -100,13 +103,13 @@ void Player::show(RenderWindow *window) {
     static List *texture_attack = sprite_list[4];
 
 
-    if(attack){
+    if(attacking){
         sprite.setTexture(*(texture_attack->texture));
         sprite.scale(1.2f, 1.2f);
         if (timer.getElapsedTime().asMilliseconds() > 60.f) {
             texture_attack = texture_attack->next;
             if(atk_timmer.getElapsedTime().asMilliseconds() > 600.f){
-                attack = false;
+                attacking = false;
             }
             else
                 timer.restart();
@@ -168,7 +171,7 @@ void Player::update(RenderWindow *window, float dt) {
     }
     if(Mouse::isButtonPressed(Mouse::Left)){
         if(atk_timmer.getElapsedTime().asSeconds() > 2){
-            attack = true;
+            attacking = true;
             atk_timmer.restart();
         }
     }
@@ -242,5 +245,10 @@ void Player::update(RenderWindow *window, float dt) {
 void Player::collide(Entity *other) {
     switch (other->getKind()){
         case 2:
+            if(invincibility.getElapsedTime().asSeconds() > 2) {
+                this->life -= other->damage;
+                std::cout << "Player life is now: " << this->life << std::endl;
+                invincibility.restart();
+            }
     }
 }
