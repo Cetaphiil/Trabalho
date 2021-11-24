@@ -6,25 +6,30 @@
 
 using namespace sf;
 
-Collider::Collider(RectangleShape *body) {
-    this->body = body;
+void Collider::CheckCollision(EntityList *other) {
+    this->list = other;
+    Entity *ent1, *ent2;
+
+    for (int i = 0; i < list->getLength(); i++) {
+        for (int j = i + 1; j < list->getLength(); j++) {
+
+            // pega a entidade
+            ent1 = list->list[i];
+            ent2 = list->list[j];
+
+            float dy, dx, intersectX, intersectY;
+            // Diferença entre os centros
+            dx = ent2->getPosition().x - ent1->getPosition().x;
+            dy = ent2->getPosition().y - ent1->getPosition().y;
+            // Condiçao para colisao
+            intersectX = abs(dx) - (ent1->getSize().x / 2 + ent2->getSize().x / 2);
+            intersectY = abs(dy) - (ent1->getSize().y / 2 + ent2->getSize().y / 2);
+            if (intersectX < 0.0f && intersectY < 0.0f) { //Condition to collide...
+                ent2->collide(ent1);
+                ent1->collide(ent2);
+            }
+        }
+    }
 }
 
-bool Collider::CheckCollision(Collider &other) {
 
-    Vector2f otherPosition = other.getPosition();
-    Vector2f otherHalfSize = other.getHalfSize();
-    Vector2f thisPosition = getPosition();
-    Vector2f thisHalfSize = getHalfSize();
-
-    float deltaX = otherPosition.x - thisPosition.x;
-    float deltaY = otherPosition.y - thisPosition.y;
-
-    float intersectionX = abs(deltaX) - (otherHalfSize.x - thisHalfSize.x);
-    float intersectionY = abs(deltaY) - (otherHalfSize.y - thisHalfSize.y);
-
-    if(intersectionX < 0.0f || intersectionY < 0.0f)
-        return true;
-
-    return false;
-}

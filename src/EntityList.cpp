@@ -17,3 +17,14 @@ void EntityList::add(Entity *pNew) {
 void EntityList::remove(Entity *pDel) {
     list.remove(pDel);
 }
+
+void EntityList::update(RenderWindow *window, float dt) {
+    for(int i = 0; i < list.length(); i++){
+        list[i]->update(window, dt);
+    }
+}
+void EntityList::show(RenderWindow *window){
+    for(int i = 0; i < list.length(); i++){
+        list[i]->show(window);
+    }
+}

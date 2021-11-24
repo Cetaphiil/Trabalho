@@ -1,19 +1,18 @@
 //
 // Created by Lucas Orlikoski on 09/08/2021.
 //
-#include <iostream>
-
 
 #include <Projectile.hpp>
+
 Projectile::Projectile(Player *player, Enemy *enemy) : Entity() {
     exists = true;
     p_player = player;
     p_enemy = enemy;
     damage = 5;
-    speed = 100.f;
+    speed = {100.f, 0};
     sprite.setPosition(0.f, 0.f);
-    hitbox->setSize({40.0f, 40.0f});
-    hitbox->setOrigin({(hitbox->getSize().x /2), (hitbox->getSize().y/2)});
+    hitbox.setSize({40.0f, 40.0f});
+    hitbox.setOrigin({(hitbox.getSize().x /2), (hitbox.getSize().y/2)});
     loader();
 }
 Projectile::~Projectile() {

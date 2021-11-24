@@ -6,6 +6,7 @@ Enemy::Enemy() {
     hitbox.setOrigin({(hitbox.getSize().x /2), (hitbox.getSize().y/2)});
     shoud_shot = false;
     allow_shot = false;
+    setKind(2);
 };
 
 static inline const char *enemy_spriteName_idle[] = {
@@ -97,12 +98,14 @@ void Enemy::initEnemies(Vector2i resolucao) {
                      (float) (rand() % static_cast<int>(resolucao.y) / 2));
 };
 
-void Enemy::updateEnemy(RenderWindow *window, Player player) {
+void Enemy::update(RenderWindow *window, float dt) {
+
     aceleration = -1.f * speed;
     deltaTime = timer.restart().asSeconds();
 
     Vector2f distanciaMax = {350.0f, 350.0f};
-    Vector2f playerPosit = player.getPosition();
+
+    Vector2f playerPosit = player->getPosition();
 
     //Perseguir
     Vector2f space = {posit - playerPosit};
@@ -116,11 +119,10 @@ void Enemy::updateEnemy(RenderWindow *window, Player player) {
         cooldown.restart();
         shoud_shot = true;
     }
-
     Vector2f deltaSpeed = deltaTime * aceleration;
     Vector2f posDesejada = (speed + deltaSpeed) * deltaTime + posit;
     //Não Passar da borda
-    if (posDesejada.x < 0) {
+    /*if (posDesejada.x < 0) {
         posDesejada.x = 0;
         speed.x = 0;
     }
@@ -135,7 +137,8 @@ void Enemy::updateEnemy(RenderWindow *window, Player player) {
     if (posDesejada.y + sprite.getTexture()->getSize().y / 4 > window->getSize().y) {
         posDesejada.y = window->getSize().y - sprite.getTexture()->getSize().y * 0.6;
         speed.y = 0;
-    }
+    }*/
+
     posit = posDesejada;
     speed = speed + deltaSpeed;
     if (Mouse::isButtonPressed(Mouse::Middle)) {
@@ -144,7 +147,7 @@ void Enemy::updateEnemy(RenderWindow *window, Player player) {
     }
 };
 
-void Enemy::showEnemies(RenderWindow *window) {
+void Enemy::show(RenderWindow *window) {
 //    texture_idle = spriteList[0];
 //    texture_walk = spriteList[1];
 //    texture_dead = spriteList[2];
@@ -179,11 +182,17 @@ void Enemy::showEnemies(RenderWindow *window) {
     } else {
         sprite.setScale(0.4, 0.4);
     }
-//    printf("%f, %f\n", posit.x, posit.y);
     sprite.setPosition(posit);
     window->draw(sprite);
 }
 
 Vector2f Enemy::getPosition() {
     return posit;
-};
+}
+
+void Enemy::collide(Entity *other) {
+    switch (other->getKind()){
+        case 1:
+            std::cout <<"test" << std::endl;
+    }
+}

@@ -65,9 +65,12 @@ static inline const char *attack_file_names[]= {
         "../assets/sprites/Player/attack/Attack__009.png"
 };
 
-Player::Player() : Character(){
+Player::Player() : Character(){}
+
+void Player::setSize() {
     hitbox.setSize({144.0f, 144.0f});
     hitbox.setOrigin({(hitbox.getSize().x /2), (hitbox.getSize().y/2)});
+    setKind(1);
 }
 
 sf::Vector2f Player::getPosition(){
@@ -142,23 +145,24 @@ void Player::show(RenderWindow *window) {
 }
 
 void Player::update(RenderWindow *window, float dt) {
-    aceleration = -desaceleracao * speed;
+
+    acceleration = -desaceleracao * speed;
 
     if (Keyboard::isKeyPressed(Keyboard::D)) {
         if(Keyboard::isKeyPressed(Keyboard::LShift))
-            aceleration += {1.5f * player_speed, 0};
+            acceleration += {1.5f * player_speed, 0};
         else
-            aceleration += {player_speed, 0};
+            acceleration += {player_speed, 0};
     }
     if (Keyboard::isKeyPressed(Keyboard::A)) {
         if(Keyboard::isKeyPressed(Keyboard::LShift))
-            aceleration -= {1.5f * player_speed, 0};
+            acceleration -= {1.5f * player_speed, 0};
         else
-            aceleration -= {player_speed, 0};
+            acceleration -= {player_speed, 0};
     }
     if (Keyboard::isKeyPressed(Keyboard::Space)) {
         if (jump) {
-            aceleration -= {0, player_jump};
+            acceleration -= {0, player_jump};
             jump = false;
         }
     }
@@ -168,7 +172,7 @@ void Player::update(RenderWindow *window, float dt) {
             atk_timmer.restart();
         }
     }
-    Vector2f dv = dt * (aceleration+ gravity);
+    Vector2f dv = dt * (acceleration + gravity);
     Vector2f posDesejada = (speed + dv) * dt + posit;
 
     if (posDesejada.x < 0) {
@@ -233,4 +237,10 @@ void Player::update(RenderWindow *window, float dt) {
         printf("Desaceleração alterada para: %f\n", desaceleracao);
     }
 //    printf("%f %f\n", s.x, s.y);
+}
+
+void Player::collide(Entity *other) {
+    switch (other->getKind()){
+        case 2:
+    }
 }
