@@ -21,11 +21,10 @@ class Engine: public StateMachine
         Graphics* pGraphics;
         EventHandler* pEvents;
         InputHandler* pInputs;
-        float deltatime = 0;
-
         Collider collider;
-
         EntityList listE;
+
+        float deltatime = 0;
 
         void initVariab();
 

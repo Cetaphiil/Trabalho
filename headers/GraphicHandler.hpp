@@ -2,6 +2,7 @@
 
 #include "stdafix.hpp"
 #include <list>
+#include "lib.hpp"
 
 #include "background.hpp"
 
@@ -21,8 +22,8 @@ class Graphics{
         // Singleton desing pattern
         static Graphics* instance;
         Graphics();
-        
     public:
+
         virtual ~Graphics();
 
         static List* add_sprite(List* list);

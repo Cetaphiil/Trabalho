@@ -9,6 +9,7 @@ using namespace sf;
 class Player : public Character{
 private:
     View view1;
+
     float player_speed = 8000;
     float player_jump;
     float desaceleracao = 20;
@@ -17,7 +18,6 @@ private:
     bool attack = false;
 
     Clock atk_timmer;
-
 
     void load_idle();
     void load_jump();
@@ -28,16 +28,14 @@ private:
 public:
     Player();
     ~Player();
-    void loader();
-    sf::Vector2f getPosition();
-    void show();
-    void update(float dt);
 
+    void loader();
+    void show(RenderWindow* window);
+    void update(RenderWindow* window, float dt);
     void collide(Entity* other);
 
+    sf::Vector2f getPosition();
+    Player* getPlayer(){return this;}
 
-    Player* getPlayer(){return this;};
-    void setSize();
-
-    View getView1();
+    View getView1(){return view1;}
 };
