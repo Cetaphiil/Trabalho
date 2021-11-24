@@ -26,6 +26,8 @@ class Map : public Entity{
         void initMap(string lvlDir);
 
         void loadTileMap(RenderWindow *window);
+
+        Vector2f getPosition(){std::cout << "MAP CANNOT RETURN A POSITION" << std::endl; exit(1);}
 };
 
 

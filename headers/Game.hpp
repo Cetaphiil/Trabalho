@@ -7,14 +7,15 @@
 #include "TileMap.hpp"
 #include "Projectile.hpp"
 #include "Lista.hpp"
+#include "CollisionHandler.hpp"
+#include "EntityList.hpp"
 
 using namespace sf;
 
-class Engine
-{
+class Engine{
 private:
         Event event{};
-        bool menu = false;
+        bool menu = false; //mover
         Vector2i resolucao {1280, 720};
 
         Texture backgroundTexture;
@@ -23,9 +24,14 @@ private:
         float deltatime = 0;
 
         void initVariab();
+
+        EntityList list;
+
+        Collider collider;
+
     public:
         Engine();
-        virtual ~Engine();
+        ~Engine();
 
         void pollEvents(RenderWindow *window);
 
@@ -45,6 +51,11 @@ private:
 
         void update(RenderWindow *window);
         void render(RenderWindow *window);
+
+        void newPlayer();
+        void newEnemy();
+        void newProjectile();
+        void newObject();
 };
 
 #endif

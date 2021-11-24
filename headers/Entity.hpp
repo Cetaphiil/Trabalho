@@ -3,25 +3,41 @@
 
 #include "lib.hpp"
 #include "GraphicHandler.hpp"
-#include "CollisionHandler.hpp"
 
 using namespace sf;
 
 class Entity{
-    protected:
-        Graphics graphics;
-        Texture texture;
-        Sprite sprite;
-        RectangleShape *hitbox;
+    int kind;
+protected:
+    Graphics graphics;
+    Texture texture;
+    Sprite sprite;
+    RectangleShape hitbox;
 
-        int speed;
-        int life;
-        int damage;
-        List **sprite_list;
+    int life;
+    int damage;
 
-    public:
-        Entity(){}
-        virtual ~Entity(){}
+    Vector2f posit, speed,acceleration;
+
+public:
+
+    Entity(){}
+    virtual ~Entity(){}
+
+    virtual void update(RenderWindow* window, float dt) {}
+    virtual void show(RenderWindow* window) {}
+
+    virtual void collide(Entity* other){}
+
+    void setKind(int aux){kind = aux;}
+    int getKind(){return kind;}
+
+    virtual Vector2f getPosition() = 0;
+
+    Vector2f getSize(){return hitbox.getSize();}
+
+    //Vector2f getPosition() {return posit;}
+    void setPosition(Vector2f pos){posit = pos; sprite.setPosition(pos);}
 };
 
 

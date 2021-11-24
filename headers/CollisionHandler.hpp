@@ -4,22 +4,23 @@
 
 #ifndef GAME_NEW_COLLISIONHANDLER_HPP
 #define GAME_NEW_COLLISIONHANDLER_HPP
-#include "lib.hpp"
+
+#include "EntityList.hpp"
 
 using namespace sf;
 
 class Collider{
 
-    RectangleShape *body;
+    EntityList* list;
 
 public:
-    Collider(RectangleShape *body);
-    ~Collider();
+    Collider(){this->list = nullptr;}
+    ~Collider(){}
 
-    bool CheckCollision(Collider &other);
+    void CheckCollision(EntityList *other);
 
-    Vector2f getPosition() {return body->getPosition();}
-    Vector2f getHalfSize() {return body->getSize()/2.0f;}
+//     Vector2f getPosition() {return body->getPosition();}
+//     Vector2f getHalfSize() {return body->getSize()/2.0f;}
 
 };
 

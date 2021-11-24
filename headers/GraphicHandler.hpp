@@ -5,7 +5,6 @@
 #ifndef GRAFICHANDLER_HPP
 #define GRAFICHANDLER_HPP
 #include "lib.hpp"
-#include <SFML/Graphics.hpp>
 #include <list>
 using namespace sf;
 

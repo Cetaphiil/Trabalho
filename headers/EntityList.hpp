@@ -5,22 +5,23 @@
 #ifndef GAME_NEW_ENTITYLIST_HPP
 #define GAME_NEW_ENTITYLIST_HPP
 
-#include "Character.hpp"
-#include "Projectile.hpp"
-#include "TileMap.hpp"
+#include "Entity.hpp"
 #include "Lista.hpp"
 
 class EntityList {
-    Lista<Entity> list;
-
 public:
     EntityList();
     ~EntityList();
+
+    Lista<Entity> list;
 
     void add(Entity* pNew);
     void remove(Entity* pDel);
     void freeAll(){list.clear();}
     int getLength() {return list.length(); }
+
+    void update(RenderWindow* window, float dt);
+    void show(RenderWindow *window);
 
 };
 

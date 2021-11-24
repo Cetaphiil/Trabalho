@@ -10,7 +10,7 @@
 
 using namespace sf;
 
-class Player : protected Character{
+class Player : public Character{
 private:
     float player_speed = 8000;
     float player_jump = 35*gravity.y - 30000;
@@ -34,6 +34,11 @@ public:
     sf::Vector2f getPosition();
     void show(sf::RenderWindow *window);
     void update(sf::RenderWindow *window, float dt);
+
+    void collide(Entity* other);
+
+    Player* getPlayer(){return this;}
+    void setSize();
 };
 
 #endif

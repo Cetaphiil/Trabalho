@@ -5,13 +5,13 @@
 
 using namespace sf;
 
-class Enemy : protected Character{
+class Enemy : public Character{
     protected:
         float deltaTime;
         Vector2f speed, aceleration;
         Clock timer;
         Transform target;
-
+        Player* player;
 
     public:
         Clock cooldown;
@@ -28,8 +28,12 @@ class Enemy : protected Character{
 
         void initEnemies(Vector2i resolucao);
 
-        void showEnemies(RenderWindow *window);
-        void updateEnemy(RenderWindow *window, Player player);
+        void show(RenderWindow *window);
+        void update(RenderWindow *window, float dt);
+
+        void setPlayer(Player* player){this->player = player;}
+
+        void collide(Entity* other);
 
 };
 

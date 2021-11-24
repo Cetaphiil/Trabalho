@@ -1,10 +1,11 @@
 #ifndef PROJECTILE_HPP
 #define PROJECTILE_HPP
 
+
+#include "Entity.hpp"
 #include "lib.hpp"
 #include "Enemy.hpp"
 #include "Player.hpp"
-#include "Entity.hpp"
 
 class Projectile : public Entity{
 private:
@@ -22,6 +23,7 @@ public:
     void loader();
     void update();
     void show(RenderWindow* window);
+    Vector2f getPosition(){return posit;}
 };
 
 #endif
