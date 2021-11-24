@@ -1,7 +1,7 @@
 //
 // Created by Lucas Orlikoski on 09/08/2021.
 //
-
+/*
 #include <Projectile.hpp>
 
 Projectile::Projectile(Player *player, Enemy *enemy) : Entity() {
@@ -42,3 +42,5 @@ void Projectile::update() {
     }
     posit = {0.0f, 0.0f};
 }
+
+ */

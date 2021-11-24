@@ -90,7 +90,7 @@ void Enemy::sprite_loader(){
 void Enemy::initEnemies(Vector2i resolucao){
     spawn = true;
     Vector2i halfRes = resolucao/2;
-    possit = Vector2f((float) (rand() % (static_cast<int>(resolucao.x)/4)+halfRes.x), (float) (rand() % static_cast<int>(resolucao.y)/2));
+    posit = Vector2f((float) (rand() % (static_cast<int>(resolucao.x)/4)+halfRes.x), (float) (rand() % static_cast<int>(resolucao.y)/2));
 };
 
 void Enemy::update(RenderWindow *window, float dt){
@@ -101,16 +101,16 @@ void Enemy::update(RenderWindow *window, float dt){
     Vector2f playerPosit = player->getPosition();
 
     //Perseguir
-    Vector2f space = {possit-playerPosit};
+    Vector2f space = {posit-playerPosit};
     if( (space.x * space.x)+(space.y * space.y) < (distanciaMax.x * distanciaMax.x) + (distanciaMax.y * distanciaMax.y)){
-        aceleration -= 1.f * (possit - playerPosit);
+        aceleration -= 1.f * (posit - playerPosit);
     }
 
     //Atirar: Solicitar à fase para ela criar um projétil e lançar.
 
 
     Vector2f deltaSpeed = deltaTime * aceleration;
-    Vector2f posDesejada = (speed + deltaSpeed) * deltaTime + possit;
+    Vector2f posDesejada = (speed + deltaSpeed) * deltaTime + posit;
     //Não Passar da borda
      if (posDesejada.x < 0) {
          posDesejada.x = 0;
@@ -128,10 +128,10 @@ void Enemy::update(RenderWindow *window, float dt){
          posDesejada.y = window->getSize().y - sprite.getTexture()->getSize().y*0.6;
          speed.y = 0;
      }
-    possit = posDesejada;
+    posit = posDesejada;
     speed = speed + deltaSpeed;
     if(Mouse::isButtonPressed(Mouse::Middle)){
-        possit = {0.f, 0.f};
+        posit = {0.f, 0.f};
         speed = {0.f, 0.f};
     }
 };
@@ -168,12 +168,12 @@ void Enemy::show(RenderWindow *window){
         sprite.setScale(0.4, 0.4);
     }
 //    printf("%f, %f\n", posit.x, posit.y);
-    sprite.setPosition(possit);
+    sprite.setPosition(posit);
     window->draw(sprite);
 }
 
 Vector2f Enemy::getPosition() {
-    return possit;
+    return posit;
 }
 
 void Enemy::collide(Entity *other) {

@@ -86,11 +86,11 @@ void Player::loader() {
     for (int i = 0; i < 5; i++)
         sprite_list[i] = NULL;
 
-    graphics.load_Textures(idle_file_names, &sprite_list[0]);
-    graphics.load_Textures(jump_file_names, &sprite_list[1]);
-    graphics.load_Textures(walk_file_names, &sprite_list[2]);
-    graphics.load_Textures(dead_file_names, &sprite_list[3]);
-    graphics.load_Textures(attack_file_names, &sprite_list[4]);
+    pGraphics->load_Textures(idle_file_names, &sprite_list[0]);
+    pGraphics->load_Textures(jump_file_names, &sprite_list[1]);
+    pGraphics->load_Textures(walk_file_names, &sprite_list[2]);
+    pGraphics->load_Textures(dead_file_names, &sprite_list[3]);
+    pGraphics->load_Textures(attack_file_names, &sprite_list[4]);
 }
 void Player::show(RenderWindow *window) {
 

@@ -104,7 +104,6 @@ void Engine::newPlayer() {
     Player* aux = new Player();
     player = aux;
     player->setPosition({0.f, 0.f});
-    player->setSize();
     listE.add(static_cast<Entity*>(aux));
 }
 
