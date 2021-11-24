@@ -1,10 +1,20 @@
-//
-// Created by saulo on 14/08/2021.
-//
-
 #include <GraphicHandler.hpp>
-Graphics::Graphics() {
 
+Graphics* Graphics::instance = NULL;
+
+Graphics* Graphics::getGraphics(){
+    if(instance == NULL){
+        instance = new Graphics();
+    }
+    return instance;
+}
+
+Graphics::Graphics(): resolution(WIDTH, HEIGHT), window(new RenderWindow(VideoMode(resolution.x, resolution.y), "NomeDoJOJ", Style::Titlebar | Style::Close)), back(){
+    mainFont.loadFromFile("../assets/fonts/slant_regular.ttf");
+}
+
+Graphics::~Graphics(){
+    delete instance;
 }
 
 List *Graphics::add_sprite(List* list){
@@ -32,4 +42,12 @@ void Graphics::load_Textures(const char **file_names,List **sprite_list){
         aux->texture->loadFromFile(file_names[i]);
     }
     aux->next = sprite_list[0];
+}
+
+RenderWindow* Graphics::getWindow() const{
+    return window;
+}
+
+void Graphics::drawBackGround(){
+    back.show(window);
 }

@@ -1,85 +1,102 @@
 #include <Game.hpp>
 
+class Collider;
+
 void Engine::initVariab(){
-    backgroundTexture.loadFromFile("../assets/background/Fundo.png");
-    backgroundSprite.setTexture(backgroundTexture);
+    pGraphics = Graphics::getGraphics();
+    pEvents = EventHandler::getInstance();
+
+    pInputs = new InputHandler;
+    pEvents->setInputHandler(pInputs);
+
     newPlayer();
     newEnemy();
-    lvl1 = new Map("../assets/Maps/Tiles.txt");
+    
     player->loader();
     enemy->sprite_loader();
+    lvl1 = new Map("../assets/Maps/Tiles.txt");
     lvl1->initMap("../assets/Maps/Fase1/lvl.txt");
+    loadPossibleStates();
 }
-Engine::Engine() : collider() {
+
+Engine::Engine(){
     initVariab();
 }
 
 Engine::~Engine(){
-    delete enemy;
-    delete player;
-    delete lvl1;
-    delete projectile;
+    if(enemy)
+        delete enemy;
+    if(player)
+        delete player;
+    // if(player2)
+    //     delete player2;
+    if(lvl1)
+        delete lvl1;
+    if(lvl2)
+        delete lvl2;
 }
 
-void Engine::pollEvents(RenderWindow *window){
-    while(window->pollEvent(event)){
-        switch (event.type)
-        {
-            case Event::Closed:
-                window->close();
-                break;
-            default:
-                break;
+void Engine::loadPossibleStates(){
+    State* pNewState = NULL;
+    try {
+        pNewState = new MainMenu(pInputs, this);
+        if (pNewState == NULL)
+            throw 0;
+        states.push_back(pNewState);
+    } catch (int err) {
+        if (err == 0) {
+            cout << "Error allocating states " << endl;
+            exit(1);
         }
     }
+    changeCurrentState(StateID::mainMenu);
 }
 
-void Engine::update(RenderWindow *window){
+void Engine::update(){
 
+    
+    pEvents->pollEvents();
+    
     if((enemy->getLife() <= 0) && (enemy != NULL)) {
-        list.remove(static_cast<Entity*>(enemy));
+        listE.remove(static_cast<Entity*>(enemy));
         delete enemy;
         newEnemy();
     }
 
     enemy->setPlayer(player);
 
-    pollEvents(window);
-
     deltatime += timer.restart().asSeconds();
     float passo = 1.f/60.f;
     while(deltatime > passo){
-       list.update(window, deltatime);
+       listE.update(pGraphics->getWindow(), deltatime);
        deltatime -= passo;
     }
-    collider.CheckCollision(&list);
-
+    collider.CheckCollision(&listE);
 }
 
-void Engine::renderCharacters(RenderWindow *window){
-    list.show(window);
+void Engine::renderCharacters(){
+    listE.show(pGraphics->getWindow());
 }
 
-void Engine::render(RenderWindow *window){
-    window->clear();
-    window->draw(this->backgroundSprite);
-    lvl1->loadTileMap(window);
-    renderCharacters(window);
-    window->display();
+void Engine::render(){
+    pGraphics->getWindow()->clear();
+    pGraphics->drawBackGround();
+    lvl1->loadTileMap(pGraphics->getWindow());
+    renderCharacters();
+    pGraphics->getWindow()->display();
 }
 
-void Engine::enemy_shot(Clock cooldown) {
-    printf("%d\n", abs(int(enemy->getPosition().x - player->getPosition().x)));
-    if(abs(int(enemy->getPosition().x - player->getPosition().x)) < 60){
-        enemy->allow_shot = true;
-    }
-    if(enemy->shoud_shot && projectile != NULL) {
-        projectile = new Projectile(player, enemy);
-        enemy->shoud_shot = false;
-    }
-    if(projectile->timer.getElapsedTime().asSeconds() > 2){
-        cooldown.restart();
-        delete projectile;
+void Engine::execState(){
+
+    while(pGraphics->getWindow()->isOpen()){
+
+        pEvents->pollEvents();
+
+        pGraphics->getWindow()->clear();
+
+        execCurrentState();
+        
+        pGraphics->getWindow()->display();
     }
 }
 
@@ -88,11 +105,12 @@ void Engine::newPlayer() {
     player = aux;
     player->setPosition({0.f, 0.f});
     player->setSize();
-    list.add(static_cast<Entity*>(aux));
+    listE.add(static_cast<Entity*>(aux));
 }
+
 void Engine::newEnemy(){
     Enemy* aux = new Enemy();
     enemy = aux;
     enemy->setPosition({0.f, 0.f});
-    list.add(static_cast<Entity*>(aux));
+    listE.add(static_cast<Entity*>(aux));
 }

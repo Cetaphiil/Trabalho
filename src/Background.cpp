@@ -1,8 +1,12 @@
-//
-// Created by Lucas Orlikoski on 16/07/2021.
-//
 #include <background.hpp>
 
+Background::Background(){
+    loader();
+}
+
+Background::~Background(){
+
+}
 
 void Background::loader() {
     if(!texture.loadFromFile("../assets/background/Fundo.png")){

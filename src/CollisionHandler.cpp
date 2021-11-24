@@ -1,10 +1,4 @@
-//
-// Created by lucas on 07/11/2021.
-//
-
-#include <CollisionHandler.hpp>
-
-using namespace sf;
+#include "CollisionHandler.hpp"
 
 void Collider::CheckCollision(EntityList *other) {
     this->list = other;
@@ -31,5 +25,3 @@ void Collider::CheckCollision(EntityList *other) {
         }
     }
 }
-
-

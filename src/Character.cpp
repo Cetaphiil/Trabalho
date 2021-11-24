@@ -1,5 +1,10 @@
-//
-// Created by saulo on 15/08/2021.
-//
-
 #include <Character.hpp>
+
+Character::Character(): Entity(){
+    sprite_list = nullptr;
+};
+
+Character::~Character(){
+
+}
+

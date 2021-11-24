@@ -1,6 +1,6 @@
 #include "TileMap.hpp"
 
-Map::Map(string tileDir){
+Map::Map(string tileDir): Entity(){
     fstream openfile(tileDir);
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
