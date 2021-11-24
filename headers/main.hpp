@@ -1,15 +1,5 @@
-//
-// Created by Lucas Orlikoski on 12/07/2021.
-//
+#pragma once
 
-#ifndef GAME_MAIN_H
-#define GAME_MAIN_H
-
-#include "lib.hpp"
-
+#include "stdafix.hpp"
 
 using namespace sf;
-
-
-
-#endif

@@ -1,27 +1,34 @@
-#ifndef MENU_H_P_P_
-#define MENU_H_P_P_
+#pragma once
 
-#include "background.hpp"
+#include <vector>
+#include <iterator>
+#include "GraphicHandler.hpp"
+#include "MenuControls.hpp"
 
 using namespace std;
 using namespace sf;
 
-#define MAX_NUMBER_BUTTONS 4
-
-class Menu {
-    protected:
-        int selected;
-        Background background;
-        Font mainFont;
-        Text buttons[MAX_NUMBER_BUTTONS];
+class Menu{
     public:
-        Menu(Vector2i resolucao);
-        ~Menu();
+        Graphics* pGraphics;
+    protected:
 
+        MenuControl* controls;
+        vector<Text*> buttons;
+        vector<Text*>::iterator it;
+        int max_Number_Buttons;
+        Font font;
+        int selected;
+        bool stateMenu = true;
+
+    public:
+        Menu(InputHandler* pIH);
+        virtual ~Menu();
+
+        virtual void run() = 0;
+        
         void moveUp();
         void moveDown();
-        void draw(RenderWindow *window);
-        int getSelected() const;
+        
+        void setMaxButtons(int max);
 };
-
-#endif 

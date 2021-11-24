@@ -1,9 +1,4 @@
-//
-// Created by lucas on 17/11/2021.
-//
-
-#ifndef GAME_NEW_ENTITYLIST_HPP
-#define GAME_NEW_ENTITYLIST_HPP
+#pragma once
 
 #include "Entity.hpp"
 #include "Lista.hpp"
@@ -24,5 +19,3 @@ public:
     void show(RenderWindow *window);
 
 };
-
-#endif //GAME_NEW_ENTITYLIST_HPP

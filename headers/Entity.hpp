@@ -1,47 +1,50 @@
-#ifndef ENTITY_H_P_P_
-#define ENTITY_H_P_P_
+#pragma once
 
-#include "lib.hpp"
-#include "GraphicHandler.hpp"
+#include "stdafix.hpp"
+
+class Graphics;
 
 using namespace sf;
 
 class Entity{
-    int kind;
-protected:
-    Graphics graphics;
-    Texture texture;
-    Sprite sprite;
-    RectangleShape hitbox;
+    private:
 
-    int life;
+        int kind;
 
-    Vector2f posit, speed,acceleration;
+    protected:
+        Graphics* pGraphics;
+        Texture texture;
+        Sprite sprite;
+        RectangleShape hitbox;
 
-public:
+        int life;
 
-    Entity(){}
-    virtual ~Entity(){}
+        Vector2f possit, speed, acceleration;
+    public:
+        Entity();
+        virtual ~Entity(){};
 
-    virtual void update(RenderWindow* window, float dt) {}
-    virtual void show(RenderWindow* window) {}
+        virtual void update(RenderWindow* window, float dt) {}
+        virtual void show(RenderWindow* window) {}
 
-    virtual void collide(Entity* other){}
+        virtual void collide(Entity* other){}
 
-    void setKind(int aux){kind = aux;}
-    int getKind(){return kind;}
-    virtual Vector2f getPosition() = 0;
-    void setPosition(Vector2f pos){posit = pos; sprite.setPosition(pos);}
-    Vector2f getSize(){return hitbox.getSize();}
-    int getLife() const{return life;}
+        void setKind(int aux){kind = aux;}
+        int getKind(){return kind;}
 
-    Clock invincibility;
+        virtual Vector2f getPosition() = 0;
 
-    bool attacking;
+        Clock invincibility;
 
-    int damage;
+        bool attacking;
+
+        int damage;
+
+        int getLife() const{return life;}
+    
+        Vector2f getSize(){return hitbox.getSize();}
+
+        void setPosition(Vector2f pos){possit = pos; sprite.setPosition(pos);}
+
+        void setGraphics();
 };
-
-
-
-#endif

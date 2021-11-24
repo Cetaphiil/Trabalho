@@ -1,15 +1,20 @@
-#ifndef BACKGROUND_H_P_P_
-#define BACKGROUND_H_P_P_
+#pragma once
 
-#include <Entity.hpp>
-#include "lib.hpp"
+#include "stdafix.hpp"
+#include "Entity.hpp"
 
-class Background : public Entity{
+class Graphics;
+
+using namespace sf;
+
+class Background: public Entity {
 public:
+    Background();
+    ~Background();
+
     void loader();
     void show(sf::RenderWindow *window);
-    void update(){}
-    Vector2f getPosition(){std::cout << "BACKGROUD CANNOT RETURN A POSITION" << std::endl; exit(1);}
+    void update(){};
+    Vector2f getPosition(){ std::cout << "backGround can't return a possition" << std::endl; exit(2); }
 };
 
-#endif

@@ -1,41 +1,39 @@
-#ifndef GAME_H_P_P_
-#define GAME_H_P_P_
+#pragma once
 
-#include "lib.hpp"
-#include "Menu.hpp"
+#include "StateMachine.hpp"
+#include "MainMenu.hpp"
 #include "Enemy.hpp"
+#include "Player.hpp"
 #include "TileMap.hpp"
-#include "Projectile.hpp"
-#include "Lista.hpp"
+#include "GraphicHandler.hpp"
+#include "EventHandler.hpp"
+#include "InputHandler.hpp"
 #include "CollisionHandler.hpp"
 #include "EntityList.hpp"
 
 using namespace sf;
 
-class Engine{
-private:
-        Event event{};
-        bool menu = false; //mover
-        Vector2i resolucao {1280, 720};
+using namespace sm;
 
-        Texture backgroundTexture;
-        Sprite backgroundSprite;
-
+class Engine: public StateMachine
+{
+    private:
+        Graphics* pGraphics;
+        EventHandler* pEvents;
+        InputHandler* pInputs;
         float deltatime = 0;
-
-        void initVariab();
-
-        EntityList list;
 
         Collider collider;
 
+        EntityList listE;
+
+        void initVariab();
+
     public:
         Engine();
-        ~Engine();
+        virtual ~Engine();
 
-        void pollEvents(RenderWindow *window);
-
-        void renderCharacters(RenderWindow *window);
+        void renderCharacters();
 
         Player *player;
 
@@ -43,19 +41,17 @@ private:
 
         Map *lvl1, *lvl2;
 
-        Projectile *projectile;
-
         Clock timer;
+        
+        void loadPossibleStates();
 
-        void enemy_shot (Clock cooldown);
-
-        void update(RenderWindow *window);
-        void render(RenderWindow *window);
-
+        void execState();
+        
+        void update();
+        void render();
+        
         void newPlayer();
         void newEnemy();
         void newProjectile();
         void newObject();
 };
-
-#endif

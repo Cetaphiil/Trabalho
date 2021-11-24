@@ -15,7 +15,7 @@
 
 using namespace std;
 
-class Map : public Entity{
+class Map: public Entity{
     private:
         sf::Vector2i map[100][100];
         sf::Vector2i loadCounter;

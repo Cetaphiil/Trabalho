@@ -1,7 +1,8 @@
-#ifndef ENEMY_H_P_P_
-#define ENEMY_H_P_P_
+#pragma once
 
 #include "Player.hpp"
+
+class Collider;
 
 using namespace sf;
 
@@ -12,7 +13,6 @@ class Enemy : public Character{
         Clock timer;
         Transform target;
         Player* player;
-
     public:
         Clock cooldown;
         bool allow_shot;
@@ -34,7 +34,4 @@ class Enemy : public Character{
         void setPlayer(Player* player){this->player = player;}
 
         void collide(Entity* other);
-
 };
-
-#endif

@@ -1,11 +1,6 @@
-//
-// Created by Lucas Orlikoski on 09/08/2021.
-//
+#pragma once
 
-#ifndef GAME_NEW_LISTA_HPP
-#define GAME_NEW_LISTA_HPP
-
-#include "lib.hpp"
+#include "stdafix.hpp"
 
 template <class L>
 class Lista{
@@ -74,8 +69,6 @@ void Lista<L>::add(L* info){
         last = novo;
     }
     size++;
-    first->setPrevious(last);
-    last->setNext(first);
 }
 template <class L>
 void Lista<L>::remove(L* info) {
@@ -88,7 +81,6 @@ void Lista<L>::remove(L* info) {
     aux2 = aux->getNext();
     aux2->setPrevious(aux->getPrevious());
     delete aux;
-    size--;
 }
 template <class L>
 void Lista<L>::clear() {
@@ -118,5 +110,3 @@ L* Lista<L>::operator[](int x) {
     }
     return pAux->getInfo();
 }
-
-#endif
