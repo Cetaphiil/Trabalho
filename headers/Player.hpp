@@ -20,24 +20,24 @@ private:
     Clock atk_timer;
     Clock die_timer;
 
-    void load_idle();
-    void load_jump();
-    void load_walk();
-    void load_dead();
-    void load_attack();
+//    void load_idle();
+//    void load_jump();
+//    void load_walk();
+//    void load_dead();
+//    void load_attack();
 
     void die();
 
 public:
     Player();
-    ~Player(){}
+    ~Player() {}
 
     void loader();
-    void show(RenderWindow* window);
-    void update(RenderWindow* window, float dt);
-    void collide(Entity* other);
+    void show(RenderWindow* window) override;
+    void update(RenderWindow* window, float dt) override;
+    void collide(Entity* other) override;
 
-    sf::Vector2f getPosition();
+    sf::Vector2f getPosition() override;
     Player* getPlayer(){return this;}
     void setSize();
 

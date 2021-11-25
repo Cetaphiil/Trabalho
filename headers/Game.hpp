@@ -10,6 +10,7 @@
 #include "InputHandler.hpp"
 #include "CollisionHandler.hpp"
 #include "EntityList.hpp"
+#include "Spike.hpp"
 
 using namespace sf;
 
@@ -53,5 +54,5 @@ class Engine: public StateMachine
         void newPlayer();
         void newEnemy();
         void newProjectile();
-        void newObject();
+        void newObject(int kind);
 };
