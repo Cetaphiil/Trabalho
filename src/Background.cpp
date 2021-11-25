@@ -1,4 +1,4 @@
-#include <background.hpp>
+#include <Background.hpp>
 
 Background::Background(){
     loader();

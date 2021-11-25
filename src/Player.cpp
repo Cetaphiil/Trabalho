@@ -3,7 +3,7 @@
 //
 #include <Player.hpp>
 #include <iostream>
-
+#include <GraphicHandler.hpp>
 static inline const char *idle_file_names[]= {
         "../assets/sprites/Player/Idle/Idle__000.png",
         "../assets/sprites/Player/Idle/Idle__001.png",
@@ -68,6 +68,7 @@ static inline const char *attack_file_names[]= {
 Player::Player() : Character(){
     life = 100;
     damage = 10;
+    setSize();
 }
 
 void Player::setSize() {
@@ -78,6 +79,14 @@ void Player::setSize() {
 
 sf::Vector2f Player::getPosition(){
     return (posit);
+}
+
+void Player::die() {
+    if(life > 0) {
+        std::cout << "Player still alive - WRONG function call" << std::endl;
+        exit(3);
+    }
+    dying = true;
 }
 
 void Player::loader() {
@@ -108,13 +117,26 @@ void Player::show(RenderWindow *window) {
         sprite.scale(1.2f, 1.2f);
         if (timer.getElapsedTime().asMilliseconds() > 60.f) {
             texture_attack = texture_attack->next;
-            if(atk_timmer.getElapsedTime().asMilliseconds() > 600.f){
+            if(atk_timer.getElapsedTime().asMilliseconds() > 600.f){
                 attacking = false;
             }
             else
                 timer.restart();
         }
 
+    }
+    if(dying){
+        sprite.setTexture((*(texture_dead->texture)));
+        sprite.scale(1.2f, 1.2f);
+        if (timer.getElapsedTime().asMilliseconds() > 60.f) {
+            texture_dead = texture_dead->next;
+            if(die_timer.getElapsedTime().asMilliseconds() > 600.f){
+                dying = false;
+                //end game state
+            }
+            else
+                timer.restart();
+        }
     }
     else if(abs(speed.y)>0.9f){
         sprite.setTexture(*(texture_jump->texture));
@@ -149,6 +171,9 @@ void Player::show(RenderWindow *window) {
 
 void Player::update(RenderWindow *window, float dt) {
 
+    if(life <= 0)
+        die();
+
     acceleration = -desaceleracao * speed;
 
     if (Keyboard::isKeyPressed(Keyboard::D)) {
@@ -170,9 +195,9 @@ void Player::update(RenderWindow *window, float dt) {
         }
     }
     if(Mouse::isButtonPressed(Mouse::Left)){
-        if(atk_timmer.getElapsedTime().asSeconds() > 2){
+        if(atk_timer.getElapsedTime().asSeconds() > 2){
             attacking = true;
-            atk_timmer.restart();
+            atk_timer.restart();
         }
     }
     Vector2f dv = dt * (acceleration + gravity);

@@ -64,8 +64,10 @@ void Engine::update(){
     }
 
     enemy->setPlayer(player);
+    deltatime = timer.restart().asSeconds();
+    if (deltatime > 0.0167)
+        deltatime = 0.0167;
 
-    deltatime += timer.restart().asSeconds();
     float passo = 1.f/60.f;
     while(deltatime > passo){
        listE.update(pGraphics->getWindow(), deltatime);
