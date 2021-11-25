@@ -24,6 +24,7 @@ class Engine: public StateMachine
         Collider collider;
         EntityList listE;
 
+
         float deltatime = 0;
 
         void initVariab();

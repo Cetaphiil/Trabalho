@@ -15,9 +15,10 @@ private:
     float desaceleracao = 20;
 
     bool jump = false;
-    bool attack = false;
+    bool dying = false;
 
-    Clock atk_timmer;
+    Clock atk_timer;
+    Clock die_timer;
 
     void load_idle();
     void load_jump();
@@ -25,9 +26,11 @@ private:
     void load_dead();
     void load_attack();
 
+    void die();
+
 public:
     Player();
-    ~Player();
+    ~Player(){}
 
     void loader();
     void show(RenderWindow* window);
@@ -36,6 +39,7 @@ public:
 
     sf::Vector2f getPosition();
     Player* getPlayer(){return this;}
+    void setSize();
 
     View getView1(){return view1;}
 };

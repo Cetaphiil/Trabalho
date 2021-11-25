@@ -2,9 +2,8 @@
 
 #include "stdafix.hpp"
 #include <list>
-#include "lib.hpp"
 
-#include "background.hpp"
+#include "Background.hpp"
 
 #define WIDTH 1280
 #define HEIGHT 720
@@ -19,7 +18,7 @@ class Graphics{
 
         Background back;
 
-        // Singleton desing pattern
+        // Singleton design pattern
         static Graphics* instance;
         Graphics();
     public:
