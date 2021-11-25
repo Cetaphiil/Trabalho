@@ -109,9 +109,21 @@ void Engine::newPlayer() {
     listE.add(static_cast<Entity*>(aux));
 }
 
-void Engine::newEnemy(){
+void Engine::newEnemy() {
     Enemy* aux = new Enemy();
     enemy = aux;
     enemy->setPosition({0.f, 0.f});
     listE.add(static_cast<Entity*>(aux));
+}
+
+void Engine::newObject(int kind) {
+    switch (kind) {
+        case 9:
+            Spike *spike;
+            spike = new Spike(kind);
+            listE.add(static_cast<Entity*>(spike));
+        default:
+            break;
+    }
+
 }
