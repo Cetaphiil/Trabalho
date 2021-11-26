@@ -21,7 +21,7 @@ class Lista{
             info = NULL;
         }
         void setNext(Node<N>* pNext) { nxt = pNext; }
-        
+
         Node<N>* getNext() { return nxt; }
 
         void setPrevious(Node<N>* pPrevious) { prv = pPrevious; }
@@ -37,6 +37,7 @@ class Lista{
     Node<L>* first;
     Node<L>* last;
     int size;
+
 public:
     Lista(){
         first = NULL;
@@ -53,6 +54,7 @@ public:
     void clear();
 
     L* operator[](int x);
+
 };
 
 template <class L>

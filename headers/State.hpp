@@ -1,5 +1,4 @@
-#ifndef STATE_H_P_P_
-#define STATE_H_P_P_
+#pragma once
 
 #include "stdafix.hpp"
 
@@ -7,13 +6,8 @@ namespace sm{
 
 class StateMachine;
 
-
-
-
 class State
 {
-    public:
-    
 private:
     StateMachine *pSMachine;
 
@@ -22,7 +16,6 @@ public:
     virtual ~State();
 
     void setStateMachine(StateMachine* pStateMachine);
-    void changeState(StateID id);
 
     virtual void update() = 0;
     virtual void render () = 0;
@@ -30,4 +23,3 @@ public:
 };
 
 }
-#endif

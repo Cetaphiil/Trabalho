@@ -18,7 +18,7 @@ class Character: public Entity{
 
         virtual void update(RenderWindow* window, float dt){}
         virtual void show(RenderWindow* window){}
-        virtual Vector2f getPosition(){ return possit; }
+        virtual Vector2f getPosition(){ return posit; }
 
         virtual void collide(Entity* other){}
 

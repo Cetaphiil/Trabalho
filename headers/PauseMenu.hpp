@@ -1,28 +1,32 @@
-#ifndef PAUSEMENU_H_P_P_
-#define PAUSEMENU_H_P_P_
+#pragma once
 
+#include "State.hpp"
+#include "StateMachine.hpp"
+#include "Menu.hpp"
 #include "GraphicHandler.hpp"
 
 #define MAX_NUMBER_BUTTONS_PAUSEMENU 3
 
+class InputHandler;
+
+class Engine;
+
 using namespace sf;
 
-class PauseMenu: public Graphics{
-private:
-    int selected;
-    Font font;
-    bool paused;
-    Text buttons[MAX_NUMBER_BUTTONS_PAUSEMENU];
+namespace sm{
 
+class PauseMenu: public Menu, public State{
+private:
+    Engine* pGame;
 public:
-    PauseMenu();
+    PauseMenu(InputHandler* pIH = NULL, Engine* pGame = NULL);
     ~PauseMenu();
 
-    void moveUp();
-    void moveDown();
-    void draw();
+    void render();
+    void update();
+    void restartState();
 
-    int getSelected() const;
+    void run();
 };
 
-#endif
+}
