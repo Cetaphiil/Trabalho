@@ -8,25 +8,21 @@ StateMachine::StateMachine() {
 }
 
 StateMachine::~StateMachine() {
-    State* st = NULL;
-    while (states.size() != 0) {
-        st = states.back();
-        delete (st);
-        states.pop_back();
+    while (!states.empty()) {
+        states.pop();
     }
-    states.clear();
 }
 
-void StateMachine::changeCurrentState(StateID id) {
-    currentState = id;
-    states[currentState]->restartState();
+void StateMachine::popTopState(){
+    states.pop();
+}
+
+void StateMachine::changeTopState(State* current) {
+    states.push(current);
+    states.top()->restartState();;
 }
 
 void StateMachine::execCurrentState() {
-    states[currentState]->update();
-    states[currentState]->render();
-}
-
-StateID StateMachine::getCurrentState() const{
-    return currentState;
+    states.top()->update();
+    states.top()->render();
 }

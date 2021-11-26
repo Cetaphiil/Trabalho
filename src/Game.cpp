@@ -10,18 +10,11 @@ void Engine::initVariab(){
     pEvents->setInputHandler(pInputs);
 
     newPlayer();
-    for(int i = 0; i < 3; i++)
-        newEnemy();
-    for(int i = 0; i < 3; i++)
-        newObject(9);
-    for(int i = 0; i < 3; i++)
-        newObject(10);
+    newPlayer();
+    newEnemy();
     
     listE.loader();
-
-    lvl1 = new Map("../assets/Maps/Tiles.txt");
-    lvl1->initMap("../assets/Maps/Fase1/lvl.txt");
-    loadPossibleStates();
+    loadStates();
 }
 
 Engine::Engine(){
@@ -29,36 +22,53 @@ Engine::Engine(){
 }
 
 Engine::~Engine(){
+   listE.freeAll();
 
-    listE.freeAll();
-
-    if(lvl1)
-        delete lvl1;
-    if(lvl2)
-        delete lvl2;
+    State* st = NULL;
+    while (possibleStates.size() != 0) {
+        st = possibleStates.back();
+        delete (st);
+        possibleStates.pop_back();
+    }
+    possibleStates.clear();
 }
 
-void Engine::loadPossibleStates(){
+void Engine::loadStates(){
     State* pNewState = NULL;
     try {
         pNewState = new MainMenu(pInputs, this);
-        if (pNewState == NULL)
+        if (pNewState == NULL){
             throw 0;
-        states.push_back(pNewState);
+        }
+        possibleStates.push_back(pNewState);
+        pNewState = new PauseMenu(pInputs, this);
+        if(pNewState == NULL){
+            throw 0;
+        }
+        possibleStates.push_back(pNewState);
+        // pNewState = new NewGameMenu(pInputs, this);
+        // if(pNewState == NULL){
+        //     throw 0;
+        // }
+        // possibleStates.push_back(pNewState);
+        // pNewState= new Playing(pInputs, this);
+        // if(pNewState == NULL){
+        //     throw 0;
+        // }
     } catch (int err) {
         if (err == 0) {
             cout << "Error allocating states " << endl;
             exit(1);
         }
     }
-    changeCurrentState(StateID::mainMenu);
+    states.push(possibleStates.front());
 }
 
 void Engine::update(){
 
     
     pEvents->pollEvents();
-
+    
     deltatime = timer.restart().asSeconds();
     if (deltatime > 0.0167)
         deltatime = 0.0167;
@@ -89,17 +99,17 @@ void Engine::execState(){
     }
 }
 
-void Engine::newPlayer() {
+Player* Engine::newPlayer() {
     Player* aux = new Player();
-    player = aux;
-    player->setPosition({0.f, 0.f});
+    aux->setPosition({0.f, 3.f});
     listE.add(static_cast<Entity*>(aux));
+    return aux;
 }
 
-void Engine::newEnemy() {
+void Engine::newEnemy(){
     Enemy* aux = new Enemy();
     aux->setPosition({0.f, 0.f});
-    aux->setPlayer(player);
+    aux->setPlayer(player1);
     listE.add(static_cast<Entity*>(aux));
 }
 
@@ -112,7 +122,7 @@ void Engine::newObject(int kind) {
 
         case 10:
             LandMine *landMine;
-            landMine = new LandMine(kind);
+            landMine = new LandMine(kind, Vector2f{0.f,0.f});
             listE.add(static_cast<Entity*>(landMine));
             default:
             break;

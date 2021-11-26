@@ -40,10 +40,11 @@ void NewGameMenu::run(){
     switch (selected)
     {
         case 0:
-            BuildLevel(1);
+            lvlD = LVL1PATH;
+            BuildLevel(lvlD);
             break;
         case 1:
-            BuildLevel(1);
+            // BuildLevel(1);
             break;
         case 2:
             pGame->popTopState();
@@ -70,15 +71,7 @@ void NewGameMenu::restartState(){
     selected = 0;
 };
 
-void NewGameMenu::BuildLevel(int players){
-    Player* player1 = pGame->getPlayer1();
+void NewGameMenu::BuildLevel(const char* lvlDir){
+    map(static_cast<string>(lvlDir));
 
-    Player* player2 = NULL;
-
-    if (players == 2) {
-        player2 = pGame->getPlayer2();
-    }
-
-    pGame->initLvl();
-
-}
+};

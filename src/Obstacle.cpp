@@ -6,10 +6,13 @@
 void Obstacle::show(RenderWindow *window) {
     window->draw(sprite);
 }
+sf::Vector2f Obstacle::getPosition(){
+    return posit;
+}
 
-Vector2f Obstacle::spawnPosition(int max_value) {
+sf::Vector2f Obstacle::spawnPosition(Vector2f pos) {
     Vector2f spawnPosit;
     spawnPosit.y = 128.f;
-    spawnPosit.x = (rand()%max_value);
+    spawnPosit.x = (pos.x);
     return spawnPosit;
 }

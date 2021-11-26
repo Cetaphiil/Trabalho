@@ -88,11 +88,6 @@ void Enemy::loader(){
 };
 
 void Enemy::update(RenderWindow *window, float dt){
-
-    if(life<=0)
-        deletable = true;
-
-
     aceleration = -1.f * speed;
     deltaTime = timer.restart().asSeconds();
 

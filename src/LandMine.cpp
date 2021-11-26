@@ -4,13 +4,17 @@
 #include <LandMine.hpp>
 #include <Game.hpp>
 
-LandMine::LandMine(int kind) : Obstacle(){
+LandMine::LandMine(int kind, sf::Vector2f pos) : Obstacle(){
     setKind(kind);
-    setPosition({spawnPosition(1080)});
+    setPosition(pos);
     loader();
     damage = 50;
     hitbox.setSize({40.f, 20.f});
     hitbox.setOrigin({20.f, 10.f});
+}
+
+LandMine::~LandMine(){
+
 }
 
 void LandMine::loader() {

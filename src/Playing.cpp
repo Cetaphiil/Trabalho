@@ -16,7 +16,6 @@ void Playing::update(){
 }
 
 void Playing::render(){
-    pGame->render();
 }
 
 // void Playing::exec(){
