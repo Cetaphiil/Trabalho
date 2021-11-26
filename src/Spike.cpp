@@ -1,7 +1,5 @@
-//
-// Created by lucas on 25/11/2021.
-//
-#include <Spike.hpp>
+
+#include "Spike.hpp"
 
 void Spike::load() {
     texture.loadFromFile("../assets/sprites/spike/spike.png");

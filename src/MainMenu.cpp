@@ -1,5 +1,6 @@
 #include <MainMenu.hpp>
 #include "Game.hpp"
+#include "InputHandler.hpp"
 
 using namespace sm;
 
@@ -9,7 +10,7 @@ MainMenu::MainMenu(InputHandler* pIH, Engine* pG): Menu(pIH) ,State(static_cast<
 
     font = pGraphics->getMainfont();
     
-    for(int i = 0; i < MAX_NUMBER_BUTTONS_MAINMENU; i++){
+    for(int i = 0; i < max_Number_Buttons; i++){
         Text* newButton;
             newButton = new Text;
             newButton->setFont(font);
@@ -33,6 +34,9 @@ MainMenu::MainMenu(InputHandler* pIH, Engine* pG): Menu(pIH) ,State(static_cast<
             }
         buttons.push_back(newButton);
     }
+    
+    
+
    
     selected = 0;
 };
@@ -44,8 +48,8 @@ MainMenu::~MainMenu(){
 void MainMenu::render() {
     pGraphics->drawBackGround();
     for(it = buttons.begin(); it != buttons.end(); ++it){
-        Text* sp = (*it);
-        pGraphics->getWindow()->draw(*sp);
+        Text* button = (*it);
+        pGraphics->getWindow()->draw(*button);
     }
 };
 
@@ -58,8 +62,8 @@ void MainMenu::run(){
         stateMenu = false;
         switch (selected) {
         case 0:
+            pGame->changeTopState(pGame->possibleStates.back());
             // pGame->setCurrentLevel(1);
-            // changeState(StateID::NewGame);
             break;
         case 1:
             // pGame->setCurrentLevel(2);

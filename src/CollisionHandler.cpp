@@ -2,24 +2,25 @@
 
 void Collider::CheckCollision(EntityList *other) {
     this->list = other;
-    Entity *entity1, *entity2;
+    Entity *ent1, *ent2;
 
     for (int i = 0; i < list->getLength(); i++) {
         for (int j = i + 1; j < list->getLength(); j++) {
 
-            entity1 = list->list[i];
-            entity2 = list->list[j];
+            // pega a entidade
+            ent1 = list->list[i];
+            ent2 = list->list[j];
 
             float dy, dx, intersectX, intersectY;
-            
-            dx = entity2->getPosition().x - entity1->getPosition().x;
-            dy = entity2->getPosition().y - entity1->getPosition().y;
-            
-            intersectX = abs(dx) - (entity1->getSize().x / 2 + entity2->getSize().x / 2);
-            intersectY = abs(dy) - (entity1->getSize().y / 2 + entity2->getSize().y / 2);
-            if (intersectX < 0.0f && intersectY < 0.0f) {
-                entity2->collide(entity1);
-                entity1->collide(entity2);
+            // Diferença entre os centros
+            dx = ent2->getPosition().x - ent1->getPosition().x;
+            dy = ent2->getPosition().y - ent1->getPosition().y;
+            // Condiçao para colisao
+            intersectX = abs(dx) - (ent1->getSize().x / 2 + ent2->getSize().x / 2);
+            intersectY = abs(dy) - (ent1->getSize().y / 2 + ent2->getSize().y / 2);
+            if (intersectX < 0.0f && intersectY < 0.0f) { //Condition to collide...
+                ent2->collide(ent1);
+                ent1->collide(ent2);
             }
         }
     }
