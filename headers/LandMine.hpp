@@ -7,8 +7,8 @@
 
 class LandMine : public Obstacle{
 public:
-    LandMine(int kind);
-    ~LandMine(){}
+    LandMine(int kind, sf::Vector2f pos);
+    ~LandMine();
 
     void loader();
 

@@ -13,7 +13,7 @@ private:
     Menu* pMenu;
 
 public:
-    MenuControl(InputHandler* pIM, Menu* pM = NULL);
+    MenuControl(InputHandler* pIM, Menu* pM);
     ~MenuControl();
 
     void execAction(int key);

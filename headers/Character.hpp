@@ -16,10 +16,10 @@ class Character: public Entity{
         Character();
         ~Character();
 
-        virtual void update(RenderWindow* window, float dt){}
-        virtual void show(RenderWindow* window){}
-        virtual Vector2f getPosition(){ return posit; }
+        virtual void update(RenderWindow* window, float dt){};
+        virtual void show(RenderWindow* window){};
+        virtual Vector2f getPosition(){ return posit; };
 
-        virtual void collide(Entity* other){}
+        virtual void collide(Entity* other){};
 
 };

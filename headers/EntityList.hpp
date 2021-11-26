@@ -18,5 +18,4 @@ public:
     void update(RenderWindow* window, float dt);
     void show(RenderWindow *window);
     void loader();
-
 };

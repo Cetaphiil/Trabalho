@@ -15,14 +15,16 @@ class Enemy : public Character{
         Player* player;
     public:
         Enemy();
+        ~Enemy(){};
 
         Clock cooldown;
-
+        
         bool allow_shot;
         bool shoud_shot;
         bool spawn = false;
 
         void loader();
+
 
         Vector2f getPosition();
 

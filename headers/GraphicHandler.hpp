@@ -3,7 +3,7 @@
 #include "stdafix.hpp"
 #include <list>
 
-#include "Background.hpp"
+#include "background.hpp"
 
 #define WIDTH 1280
 #define HEIGHT 720
@@ -15,14 +15,14 @@ class Graphics{
         Vector2i resolution;
         RenderWindow *window;
         Font mainFont;
-
+        View mainView;
         Background back;
 
-        // Singleton design pattern
+        // Singleton desing pattern
         static Graphics* instance;
         Graphics();
+        
     public:
-
         virtual ~Graphics();
 
         static List* add_sprite(List* list);
@@ -30,6 +30,8 @@ class Graphics{
         Font getMainFont(){ return mainFont; };
 
         RenderWindow* getWindow() const;
+
+        void setViewPosition(FloatRect pos);
 
         static Graphics* getGraphics();
 

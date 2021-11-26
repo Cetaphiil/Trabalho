@@ -1,15 +1,15 @@
-//
-// Created by lucas on 25/11/2021.
-//
 #pragma once
 
+#include "stdafix.hpp"
+#include "GraphicHandler.hpp"
 #include "Obstacle.hpp"
 
 class Spike : public Obstacle{
 public:
     Spike(int kind);
-    ~Spike(){}
-    void loader();
+    ~Spike();
 
-    void collide(Entity* other){}
+    void load();
+
+    void collide(Entity *other){};
 };

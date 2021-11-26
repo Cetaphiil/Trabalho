@@ -2,6 +2,9 @@
 
 #include "StateMachine.hpp"
 #include "MainMenu.hpp"
+#include "PauseMenu.hpp"
+#include "NewGameMenu.hpp"
+#include "Playing.hpp"
 #include "Enemy.hpp"
 #include "Player.hpp"
 #include "TileMap.hpp"
@@ -10,6 +13,7 @@
 #include "InputHandler.hpp"
 #include "CollisionHandler.hpp"
 #include "EntityList.hpp"
+#include "stdafix.hpp"
 #include "Spike.hpp"
 #include "LandMine.hpp"
 
@@ -19,15 +23,20 @@ using namespace sm;
 
 class Engine: public StateMachine
 {
+    public:
+        vector<State*> possibleStates;
+
     private:
         Graphics* pGraphics;
         EventHandler* pEvents;
         InputHandler* pInputs;
-        Collider collider;
-        EntityList listE;
-
-
         float deltatime = 0;
+
+        int playerAtGame;
+
+        Collider collider;
+
+        EntityList listE;
 
         void initVariab();
 
@@ -37,19 +46,25 @@ class Engine: public StateMachine
 
         void renderCharacters();
 
-        Player *player;
+        void initLvl();
+
+        Player *player1, *player2;
 
         Map *lvl1, *lvl2;
 
         Clock timer;
         
-        void loadPossibleStates();
+        void loadStates();
 
         void execState();
         
-        void update();
+        void exec();
 
-        void newPlayer();
+        void update();
+        void render();
+
+        Player* newPlayer();
+        
         void newEnemy();
         void newProjectile();
         void newObject(int kind);
