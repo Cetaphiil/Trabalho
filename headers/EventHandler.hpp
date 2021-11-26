@@ -62,5 +62,6 @@ public:
     void setGraphicHandler();
     void setInputHandler(InputHandler* pIH);
    
+
     void pollEvents();
 };

@@ -8,22 +8,26 @@
 #include "Entity.hpp"
 
 #include <iostream>
+#include <fstream>
+#include <cctype>
+#include <string>
+#include <list>
 
 using namespace std;
 
 class Map: public Entity{
     private:
-        sf::Vector2i map[10][10];
+        sf::Vector2i map[100][100];
         sf::Vector2i loadCounter;
-        // Texture textureList[3][3];
+        Texture textureList[3][3];
     public:
-        Map(const char* tileDir = "");
+        Map(string tileDir);
 
-        void initMap(const char* lvlDir = "");
+        void initMap(string lvlDir);
 
-        Vector2i getMap(int i, int j);
+        void loadTileMap(RenderWindow *window);
 
-        Vector2f getPosition(){ std::cout << "MAP CANNOT RETURN A POSITION" << std::endl; exit(1); }
+        Vector2f getPosition(){std::cout << "MAP CANNOT RETURN A POSITION" << std::endl; exit(1);}
 };
 
 

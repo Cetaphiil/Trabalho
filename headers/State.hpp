@@ -1,4 +1,5 @@
-#pragma once
+#ifndef STATE_H_P_P_
+#define STATE_H_P_P_
 
 #include "stdafix.hpp"
 
@@ -8,6 +9,8 @@ class StateMachine;
 
 class State
 {
+    public:
+    
 private:
     StateMachine *pSMachine;
 
@@ -16,6 +19,7 @@ public:
     virtual ~State();
 
     void setStateMachine(StateMachine* pStateMachine);
+    void changeState(StateID id);
 
     virtual void update() = 0;
     virtual void render () = 0;
@@ -23,3 +27,4 @@ public:
 };
 
 }
+#endif

@@ -5,11 +5,12 @@
 
 #include "Obstacle.hpp"
 
-class Spike : public Obstacle{
+class LandMine : public Obstacle{
 public:
-    Spike(int kind);
-    ~Spike(){}
+    LandMine(int kind);
+    ~LandMine(){}
+
     void loader();
 
-    void collide(Entity* other){}
+    void collide(Entity* other);
 };

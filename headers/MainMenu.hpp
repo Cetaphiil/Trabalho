@@ -16,8 +16,6 @@ namespace sm{
 class MainMenu : public Menu, public State {
     private:
         Engine* pGame;
-        vector<Text*> subMenuButtons;
-        vector<Text*>::iterator it;
     public:
         MainMenu(InputHandler* pIH = NULL, Engine* pGame = NULL);
         ~MainMenu();

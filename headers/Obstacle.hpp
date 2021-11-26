@@ -7,11 +7,15 @@
 
 class Obstacle : public Entity{
 public:
-    Obstacle(){}
+    Obstacle(){deletable = false;}
     ~Obstacle(){}
+
+    virtual void loader(){}
+    virtual void collide(Entity* other) override{}
 
     void show(RenderWindow* window) override;
 
     Vector2f getPosition() override{return posit;}
+    Vector2f spawnPosition(int max_value);
 };
 

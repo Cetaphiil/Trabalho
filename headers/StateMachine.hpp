@@ -1,7 +1,7 @@
 #pragma once
 
 #include "State.hpp"
-#include <stack>
+#include <vector>
 
 using namespace std;
 
@@ -9,15 +9,16 @@ namespace sm{
 
     class StateMachine{
         protected:
-            stack<State*> states;
-            state_id currentState;
+            vector<State*> states;
+            StateID currentState;
         public:
             StateMachine();
             virtual ~StateMachine();
 
-            void popTopState();
-            void changeTopState(State* current);
+            void changeCurrentState(StateID id);
             void execCurrentState();
+            StateID getCurrentState() const;
+
     };
 
 }
