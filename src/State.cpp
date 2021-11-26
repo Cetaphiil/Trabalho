@@ -12,3 +12,8 @@ State::~State() {
 void State::setStateMachine(StateMachine* pStateMachine) {
     this->pSMachine = pStateMachine;
 }
+
+void State::changeState(StateID id) {
+    pSMachine->changeCurrentState(id);
+}
+

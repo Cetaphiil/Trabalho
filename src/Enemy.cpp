@@ -74,7 +74,7 @@ static inline const char *enemy_spriteName_Spell[]={
     "../assets/sprites/Enemy/Wraith/Spell/Wraith_Spell_17.png"
 };
 
-void Enemy::sprite_loader(){
+void Enemy::loader(){
     sprite_list = (List **) malloc(4 * sizeof(List *));
 
     for (int i = 0; i < 4; i++){
@@ -87,13 +87,12 @@ void Enemy::sprite_loader(){
     pGraphics->load_Textures(enemy_spriteName_Spell, &sprite_list[3]);
 };
 
-void Enemy::initEnemies(Vector2i resolucao){
-    spawn = true;
-    Vector2i halfRes = resolucao/2;
-    posit = Vector2f((float) (rand() % (static_cast<int>(resolucao.x)/4)+halfRes.x), (float) (rand() % static_cast<int>(resolucao.y)/2));
-};
-
 void Enemy::update(RenderWindow *window, float dt){
+
+    if(life<=0)
+        deletable = true;
+
+
     aceleration = -1.f * speed;
     deltaTime = timer.restart().asSeconds();
 

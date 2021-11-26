@@ -9,13 +9,19 @@ void Engine::initVariab(){
     pInputs = new InputHandler;
     pEvents->setInputHandler(pInputs);
 
-    player1 = newPlayer();
-    player2 = newPlayer();
-    newEnemy();
+    newPlayer();
+    for(int i = 0; i < 3; i++)
+        newEnemy();
+    for(int i = 0; i < 3; i++)
+        newObject(9);
+    for(int i = 0; i < 3; i++)
+        newObject(10);
     
-    player1->loader();
-    enemy->sprite_loader();
-    loadFirstState();
+    listE.loader();
+
+    lvl1 = new Map("../assets/Maps/Tiles.txt");
+    lvl1->initMap("../assets/Maps/Fase1/lvl.txt");
+    loadPossibleStates();
 }
 
 Engine::Engine(){
@@ -23,77 +29,40 @@ Engine::Engine(){
 }
 
 Engine::~Engine(){
-    if(enemy)
-        delete enemy;
-    if(player1)
-        delete player1;
-    if(player2)
-        delete player2;
+
+    listE.freeAll();
+
     if(lvl1)
         delete lvl1;
     if(lvl2)
         delete lvl2;
-
-    State* st = NULL;
-    while (possibleStates.size() != 0) {
-        st = possibleStates.back();
-        delete (st);
-        possibleStates.pop_back();
-    }
-    possibleStates.clear();
 }
 
-void Engine::loadFirstState(){
+void Engine::loadPossibleStates(){
     State* pNewState = NULL;
     try {
         pNewState = new MainMenu(pInputs, this);
-        if (pNewState == NULL){
+        if (pNewState == NULL)
             throw 0;
-        }
-        possibleStates.push_back(pNewState);
-        pNewState = new PauseMenu(pInputs, this);
-        if(pNewState == NULL){
-            throw 0;
-        }
-        possibleStates.push_back(pNewState);
-        pNewState = new NewGameMenu(pInputs, this);
-        if(pNewState == NULL){
-            throw 0;
-        }
-        possibleStates.push_back(pNewState);
-        pNewState= new Playing(pInputs, this);
-        if(pNewState == NULL){
-            throw 0;
-        }
+        states.push_back(pNewState);
     } catch (int err) {
         if (err == 0) {
             cout << "Error allocating states " << endl;
             exit(1);
         }
     }
-    states.push(possibleStates.front());
-}
-
-void Engine::initLvl(){
-    // lvl1 = new Map("../assets/Maps/Tiles.txt");
-    lvl1->initMap(LVL1PATH);
-    // lvl1->loadTileMap();
+    changeCurrentState(StateID::mainMenu);
 }
 
 void Engine::update(){
 
     
     pEvents->pollEvents();
-    
-    if((enemy->getLife() <= 0) && (enemy != NULL)) {
-        listE.remove(static_cast<Entity*>(enemy));
-        delete enemy;
-        newEnemy();
-    }
 
-    enemy->setPlayer(player1);
+    deltatime = timer.restart().asSeconds();
+    if (deltatime > 0.0167)
+        deltatime = 0.0167;
 
-    deltatime += timer.restart().asSeconds();
     float passo = 1.f/60.f;
     while(deltatime > passo){
        listE.update(pGraphics->getWindow(), deltatime);
@@ -102,49 +71,50 @@ void Engine::update(){
     collider.CheckCollision(&listE);
 }
 
-Player* Engine::getPlayer1(){
-    return player1;
-}
-Player* Engine::getPlayer2(){
-    return player2;
-}
-
 void Engine::renderCharacters(){
     listE.show(pGraphics->getWindow());
 }
 
-void Engine::render(){
-    pGraphics->getWindow()->clear();
-    pGraphics->drawBackGround();
-    // lvl1->loadTileMap(pGraphics->getWindow());
-    renderCharacters();
-    pGraphics->getWindow()->display();
-}
-
 void Engine::execState(){
 
-    initLvl();
-    // while(pGraphics->getWindow()->isOpen()){
+    while(pGraphics->getWindow()->isOpen()){
 
-    //     pEvents->pollEvents();
+        pEvents->pollEvents();
 
-    //     pGraphics->getWindow()->clear();
+        pGraphics->getWindow()->clear();
 
-    //     execCurrentState();
+        execCurrentState();
         
-    //     pGraphics->getWindow()->display();
-    // }
+        pGraphics->getWindow()->display();
+    }
 }
 
-Player* Engine::newPlayer() {
+void Engine::newPlayer() {
     Player* aux = new Player();
+    player = aux;
+    player->setPosition({0.f, 0.f});
     listE.add(static_cast<Entity*>(aux));
-    return aux;
 }
 
-void Engine::newEnemy(){
+void Engine::newEnemy() {
     Enemy* aux = new Enemy();
-    enemy = aux;
-    enemy->setPosition({0.f, 0.f});
+    aux->setPosition({0.f, 0.f});
+    aux->setPlayer(player);
     listE.add(static_cast<Entity*>(aux));
+}
+
+void Engine::newObject(int kind) {
+    switch (kind) {
+        case 9:
+            Spike *spike;
+            spike = new Spike(kind);
+            listE.add(static_cast<Entity*>(spike));
+
+        case 10:
+            LandMine *landMine;
+            landMine = new LandMine(kind);
+            listE.add(static_cast<Entity*>(landMine));
+            default:
+            break;
+    }
 }

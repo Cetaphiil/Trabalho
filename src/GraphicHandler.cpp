@@ -11,16 +11,10 @@ Graphics* Graphics::getGraphics(){
 
 Graphics::Graphics(): resolution(WIDTH, HEIGHT), window(new RenderWindow(VideoMode(resolution.x, resolution.y), "NomeDoJOJ", Style::Titlebar | Style::Close)), back(){
     mainFont.loadFromFile("../assets/fonts/slant_regular.ttf");
-    mainView.reset(FloatRect{0, 0, (float)resolution.x, (float)resolution.y});
 }
 
 Graphics::~Graphics(){
     delete instance;
-}
-
-void Graphics::setViewPosition(FloatRect pos){
-    mainView.reset(pos);
-    window->setView(mainView);
 }
 
 List *Graphics::add_sprite(List* list){
