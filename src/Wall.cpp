@@ -4,6 +4,7 @@ Wall::Wall(Vector2f posit, int kind): Obstacle(){
     setKind(kind);
     setPosition(posit);
     setShowing();
+    damage = 0;
     loader();
 }
 

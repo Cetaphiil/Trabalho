@@ -77,8 +77,6 @@ Fase* LvlConstructor::levelBuilder(Player* p1, Player* p2, int whatlvl, EntityLi
         lvl = new Fase(pP1, pP2, {LVL_WIDTH * platSize.x, LVL_HEIGHT * platSize.y}, pListE);
     }
 
-    newWraithSup(Vector2f{0,0}, Kind::enemyKind);
-    newWraithQueen(Vector2f{0,0}, Kind::enemyKind);
     file >> level[0][0];
     while (!file.eof()) {
         file.ignore();

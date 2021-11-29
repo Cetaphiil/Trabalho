@@ -23,7 +23,7 @@ void Lifebar::update(int life, int MAX_LIFE, sf::Vector2f position) {
     if(life > MAX_LIFE)
         life = MAX_LIFE;
 
-    std::cout << MAX_LIFE << std::endl;
+    std::cout << life << std::endl;
     inner.setSize({float(life), inner.getSize().y});
     setPosition({position.x, position.y-30});
 }
