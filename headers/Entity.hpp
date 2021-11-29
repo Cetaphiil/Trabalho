@@ -45,7 +45,7 @@ class Entity{
         void setShowing(const bool val = true) { shouldShow = val; }
         bool getShowing() { return shouldShow; }
         
-        int getLife() const{ return life; }
+        const int getLife() const{ return life; }
         Vector2f getSize(){return hitbox.getSize();}
 
         Vector2f getSpeed(){return speed;}
