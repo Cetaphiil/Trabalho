@@ -4,9 +4,11 @@
 #include "Obstacle.hpp"
 
 class Platform: public Obstacle{
+    private:
+        int lvl;
     public:
-        Platform(int kind, Vector2f pos);
+        Platform(Vector2f pos, int whatlvl, int type, int kind);
         ~Platform() {};
 
-        void load(int kind);
+        void load(int type);
 };

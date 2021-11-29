@@ -31,9 +31,13 @@ class Graphics{
 
         RenderWindow* getWindow() const;
 
-        void setViewPosition(FloatRect pos);
+        void setViewPosition(sf::Vector2f pos);
 
         static Graphics* getGraphics();
+
+        void resetBackposit(const sf::Vector2f pos);
+
+        void loadBack(int whatlvl);
 
         void drawBackGround();        
 

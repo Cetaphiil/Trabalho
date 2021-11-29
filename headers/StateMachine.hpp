@@ -9,15 +9,14 @@ namespace sm{
 
     class StateMachine{
         protected:
-            stack<State*> states;
-            state_id currentState;
+            vector<State*> states;
+            stateID currentState;
         public:
             StateMachine();
             virtual ~StateMachine();
 
-            void popTopState();
-            void changeTopState(State* current);
-            void execCurrentState();
+            void changeTopState(stateID id);
+            void execCurrentState(float dt);
     };
 
 }

@@ -84,6 +84,7 @@ void Lista<L>::remove(L* info) {
     aux2 = aux->getNext();
     aux2->setPrevious(aux->getPrevious());
     delete aux;
+    size--;
 }
 template <class L>
 void Lista<L>::clear() {

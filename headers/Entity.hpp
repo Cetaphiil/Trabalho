@@ -16,23 +16,24 @@ class Entity{
         Texture texture;
         Sprite sprite;
         RectangleShape hitbox;
-        Vector2f posit, speed, acceleration;
+        Vector2f posit, speed = {0, 0};
         int life;
 
     public:
         Clock invincibility;
+        bool shouldShow;
         bool deletable;
         bool attacking;
+        bool jump;
         int damage;
 
     public:
-        Entity();
-        virtual ~Entity();
+        Entity(){}
+        virtual ~Entity(){}
 
         virtual void loader(){};
-        virtual void update(RenderWindow* window, float dt) {}
+        virtual void update(float dt) {}
         virtual void show(RenderWindow* window) {}
-        virtual void collide(Entity* other){}
 
         void setKind(int aux){kind = aux;}
         const int getKind(){return kind;}
@@ -40,9 +41,17 @@ class Entity{
 
         virtual Vector2f getPosition() = 0;
         void setPosition(Vector2f pos){posit = pos; sprite.setPosition(pos);}
+
+        void setShowing(const bool val = true) { shouldShow = val; }
+        bool getShowing() { return shouldShow; }
         
         int getLife() const{ return life; }
         Vector2f getSize(){return hitbox.getSize();}
 
-        void setGraphics();
+        Vector2f getSpeed(){return speed;}
+        void setSpeed(Vector2f new_speed){speed = new_speed;}
+
+        void setHitbox(RectangleShape hit){hitbox = hit;}
+
+        void take_damage(int damage);
 };

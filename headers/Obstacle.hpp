@@ -7,11 +7,10 @@
 
 class Obstacle : public Entity{
 public:
-    Obstacle(){}
+    Obstacle() : Entity(){}
     ~Obstacle(){}
 
     virtual void loader(){};
-    virtual void collide(Entity* other){};
 
     void show(RenderWindow* window);
 

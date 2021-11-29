@@ -12,9 +12,9 @@ public:
     Background();
     ~Background();
 
-    void loader();
+    void loader(int whatlvl);
     void show(sf::RenderWindow *window);
-    void update(){};
+    void update(sf::Vector2f pos);
     Vector2f getPosition(){ std::cout << "backGround can't return a possition" << std::endl; exit(2); }
 };
 

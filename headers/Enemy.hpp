@@ -9,28 +9,18 @@ using namespace sf;
 class Enemy : public Character{
     protected:
         float deltaTime;
-        Vector2f speed, aceleration;
+        Vector2f aceleration;
         Clock timer;
-        Transform target;
         Player* player;
     public:
         Enemy();
         ~Enemy(){};
 
-        Clock cooldown;
-        
-        bool allow_shot;
-        bool shoud_shot;
-        bool spawn = false;
+        virtual void loader(){};
 
-        void loader();
+        virtual Vector2f getPosition(){ return posit; };
 
-
-        Vector2f getPosition();
-
-
-        void show(RenderWindow *window);
-        void update(RenderWindow *window, float dt);
-        void setPlayer(Player* player){this->player = player;}
-        void collide(Entity* other);
+        virtual void show(RenderWindow *window){};
+        virtual void update(float dt){};
+        virtual void setPlayer(Player* player){this->player = player;}
 };

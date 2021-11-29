@@ -11,5 +11,5 @@ class Listener{
     Listener(InputHandler* pI);
     virtual ~Listener();
 
-    virtual void execAction(int key) = 0;
+    virtual void execAction() = 0;
 };

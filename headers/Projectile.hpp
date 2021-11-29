@@ -1,7 +1,7 @@
 #ifndef PROJECTILE_HPP
 #define PROJECTILE_HPP
 
-#include "lib.hpp"
+#include "stdafix.hpp"
 #include "Enemy.hpp"
 #include "Player.hpp"
 #include "Entity.hpp"

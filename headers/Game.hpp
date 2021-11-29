@@ -7,7 +7,7 @@
 #include "Playing.hpp"
 #include "Enemy.hpp"
 #include "Player.hpp"
-#include "TileMap.hpp"
+#include "Fase.hpp"
 #include "GraphicHandler.hpp"
 #include "EventHandler.hpp"
 #include "InputHandler.hpp"
@@ -23,21 +23,17 @@ using namespace sm;
 
 class Engine: public StateMachine
 {
-    public:
-        vector<State*> possibleStates;
-
     private:
         Graphics* pGraphics;
         EventHandler* pEvents;
         InputHandler* pInputs;
         float deltatime = 0;
-
+        int lvl;
+        Player *p1, *p2;
         int playerAtGame;
-
-        Collider collider;
-
+        Fase* plvl;
+        Collider *collider;
         EntityList listE;
-
         void initVariab();
 
     public:
@@ -47,10 +43,6 @@ class Engine: public StateMachine
         void renderCharacters();
 
         void initLvl();
-
-        Player *player1, *player2;
-
-        Map *lvl1, *lvl2;
 
         Clock timer;
         
@@ -63,9 +55,20 @@ class Engine: public StateMachine
         void update();
         void render();
 
+        Fase* getLvl() const;
+        void setLvl(Fase *pL);
+
+        Player *getP1();
+        Player *getP2();
+
         Player* newPlayer();
         
-        void newEnemy();
+        void setwhatLvl(int whatlvl);
+        int getwhatLvl();
+
+        void checkColision();
+
         void newProjectile();
         void newObject(int kind);
+        void updateState(int statelabel);
 };

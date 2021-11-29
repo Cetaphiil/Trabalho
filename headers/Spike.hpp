@@ -6,7 +6,7 @@
 
 class Spike : public Obstacle{
 public:
-    Spike(int kind);
+    Spike(Vector2f posit, int kind);
     ~Spike();
 
     void load();

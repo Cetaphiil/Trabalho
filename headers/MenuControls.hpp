@@ -16,7 +16,7 @@ public:
     MenuControl(InputHandler* pIM, Menu* pM);
     ~MenuControl();
 
-    void execAction(int key);
+    void execAction();
 
 };
 

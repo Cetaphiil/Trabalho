@@ -6,6 +6,16 @@ namespace sm{
 
 class StateMachine;
 
+enum stateID {
+    mainMenu = 0,
+    newGame = 1,
+    playing = 2,
+    pauseMenu,
+    loadGame,
+    leaderboard,
+    endGame
+};
+
 class State
 {
 private:
@@ -16,8 +26,8 @@ public:
     virtual ~State();
 
     void setStateMachine(StateMachine* pStateMachine);
-
-    virtual void update() = 0;
+    void changeState(sm::stateID id);
+    virtual void update(float dt) = 0;
     virtual void render () = 0;
     virtual void restartState() = 0;
 };

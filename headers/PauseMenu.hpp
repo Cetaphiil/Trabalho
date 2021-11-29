@@ -23,7 +23,7 @@ public:
     ~PauseMenu();
 
     void render();
-    void update();
+    void update(float dt);
     void restartState();
 
     void run();

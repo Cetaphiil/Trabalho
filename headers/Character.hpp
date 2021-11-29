@@ -8,7 +8,7 @@ using namespace sf;
 class Character: public Entity{
     protected:
 
-        Vector2f gravity{0.0f, 7000.f};
+        float gravity = 0.05;
         List **sprite_list;
         Clock timer;
 
@@ -16,10 +16,8 @@ class Character: public Entity{
         Character();
         ~Character();
 
-        virtual void update(RenderWindow* window, float dt){};
+        virtual void update(float dt){};
         virtual void show(RenderWindow* window){};
         virtual Vector2f getPosition(){ return posit; };
-
-        virtual void collide(Entity* other){};
 
 };

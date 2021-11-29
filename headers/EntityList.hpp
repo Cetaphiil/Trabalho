@@ -15,7 +15,9 @@ public:
     void freeAll(){list.clear();}
     int getLength() {return list.length(); }
 
-    void update(RenderWindow* window, float dt);
+    void update(float dt);
     void show(RenderWindow *window);
     void loader();
+
+    Entity* operator[](int x);
 };

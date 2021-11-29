@@ -20,7 +20,7 @@ public:
 
     void dockIn(Listener* pL);
     void unDock(Listener* pL);
-    void handleKeyInput(int key);
+    void handleKeyInput();
     void handleTextInput(char string);
     String getStringInput();
     void deleteString();
