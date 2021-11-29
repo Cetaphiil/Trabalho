@@ -13,17 +13,19 @@ void EntityList::add(Entity *pNew) {
 };
 
 void EntityList::remove(Entity *pDel) {
+    pDel->setShowing(false);
     list.remove(pDel);
 };
 
-void EntityList::update(RenderWindow *window, float dt) {
+void EntityList::update(float dt) {
     for(int i = 0; i < list.length(); i++){
-        list[i]->update(window, dt);
+        list[i]->update(dt);
     }
 };
 void EntityList::show(RenderWindow *window){
     for(int i = 0; i < list.length(); i++){
-        list[i]->show(window);
+        if(list[i]->getShowing())
+            list[i]->show(window);
     }
 };
 
@@ -32,3 +34,8 @@ void EntityList::loader(){
         list[i]->loader();
     }
 };
+
+Entity* EntityList::operator[](int x) {
+    Entity* aux = list[x];
+    return aux;
+}

@@ -80,12 +80,11 @@ void EventHandler::pollEvents(){
     sf::Event ev;
     while (pWindow->pollEvent(ev)) {
         Event ev_obj = Event(ev);
-        if (ev_obj.getEventType() == EventType::KeyReleased && (pInput != NULL)){
-                pInput->handleKeyInput(static_cast<int>(ev_obj.getKeyInput()));
+        if ((ev_obj.getEventType() == EventType::KeyReleased || ev_obj.getEventType() == EventType::KeyPressed) && pInput){
+                pInput->handleKeyInput();
 
         }
         else if (ev_obj.getEventType() == EventType::TextEntered)
             pInput->handleTextInput(ev_obj.getCharString());
     }
-
 }

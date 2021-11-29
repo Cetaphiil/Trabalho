@@ -4,8 +4,12 @@
 
 using namespace sm;
 
-NewGameMenu::NewGameMenu(InputHandler* pIH, Engine* pG): Menu(pIH), State(static_cast<StateMachine*>(pG)), pGame(pG){
+NewGameMenu::NewGameMenu(InputHandler* pIH, Engine* pG, EntityList *listE): Menu(pIH), State(static_cast<StateMachine*>(pG)), pGame(pG){
     
+    setMaxButtons(static_cast<int>(MAX_NUMBER_BUTTONS));
+
+    pLE = listE;
+
     font = pGraphics->getMainFont();
     for (int i = 0; i < 3; i++)
     { 
@@ -26,7 +30,6 @@ NewGameMenu::NewGameMenu(InputHandler* pIH, Engine* pG): Menu(pIH), State(static
             }
         buttons.push_back(newButton);
     }
-
     selected = 0;
 }
 
@@ -36,30 +39,31 @@ NewGameMenu::~NewGameMenu(){
 
 void NewGameMenu::run(){
     if(stateMenu){
-        stateMenu = false;
     switch (selected)
     {
         case 0:
-            lvlD = LVL1PATH;
-            BuildLevel(lvlD);
+            BuildLevel(1);
             break;
         case 1:
-            // BuildLevel(1);
+            BuildLevel(2);
             break;
         case 2:
-            pGame->popTopState();
+            changeState(stateID::mainMenu);
             break;
         default:
             break;
         }
     }
+
+    stateMenu = false;
 };
 
-void NewGameMenu::update(){
+void NewGameMenu::update(float dt){
     stateMenu = true;
 };
 
 void NewGameMenu::render(){
+
     pGraphics->drawBackGround();
     for(it = buttons.begin(); it != buttons.end(); ++it){
         Text* button = (*it);
@@ -71,7 +75,27 @@ void NewGameMenu::restartState(){
     selected = 0;
 };
 
-void NewGameMenu::BuildLevel(const char* lvlDir){
-    map(static_cast<string>(lvlDir));
+void NewGameMenu::BuildLevel(int qP){
+    Fase* pLevel = NULL;
+    Player* player1 = pGame->getP1();
+
+    player1->restart();
+    Player* player2 = NULL;
+    if (qP == 2) {
+        player2 = pGame->getP2();
+        player2->restart();
+    }
+    if (pGame->getwhatLvl() == 1) {
+        LvlConstructor* lvlBuild = new LvlConstructor();
+        pLevel = lvlBuild->levelBuilder(player1, player2, 1, pLE);
+        delete (lvlBuild);
+    } else if (pGame->getwhatLvl() == 2) {
+        LvlConstructor* lvlBuild = new LvlConstructor();
+        pLevel = lvlBuild->levelBuilder(player1, player2, 2, pLE);
+        delete (lvlBuild);
+    }
+
+    pGame->setLvl(pLevel);
+    pGame->changeTopState(stateID::playing);
 
 };

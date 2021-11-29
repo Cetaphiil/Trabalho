@@ -9,20 +9,14 @@ MenuControl::~MenuControl() {
     pMenu = NULL;
 };
 
-void MenuControl::execAction(int key) {
+void MenuControl::execAction() {
     
-    switch (key){
-        case 22:
-            pMenu->moveUp();
-            break;
-        case 18:
-            pMenu->moveDown();
-            break;
-        case 58:
-            pMenu->run();
-            break;
-        case 36:
-            pMenu->pGraphics->getWindow()->close();
-            break;
-    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        pMenu->moveUp();
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        pMenu->moveDown();
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+        pMenu->run();
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+        pMenu->pGraphics->getWindow()->close();
 };

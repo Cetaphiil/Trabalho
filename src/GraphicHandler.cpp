@@ -18,9 +18,17 @@ Graphics::~Graphics(){
     delete instance;
 }
 
-void Graphics::setViewPosition(FloatRect pos){
-    mainView.reset(pos);
+void Graphics::setViewPosition(sf::Vector2f pos){
+    mainView.setCenter(pos);
     window->setView(mainView);
+}
+
+void Graphics::loadBack(int whatlvl){
+    back.loader(whatlvl);
+}
+
+void Graphics::resetBackposit(const sf::Vector2f pos){
+    back.setPosition(pos);
 }
 
 List *Graphics::add_sprite(List* list){

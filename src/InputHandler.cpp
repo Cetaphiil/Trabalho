@@ -17,9 +17,9 @@ void InputHandler::dockIn(Listener* pL) {
 void InputHandler::unDock(Listener* pL) {
     listenerList.remove(pL);
 }
-void InputHandler::handleKeyInput(int key) {
-    for(it = listenerList.begin(); it != listenerList.end(); it++){
-        (*it)->execAction(key);
+void InputHandler::handleKeyInput() {
+    for(it = listenerList.begin(); it != listenerList.end(); ++it){
+        (*it)->execAction();
     }
 }
 

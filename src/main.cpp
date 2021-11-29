@@ -1,7 +1,7 @@
 #include "main.hpp"
 #include "Game.hpp"
-#include "TileMap.hpp"
-#include "stdafix.hpp"
+
+using namespace sm;
 
 int main() {
     Engine game;

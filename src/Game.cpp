@@ -2,6 +2,8 @@
 
 class Collider;
 
+using namespace sm;
+
 void Engine::initVariab(){
     pGraphics = Graphics::getGraphics();
     pEvents = EventHandler::getInstance();
@@ -9,12 +11,14 @@ void Engine::initVariab(){
     pInputs = new InputHandler;
     pEvents->setInputHandler(pInputs);
 
-    newPlayer();
-    newPlayer();
-    newEnemy();
+    p1 = newPlayer();
+    p2 = NULL;
+
+    collider = new Collider(&listE);
     
     listE.loader();
     loadStates();
+
 }
 
 Engine::Engine(){
@@ -23,62 +27,50 @@ Engine::Engine(){
 
 Engine::~Engine(){
    listE.freeAll();
-
-    State* st = NULL;
-    while (possibleStates.size() != 0) {
-        st = possibleStates.back();
-        delete (st);
-        possibleStates.pop_back();
-    }
-    possibleStates.clear();
 }
 
 void Engine::loadStates(){
+
     State* pNewState = NULL;
     try {
         pNewState = new MainMenu(pInputs, this);
         if (pNewState == NULL){
             throw 0;
         }
-        possibleStates.push_back(pNewState);
+        states.push_back(pNewState);
+        pNewState = new NewGameMenu(pInputs, this, &listE);
+        if(pNewState == NULL){
+            throw 0;
+        }
+        states.push_back(pNewState);
+        pNewState= new Playing(pInputs, this);
+        if(pNewState == NULL){
+            throw 0;
+        }
+        states.push_back(pNewState);
         pNewState = new PauseMenu(pInputs, this);
         if(pNewState == NULL){
             throw 0;
         }
-        possibleStates.push_back(pNewState);
-        // pNewState = new NewGameMenu(pInputs, this);
-        // if(pNewState == NULL){
-        //     throw 0;
-        // }
-        // possibleStates.push_back(pNewState);
-        // pNewState= new Playing(pInputs, this);
-        // if(pNewState == NULL){
-        //     throw 0;
-        // }
+        states.push_back(pNewState);
     } catch (int err) {
         if (err == 0) {
-            cout << "Error allocating states " << endl;
+            cout << "Error initializing states " << endl;
             exit(1);
         }
     }
-    states.push(possibleStates.front());
+    changeTopState(stateID::mainMenu);
 }
 
 void Engine::update(){
-
-    
-    pEvents->pollEvents();
-    
     deltatime = timer.restart().asSeconds();
     if (deltatime > 0.0167)
         deltatime = 0.0167;
-
     float passo = 1.f/60.f;
     while(deltatime > passo){
-       listE.update(pGraphics->getWindow(), deltatime);
-       deltatime -= passo;
+        pEvents->pollEvents();
+        deltatime -= passo;
     }
-    collider.CheckCollision(&listE);
 }
 
 void Engine::renderCharacters(){
@@ -86,16 +78,25 @@ void Engine::renderCharacters(){
 }
 
 void Engine::execState(){
+    float dt;
+    timer.restart();
 
     while(pGraphics->getWindow()->isOpen()){
 
+        checkColision();
+
         pEvents->pollEvents();
+
+        dt = timer.restart().asSeconds();
+        if (dt > 0.0167)
+            dt = 0.0167;
 
         pGraphics->getWindow()->clear();
 
-        execCurrentState();
-        
+        execCurrentState(dt);
+
         pGraphics->getWindow()->display();
+
     }
 }
 
@@ -106,25 +107,30 @@ Player* Engine::newPlayer() {
     return aux;
 }
 
-void Engine::newEnemy(){
-    Enemy* aux = new Enemy();
-    aux->setPosition({0.f, 0.f});
-    aux->setPlayer(player1);
-    listE.add(static_cast<Entity*>(aux));
+Player* Engine::getP1(){
+    return p1;
+}
+Player* Engine::getP2(){
+    return p2;
 }
 
-void Engine::newObject(int kind) {
-    switch (kind) {
-        case 9:
-            Spike *spike;
-            spike = new Spike(kind);
-            listE.add(static_cast<Entity*>(spike));
+Fase* Engine::getLvl() const{
+    if(plvl != NULL)
+        return plvl;
+    return NULL;
+}
 
-        case 10:
-            LandMine *landMine;
-            landMine = new LandMine(kind, Vector2f{0.f,0.f});
-            listE.add(static_cast<Entity*>(landMine));
-            default:
-            break;
-    }
+void Engine::setLvl(Fase* pL){
+    if(pL != NULL)
+        plvl = pL;
+}
+
+void Engine::setwhatLvl(int wl){
+    lvl = wl;
+}
+int Engine::getwhatLvl(){
+    return lvl;
+}
+void Engine::checkColision() {
+    collider->CheckCollision();
 }

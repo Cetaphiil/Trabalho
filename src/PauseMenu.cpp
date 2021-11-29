@@ -36,7 +36,7 @@ PauseMenu::~PauseMenu(){
     buttons.clear();
 }
 
-void PauseMenu::update(){
+void PauseMenu::update(float dt){
     stateMenu = true;
 };
 
@@ -57,15 +57,12 @@ void PauseMenu::run(){
         stateMenu = false;
         switch (selected) {
         case 0:
-            pGame->popTopState();
-            // changeState(StateID::Playing);
+            changeState(stateID::playing);
             break;
         case 1:
-            // pGame->setCurrentLevel(2);
-            // changeState(StateID::Save);
             break;
         case 2:
-            pGame->popTopState();
+            changeState(stateID::mainMenu);
             break;
         default:
             break;

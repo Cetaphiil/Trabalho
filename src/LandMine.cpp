@@ -4,13 +4,14 @@
 #include <LandMine.hpp>
 #include <Game.hpp>
 
-LandMine::LandMine(int kind, sf::Vector2f pos) : Obstacle(){
+LandMine::LandMine(Vector2f pos, int kind) : Obstacle(){
     setKind(kind);
     setPosition(pos);
     loader();
+    setShowing();
     damage = 50;
-    hitbox.setSize({40.f, 20.f});
-    hitbox.setOrigin({20.f, 10.f});
+    hitbox.setSize({15.f, 8.f});
+    hitbox.setOrigin({7.5f, 4.f});
 }
 
 LandMine::~LandMine(){
@@ -18,8 +19,9 @@ LandMine::~LandMine(){
 }
 
 void LandMine::loader() {
-    texture.loadFromFile("../assets/Sprites/Land Mine/landmine.png");
+    texture.loadFromFile(LANDMINE);
     sprite.setTexture(texture);
+    sprite.setScale(0.3, 0.3);
 }
 
 void LandMine::collide(Entity *other) {

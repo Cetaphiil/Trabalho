@@ -7,7 +7,7 @@ using namespace sm;
 MainMenu::MainMenu(InputHandler* pIH, Engine* pG): Menu(pIH) ,State(static_cast<StateMachine*>(pG)), pGame(pG){
     
     setMaxButtons(static_cast<int>(MAX_NUMBER_BUTTONS_MAINMENU));
-
+    backMain.loader(1);
     font = pGraphics->getMainfont();
     
     for(int i = 0; i < max_Number_Buttons; i++){
@@ -43,14 +43,14 @@ MainMenu::~MainMenu(){
 };
 
 void MainMenu::render() {
-    pGraphics->drawBackGround();
+    backMain.show(pGraphics->getGraphics()->getWindow());
     for(it = buttons.begin(); it != buttons.end(); ++it){
         Text* button = (*it);
         pGraphics->getWindow()->draw(*button);
     }
 };
 
-void MainMenu::update(){
+void MainMenu::update(float dt){
     stateMenu = true;
 };
 
@@ -59,12 +59,14 @@ void MainMenu::run(){
         stateMenu = false;
         switch (selected) {
         case 0:
-            pGame->changeTopState(pGame->possibleStates.back());
-            // pGame->setCurrentLevel(1);
+            pGame->setwhatLvl(1);
+            pGraphics->loadBack(pGame->getwhatLvl());
+            changeState(stateID::newGame);
             break;
         case 1:
-            // pGame->setCurrentLevel(2);
-            // changeState(StateID::NewGame);
+            pGame->setwhatLvl(2);
+            pGraphics->loadBack(pGame->getwhatLvl());
+            changeState(stateID::newGame);
             break;
         case 2:
             // changeState(StateID::Load);
